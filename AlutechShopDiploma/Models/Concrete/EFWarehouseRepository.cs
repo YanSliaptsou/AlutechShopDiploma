@@ -23,6 +23,7 @@ namespace AlutechShopDiploma.Models.Concrete
                     Good = warehouse.Good,
                     GoodAmmount = warehouse.GoodAmmount
                 }) ;
+            context.SaveChanges();
         }
 
         public void DeleteWarehouse(int warehouseId)
@@ -47,6 +48,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 }
             }
             context.SaveChanges();
+
         }
     }
 }

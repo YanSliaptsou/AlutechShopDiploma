@@ -26,6 +26,7 @@ namespace AlutechShopDiploma.Models.Concrete
                     User = comment.User,
                     DateTime = comment.DateTime
                 });
+            context.SaveChanges();
         }
 
         public void DeleteComment(int commentId)

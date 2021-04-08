@@ -29,6 +29,7 @@ namespace AlutechShopDiploma.Models.Concrete
                     ItemID = good.ItemID,
                     TableID = good.TableID
                 });
+            context.SaveChanges();
         }
 
         public void DeleteGood(int goodId)
