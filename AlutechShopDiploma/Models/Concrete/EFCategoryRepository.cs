@@ -23,7 +23,7 @@ namespace AlutechShopDiploma.Models.Concrete
                     Description = category.Description,
                     Name = category.Name
                 });
-            context.SaveChanges();\
+            context.SaveChanges();
         }
 
         public void DeleteCategory(int categoryId)
