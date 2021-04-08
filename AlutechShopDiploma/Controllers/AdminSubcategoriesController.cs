@@ -12,6 +12,7 @@ namespace AlutechShopDiploma.Controllers
     public class AdminSubcategoriesController : Controller
     {
         ISubcategoryRepository repository;
+        ICategoryRepository categoryRepository;
 
         public AdminSubcategoriesController(ISubcategoryRepository rep)
         {
@@ -41,6 +42,10 @@ namespace AlutechShopDiploma.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(categoryRepository.Categories.FirstOrDefault(c => c.CategoryID == subcategory.Category.CategoryID) == null)
+                {
+                    TempData["message"] = string.Format("Ошибка создания: такой категории нет");
+                }
                 repository.CreateSubcategory(subcategory);
                 TempData["message"] = string.Format("Новый категория \"{0}\" успешно добавлена.", subcategory.Name);
                 return RedirectToAction("Index");
