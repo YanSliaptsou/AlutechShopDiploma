@@ -225,6 +225,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
+    <Compile Include="Models\Abstract\ICommentRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
     <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ApplicationManager.cs" />
     <Compile Include="Models\Concrete\EFCategoryRepository.cs" />
+    <Compile Include="Models\Concrete\EFCommentRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
     <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
