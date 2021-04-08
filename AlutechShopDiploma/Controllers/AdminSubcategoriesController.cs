@@ -45,6 +45,7 @@ namespace AlutechShopDiploma.Controllers
                 if(categoryRepository.Categories.FirstOrDefault(c => c.CategoryID == subcategory.Category.CategoryID) == null)
                 {
                     TempData["message"] = string.Format("Ошибка создания: такой категории нет");
+
                 }
                 repository.CreateSubcategory(subcategory);
                 TempData["message"] = string.Format("Новый категория \"{0}\" успешно добавлена.", subcategory.Name);
