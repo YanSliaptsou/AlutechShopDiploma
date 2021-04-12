@@ -291,6 +291,10 @@
     <Compile Include="Migrations\202104120924421_New_migration_7.Designer.cs">
       <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104121030485_New_migration_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121030485_New_migration_Good_Tables.Designer.cs">
+      <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -309,6 +313,7 @@
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Good.cs" />
     <Compile Include="Models\Entities\GoodsMarks.cs" />
+    <Compile Include="Models\Entities\GoodsTables.cs" />
     <Compile Include="Models\Entities\ImageContainer.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\Purchase.cs" />
@@ -472,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104120924421_New_migration_7.resx">
       <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121030485_New_migration_Good_Tables.resx">
+      <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

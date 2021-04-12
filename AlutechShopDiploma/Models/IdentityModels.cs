@@ -36,6 +36,7 @@ namespace AlutechShopDiploma.Models
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ImageContainer> ImageContainers { get; set; }
+        public DbSet<GoodsTable> GoodsTables { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
