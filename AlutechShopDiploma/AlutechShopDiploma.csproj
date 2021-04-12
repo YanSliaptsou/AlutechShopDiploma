@@ -259,6 +259,38 @@
     <Compile Include="Migrations\202104091159122_Changes FK.Designer.cs">
       <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104120823344_New_migration.cs" />
+    <Compile Include="Migrations\202104120823344_New_migration.Designer.cs">
+      <DependentUpon>202104120823344_New_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120826113_New_migration_1.cs" />
+    <Compile Include="Migrations\202104120826113_New_migration_1.Designer.cs">
+      <DependentUpon>202104120826113_New_migration_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120838260_New_migration_2.cs" />
+    <Compile Include="Migrations\202104120838260_New_migration_2.Designer.cs">
+      <DependentUpon>202104120838260_New_migration_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120843107_New_migration_3.cs" />
+    <Compile Include="Migrations\202104120843107_New_migration_3.Designer.cs">
+      <DependentUpon>202104120843107_New_migration_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120854374_New_migration_4.cs" />
+    <Compile Include="Migrations\202104120854374_New_migration_4.Designer.cs">
+      <DependentUpon>202104120854374_New_migration_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120916009_New_migration_5.cs" />
+    <Compile Include="Migrations\202104120916009_New_migration_5.Designer.cs">
+      <DependentUpon>202104120916009_New_migration_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120918372_New_migration_6.cs" />
+    <Compile Include="Migrations\202104120918372_New_migration_6.Designer.cs">
+      <DependentUpon>202104120918372_New_migration_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120924421_New_migration_7.cs" />
+    <Compile Include="Migrations\202104120924421_New_migration_7.Designer.cs">
+      <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -277,7 +309,11 @@
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Good.cs" />
     <Compile Include="Models\Entities\GoodsMarks.cs" />
+    <Compile Include="Models\Entities\ImageContainer.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\Purchase.cs" />
     <Compile Include="Models\Entities\Subcategory.cs" />
+    <Compile Include="Models\Entities\UserMessage.cs" />
     <Compile Include="Models\Entities\Warehouse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -412,6 +448,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104091159122_Changes FK.resx">
       <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120823344_New_migration.resx">
+      <DependentUpon>202104120823344_New_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120826113_New_migration_1.resx">
+      <DependentUpon>202104120826113_New_migration_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120838260_New_migration_2.resx">
+      <DependentUpon>202104120838260_New_migration_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120843107_New_migration_3.resx">
+      <DependentUpon>202104120843107_New_migration_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120854374_New_migration_4.resx">
+      <DependentUpon>202104120854374_New_migration_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120916009_New_migration_5.resx">
+      <DependentUpon>202104120916009_New_migration_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120918372_New_migration_6.resx">
+      <DependentUpon>202104120918372_New_migration_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120924421_New_migration_7.resx">
+      <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

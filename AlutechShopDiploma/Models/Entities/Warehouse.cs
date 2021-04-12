@@ -8,11 +8,11 @@ namespace AlutechShopDiploma.Models.Entities
     public class Warehouse
     {
         private int warehouseID;
-        private Good good;
+        private int goodID;
         private int goodAmmount;
 
         public int WarehouseID { get => warehouseID; set => warehouseID = value; }
-        public Good Good { get => good; set => good = value; }
         public int GoodAmmount { get => goodAmmount; set => goodAmmount = value; }
+        public int GoodID { get => goodID; set => goodID = value; }
     }
 }

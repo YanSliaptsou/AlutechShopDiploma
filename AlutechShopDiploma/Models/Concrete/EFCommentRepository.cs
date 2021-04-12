@@ -22,8 +22,8 @@ namespace AlutechShopDiploma.Models.Concrete
                 new Comment
                 {
                     CommentText = comment.CommentText,
-                    Good = comment.Good,
-                    User = comment.User,
+                    GoodID = comment.GoodID,
+                    UserID = comment.UserID,
                     DateTime = comment.DateTime
                 });
             context.SaveChanges();
@@ -47,8 +47,8 @@ namespace AlutechShopDiploma.Models.Concrete
                 if (dbEntry != null)
                 {
                     dbEntry.CommentText = comment.CommentText;
-                    dbEntry.Good = comment.Good;
-                    dbEntry.User = comment.User;
+                    dbEntry.GoodID = comment.GoodID;
+                    dbEntry.UserID = comment.UserID;
                     dbEntry.DateTime = comment.DateTime;
                 }
             }

@@ -20,7 +20,7 @@ namespace AlutechShopDiploma.Models.Concrete
             context.Warehouses.Add(
                 new Warehouse
                 {
-                    Good = warehouse.Good,
+                    GoodID = warehouse.GoodID,
                     GoodAmmount = warehouse.GoodAmmount
                 }) ;
             context.SaveChanges();
@@ -43,7 +43,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 Warehouse dbEntry = context.Warehouses.Find(warehouse.WarehouseID);
                 if (dbEntry != null)
                 {
-                    dbEntry.Good = warehouse.Good;
+                    dbEntry.GoodID = warehouse.GoodID;
                     dbEntry.GoodAmmount = warehouse.GoodAmmount;
                 }
             }

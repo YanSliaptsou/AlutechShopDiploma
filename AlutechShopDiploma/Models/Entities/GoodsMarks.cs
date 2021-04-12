@@ -11,11 +11,11 @@ namespace AlutechShopDiploma.Models.Entities
         private int goodMarksID;
         private int amountOfMarks;
         private int totalMark;
-        private Good good;
+        private int goodID;
 
         public int GoodMarksID { get => goodMarksID; set => goodMarksID = value; }
         public int AmountOfMarks { get => amountOfMarks; set => amountOfMarks = value; }
         public int TotalMark { get => totalMark; set => totalMark = value; }
-        public Good Good { get => good; set => good = value; }
+        public int GoodID { get => goodID; set => goodID = value; }
     }
 }
