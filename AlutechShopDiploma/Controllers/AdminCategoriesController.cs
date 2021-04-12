@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AlutechShopDiploma.SQL;
 
 namespace AlutechShopDiploma.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminCategoriesController : Controller
     {
         ICategoryRepository repository;
+        SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
 
         public AdminCategoriesController(ICategoryRepository rep)
         {
@@ -29,9 +32,16 @@ namespace AlutechShopDiploma.Controllers
         [HttpPost]
         public ActionResult Delete(int categoryId)
         {
-
-            TempData["message"] = string.Format("Категория \"{0}\" удалена.", repository.Categories.FirstOrDefault(c => c.CategoryID == categoryId).Name);
-            repository.DeleteCategory(categoryId);
+            List<string> ids = sqlWorker.SelectDataFromDBMult("SELECT CategoryID from Subcategories where CategoryID="+categoryId);
+            if (ids.Count == 0)
+            {
+                TempData["message"] = string.Format("Категория \"{0}\" удалена.", repository.Categories.FirstOrDefault(c => c.CategoryID == categoryId).Name);
+                repository.DeleteCategory(categoryId);
+            }
+            else
+            {
+                TempData["mistake"] = string.Format("Невозможно удалить категорию!");
+            }
             return RedirectToAction("Index");
         }
 

@@ -41,7 +41,16 @@
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
                     <li>
-                        
+                        <div class="dropdown" style="margin-top:5%">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                Управление и администрирование
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation" style="background-image: url(~/Content/Icons/united_kingdom_640.png)">@Html.ActionLink("Управление категориями", "Index", "AdminCategories")</li>
+                                <li role="presentation" style="background-image: url(~/Content/Icons/russia_640.png)">@Html.ActionLink("Управление подкатегориями", "Index", "AdminSubcategories")</li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

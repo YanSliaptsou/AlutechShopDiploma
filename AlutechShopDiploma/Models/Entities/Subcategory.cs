@@ -9,10 +9,10 @@ namespace AlutechShopDiploma.Models.Entities
     {
         private int subcategoryID;
         private string name;
-        private Category category;
+        private int categoryId;
 
         public int SubcategoryID { get => subcategoryID; set => subcategoryID = value; }
         public string Name { get => name; set => name = value; }
-        public Category Category { get => category; set => category = value; }
+        public int CategoryId { get => categoryId; set => categoryId = value; }
     }
 }

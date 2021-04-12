@@ -255,6 +255,10 @@
     <Compile Include="Migrations\202104080930343_New_Good_Marks.Designer.cs">
       <DependentUpon>202104080930343_New_Good_Marks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104091159122_Changes FK.cs" />
+    <Compile Include="Migrations\202104091159122_Changes FK.Designer.cs">
+      <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -359,10 +363,11 @@
     <Content Include="Views\AdminCategories\Create.cshtml" />
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\Index.cshtml" />
+    <Content Include="Views\AdminSubcategories\Create.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminSubcategories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -404,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104080930343_New_Good_Marks.resx">
       <DependentUpon>202104080930343_New_Good_Marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104091159122_Changes FK.resx">
+      <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

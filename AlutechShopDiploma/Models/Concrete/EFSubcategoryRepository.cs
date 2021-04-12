@@ -21,7 +21,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 new Subcategory
                 {
                     Name = subcategory.Name,
-                    Category = subcategory.Category
+                    CategoryId = subcategory.CategoryId
                 });
             context.SaveChanges();
         }
@@ -44,7 +44,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 if (dbEntry != null)
                 {
                     dbEntry.Name = subcategory.Name;
-                    dbEntry.Category = subcategory.Category;
+                    dbEntry.CategoryId = subcategory.CategoryId;
                 }
             }
             context.SaveChanges();

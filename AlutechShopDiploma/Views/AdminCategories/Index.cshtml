@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -29,9 +30,12 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { categoryId=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+            @Html.ActionLink("Edit", "Edit", new { categoryId = item.CategoryID }) |
+            @using (Html.BeginForm("Delete", "AdminCategories"))
+            {
+                @Html.Hidden("categoryId", item.CategoryID)
+                <input type="submit" class="btn btn-default btn-xs" value="Удалить" />
+            }
         </td>
     </tr>
 }
