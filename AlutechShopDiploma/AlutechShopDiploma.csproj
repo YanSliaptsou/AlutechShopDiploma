@@ -295,6 +295,30 @@
     <Compile Include="Migrations\202104121030485_New_migration_Good_Tables.Designer.cs">
       <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104121107415_New_migration_New4_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121107415_New_migration_New4_Good_Tables.Designer.cs">
+      <DependentUpon>202104121107415_New_migration_New4_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121143580_New_migration_New2_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121143580_New_migration_New2_Good_Tables.Designer.cs">
+      <DependentUpon>202104121143580_New_migration_New2_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.Designer.cs">
+      <DependentUpon>202104121259584_New_migration_A_lot_of_New_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131349378_Material_for_brackets.cs" />
+    <Compile Include="Migrations\202104131349378_Material_for_brackets.Designer.cs">
+      <DependentUpon>202104131349378_Material_for_brackets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131356556_Weight_for_rollers.cs" />
+    <Compile Include="Migrations\202104131356556_Weight_for_rollers.Designer.cs">
+      <DependentUpon>202104131356556_Weight_for_rollers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131854227_Discount_table.cs" />
+    <Compile Include="Migrations\202104131854227_Discount_table.Designer.cs">
+      <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -311,9 +335,24 @@
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
+    <Compile Include="Models\Entities\Discount.cs" />
     <Compile Include="Models\Entities\Good.cs" />
     <Compile Include="Models\Entities\GoodsMarks.cs" />
     <Compile Include="Models\Entities\GoodsTables.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\AdditionalComplectation.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\AlutechBarrier.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\ComunelloAccessory.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\ComunelloDriveUnit.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\GarageGateOperatorAnMotors.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\RecoilingGateOperatorAnMotors.cs" />
+    <Compile Include="Models\Entities\Goods\Category 2\BusProfile.cs" />
+    <Compile Include="Models\Entities\Goods\Category 2\RollerAndSteelComplect.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Bracket.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Clutch.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\DeadboltAndLockingDevice.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\InsertAndSeal.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Loop.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\RollerAndRing.cs" />
     <Compile Include="Models\Entities\ImageContainer.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\Purchase.cs" />
@@ -480,6 +519,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104121030485_New_migration_Good_Tables.resx">
       <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121107415_New_migration_New4_Good_Tables.resx">
+      <DependentUpon>202104121107415_New_migration_New4_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121143580_New_migration_New2_Good_Tables.resx">
+      <DependentUpon>202104121143580_New_migration_New2_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.resx">
+      <DependentUpon>202104121259584_New_migration_A_lot_of_New_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131349378_Material_for_brackets.resx">
+      <DependentUpon>202104131349378_Material_for_brackets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131356556_Weight_for_rollers.resx">
+      <DependentUpon>202104131356556_Weight_for_rollers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131854227_Discount_table.resx">
+      <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
