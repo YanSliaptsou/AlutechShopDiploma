@@ -1,0 +1,22 @@
+﻿@using AlutechShopDiploma.Models.ViewModels
+@model GoodViewModel
+
+@using AlutechShopDiploma.HtmlHelpers
+
+@{
+    ViewBag.Title = "Goods";
+}
+
+<h3 class="text-center">Выбранная категория: @Model.CurrentCategory</h3>
+<h3 class="text-center">Выбранная подкатегория: @Model.CurrentSubcategory</h3>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div>
+    @foreach (var good in Model.Goods)
+    {
+        @Html.Partial("_GoodSummary", good)
+    }
+</div>
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory, subcategory = Model.CurrentSubcategory }))
+</div>

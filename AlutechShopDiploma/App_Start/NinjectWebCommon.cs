@@ -46,6 +46,7 @@ namespace AlutechShopDiploma.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<ICategoryRepository>().To<EFCategoryRepository>();
                 kernel.Bind<ISubcategoryRepository>().To<EFSubcategoryRepository>();
+                kernel.Bind<IGoodRepository>().To<EFGoodRepository>();
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);

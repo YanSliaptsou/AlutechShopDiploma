@@ -13,8 +13,6 @@ namespace AlutechShopDiploma.Controllers
     public class AdminSubcategoriesController : Controller
     {
         ISubcategoryRepository repository;
-        ICategoryRepository categoryRepository;
-
         public AdminSubcategoriesController(ISubcategoryRepository rep)
         {
             repository = rep;
