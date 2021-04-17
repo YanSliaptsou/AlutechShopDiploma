@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\GoodsSortController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -361,6 +362,7 @@
     <Compile Include="Models\Entities\Subcategory.cs" />
     <Compile Include="Models\Entities\UserMessage.cs" />
     <Compile Include="Models\Entities\Warehouse.cs" />
+    <Compile Include="Models\Enums\SortState.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\GoodViewModel.cs" />
@@ -442,8 +444,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\TestEmail.cshtml" />
-    <Content Include="Views\Computer\Index.cshtml" />
-    <Content Include="Views\Computer\Details.cshtml" />
     <Content Include="Views\AdminCategories\Create.cshtml" />
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\Index.cshtml" />
@@ -451,6 +451,8 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Good\List.cshtml" />
     <Content Include="Views\Shared\_GoodSummary.cshtml" />
+    <Content Include="Views\GoodsSort\Sort.cshtml" />
+    <Content Include="Views\Good\Sort.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

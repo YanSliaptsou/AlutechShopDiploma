@@ -1,4 +1,5 @@
 ﻿using AlutechShopDiploma.Models.Entities;
+using AlutechShopDiploma.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace AlutechShopDiploma.Models.ViewModels
         public PagingInfo PagingInfo { get; set; }
         public string CurrentCategory { get; set; }
         public string CurrentSubcategory { get; set; }
+        public SortState SortState { get; set; }
     }
 }

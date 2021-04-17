@@ -1,0 +1,218 @@
+﻿@using AlutechShopDiploma.Models.Enums
+
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+
+<style>
+    body {
+        font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+        .container > .dropdown {
+            margin: 0 20px;
+            vertical-align: top;
+            width: 20%;
+        }
+
+    .dropdown {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        height: 28px;
+        width: 150px;
+        background: #f2f2f2;
+        border: 1px solid;
+        border-color: white #f7f7f7 whitesmoke;
+        border-radius: 3px;
+        background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+        background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+        background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+        background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    }
+
+        .dropdown:before, .dropdown:after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 9px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 4px dashed;
+            border-color: #888888 transparent;
+            pointer-events: none;
+        }
+
+        .dropdown:before {
+            border-bottom-style: solid;
+            border-top: none;
+        }
+
+        .dropdown:after {
+            margin-top: 7px;
+            border-top-style: solid;
+            border-bottom: none;
+        }
+
+    .dropdown-select {
+        position: relative;
+        width: 130%;
+        margin: 0;
+        padding: 6px 8px 6px 10px;
+        height: 28px;
+        line-height: 14px;
+        font-size: 12px;
+        color: #62717a;
+        text-shadow: 0 1px white;
+        background: #f2f2f2; /* Fallback for IE 8 */
+        background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
+        border: 0;
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
+
+        .dropdown-select:focus {
+            z-index: 3;
+            width: 100%;
+            color: #394349;
+            outline: 2px solid #49aff2;
+            outline: 2px solid -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+
+        .dropdown-select > option {
+            margin: 3px;
+            padding: 6px 8px;
+            text-shadow: none;
+            background: #f2f2f2;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+    .lt-ie9 .dropdown {
+        z-index: 1;
+    }
+
+    .lt-ie9 .dropdown-select {
+        z-index: -1;
+    }
+
+        .lt-ie9 .dropdown-select:focus {
+            z-index: 3;
+        }
+
+
+    -moz-document url-prefix() {
+        .dropdown-select
+
+    {
+        padding-left: 6px;
+    }
+
+    }
+
+    .dropdown-dark {
+        background: #444;
+        border-color: #111111 #0a0a0a black;
+        background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+        background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+        background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+        background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+        .dropdown-dark:before {
+            border-bottom-color: #aaa;
+        }
+
+        .dropdown-dark:after {
+            border-top-color: #aaa;
+        }
+
+        .dropdown-dark .dropdown-select {
+            color: #aaa;
+            text-shadow: 0 1px black;
+            background: #444; /* Fallback for IE 8 */
+        }
+
+            .dropdown-dark .dropdown-select:focus {
+                color: #ccc;
+            }
+
+            .dropdown-dark .dropdown-select > option {
+                background: #444;
+                text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+            }
+</style>
+
+<body>
+    @Html.ActionLink("Сортировка по ID", "Sort", "Good", new { sortState = "IdAsc" }, null)
+    @Html.ActionLink("Сортировка по имени", "Sort", "Good", new { sortState = "NameAsc" }, null)
+    @Html.ActionLink("Сортировка по цене", "Sort", "Good", new { sortState = "PriceAsc" }, null)
+    @Html.ActionLink("Сортировка по кол-ву просмотров", "Sort", "Good", new { sortState = "RatingAsc" }, null)
+    @Html.ActionLink("Сортировка по рейтингу", "Sort", "Good", new { sortState = "ViewsAsc" }, null)
+
+
+
+    <section class="container">
+        <div class="dropdown">
+            <select name="one" class="dropdown-select" id="asc">
+                <option value="IdAsc">Сортировка по ID</option>
+                <option value="NameAsc">Сортировка по имени</option>
+                <option value="PriceAsc">Сортировка по цене</option>
+                <option value="ViewsAsc">Сортировка по кол-ву просмотров</option>
+                <option value="RatingAsc">Сортировка по рейтингу</option>
+            </select>
+        </div>
+
+        <div class="dropdown dropdown-dark">
+            <select name="two" class="dropdown-select" id="dsc">
+                <option value="IdDesc">Сортировка по ID</option>
+                <option value="NameDesc">Сортировка по имени</option>
+                <option value="PriceDesc">Сортировка по цене</option>
+                <option value="ViewsDesc">Сортировка по кол-ву просмотров</option>
+                <option value="RatingDesc">Сортировка по рейтингу</option>
+            </select>
+        </div>
+
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+<script>
+
+    function Sort(sortState) {
+        $.ajax({
+            url: '@Url.Action("Sort","Good")',
+            type: 'GET',
+            cache: false,
+            data: { sortState: sortState }
+        }).done(function () {
+            alert("Sorted");
+        });
+    }
+
+
+    $('#asc').on('change', function () {
+            if ($(this).val() == "NameAsc") {
+                Sort("NameAsc")
+            }
+        })
+</script>
+
+
