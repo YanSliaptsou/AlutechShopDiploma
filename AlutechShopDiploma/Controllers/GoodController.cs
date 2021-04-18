@@ -55,7 +55,6 @@ namespace AlutechShopDiploma.Controllers
             return View(model);
         }
 
-        [HttpGet]
         public ViewResult Sort(string category, string subcategory,SortState sortState = SortState.IdAsc, int page = 1)
         {
             int tblID = -1;

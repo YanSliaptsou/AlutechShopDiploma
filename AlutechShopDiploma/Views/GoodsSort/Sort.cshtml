@@ -21,7 +21,7 @@
         .container > .dropdown {
             margin: 0 20px;
             vertical-align: top;
-            width: 20%;
+            width: 25%;
         }
 
     .dropdown {
@@ -159,32 +159,22 @@
 </style>
 
 <body>
-    @Html.ActionLink("Сортировка по ID", "Sort", "Good", new { sortState = "IdAsc" }, null)
-    @Html.ActionLink("Сортировка по имени", "Sort", "Good", new { sortState = "NameAsc" }, null)
-    @Html.ActionLink("Сортировка по цене", "Sort", "Good", new { sortState = "PriceAsc" }, null)
-    @Html.ActionLink("Сортировка по кол-ву просмотров", "Sort", "Good", new { sortState = "RatingAsc" }, null)
-    @Html.ActionLink("Сортировка по рейтингу", "Sort", "Good", new { sortState = "ViewsAsc" }, null)
-
-
-
     <section class="container">
         <div class="dropdown">
-            <select name="one" class="dropdown-select" id="asc">
-                <option value="IdAsc">Сортировка по ID</option>
-                <option value="NameAsc">Сортировка по имени</option>
-                <option value="PriceAsc">Сортировка по цене</option>
-                <option value="ViewsAsc">Сортировка по кол-ву просмотров</option>
-                <option value="RatingAsc">Сортировка по рейтингу</option>
+            <select name="one" class="dropdown-select" id="asc" onchange="CallActionList(this,'@Url.Action("Sort", "Good")')">
+                <option value="NameAsc">Сортировка по имени по возрастанию</option>
+                <option value="PriceAsc">Сортировка по цене по возрастанию</option>
+                <option value="ViewsAsc">Сортировка по кол-ву просмотров по возрастанию</option>
+                <option value="RatingAsc">Сортировка по рейтингу по возрастанию</option>
             </select>
         </div>
 
         <div class="dropdown dropdown-dark">
-            <select name="two" class="dropdown-select" id="dsc">
-                <option value="IdDesc">Сортировка по ID</option>
-                <option value="NameDesc">Сортировка по имени</option>
-                <option value="PriceDesc">Сортировка по цене</option>
-                <option value="ViewsDesc">Сортировка по кол-ву просмотров</option>
-                <option value="RatingDesc">Сортировка по рейтингу</option>
+            <select name="two" class="dropdown-select" id="dsc" onchange="CallActionList(this,'@Url.Action("Sort", "Good")')">
+                <option value="NameDesc">Сортировка по имени по убыванию</option>
+                <option value="PriceDesc">Сортировка по цене по убыванию</option>
+                <option value="ViewsDesc">Сортировка по кол-ву просмотров по убыванию</option>
+                <option value="RatingDesc">Сортировка по рейтингу по убыванию</option>
             </select>
         </div>
 
@@ -194,25 +184,11 @@
     @Scripts.Render("~/bundles/bootstrap")
 
 </body>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 <script>
-
-    function Sort(sortState) {
-        $.ajax({
-            url: '@Url.Action("Sort","Good")',
-            type: 'GET',
-            cache: false,
-            data: { sortState: sortState }
-        }).done(function () {
-            alert("Sorted");
-        });
+    function CallActionList(item, baseUrl) {
+        window.location.href = baseUrl + '?sortState=' + item.value;
     }
-
-
-    $('#asc').on('change', function () {
-            if ($(this).val() == "NameAsc") {
-                Sort("NameAsc")
-            }
-        })
 </script>
 
 
