@@ -1,111 +1,56 @@
 ﻿@model AlutechShopDiploma.Models.Entities.Good
 
+@using AlutechShopDiploma.SQL;
+
+<head>
+    <link href="~/Content/css/goodsummary.css" rel="stylesheet">
+    <link href="~/Content/css/discount.css" / rel="stylesheet">
+</head>
 <style>
-    {
-        box-sizing: border-box;
-    }
-
-    .product-item {
-        width: 700px;
-        text-align: center;
-        margin: 55px auto;
-        border-bottom: 2px solid #F5F5F5;
-        background: white;
-        font-family: "Open Sans";
-        transition: .3s ease-in;
-    }
-
-        .product-item:hover {
-            border-bottom: 2px solid #fc5a5a;
-        }
-
-        .product-item img {
-            display: block;
-            width: 100%;
-        }
-
-    .product-list {
-        background: #fafafa;
-        padding: 15px 0;
-    }
-
-        .product-list h3 {
-            font-size: 18px;
-            font-weight: 400;
-            color: #444444;
-            margin: 0 0 10px 0;
-        }
-
-    .price {
-        font-size: 16px;
-        color: #fc5a5a;
-        display: block;
-        margin-bottom: 12px;
-    }
-
-    .button {
-        text-decoration: none;
-        display: inline-block;
-        padding: 0 12px;
-        background: #cccccc;
-        color: white;
-        text-transform: uppercase;
-        font-size: 12px;
-        line-height: 28px;
-        transition: .3s ease-in;
-    }
-
-    .product-item:hover .button {
-        background: #fc5a5a;
-    }
-
-    #eye {
-        display: inline-block;
-        position: relative;
-        width: 0.8em; /* ширина элемента */
-        height: 0.8em; /* высота элемента */
-        background: currentColor; /* цвет иконки как цвет текста */
-        border-radius: 70% 0 / 70%;
-        transform: rotate(45deg);
-        margin-right: 25px;
-        float: right;
-        margin-top: 20px;
-    }
-
-        #eye::before,
-        #eye::after {
-            content: "";
-            position: absolute;
-            top: 20%;
-            left: 20%;
-            width: 60%;
-            height: 60%;
-            background: #fff;
-            border-radius: 100%;
-        }
-
-        #eye::after {
-            width: 30%;
-            height: 30%;
-            top: 35%;
-            left: 35%;
-            background: inherit; /* цвет зрачка как у родителя */
-        }
+    
 
 </style>
-   <div class="product-item well">
-       <div class="product-list row">
 
-           <h3>
-               <strong>@Model.Name</strong>
-           </h3>
-           <span>@Model.Description</span>
-           <span class="price">@Model.Price р.</span>
-           <a href="" class="button">В корзину</a>
-           <a href="" class="button">Подробнее</a>
-           <span id="eye"></span>
-           <span style="float: right;margin-right: -25px;margin-top: 16px;">@Model.Views</span>
-       </div>
+ <div class="product-item well">
+     <div class="product-list row">
+         @{
+                 SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+                 string imageUrl = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers Where GoodID = " + Model.GoodID);
+                 string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts Where GoodID = " + Model.GoodID);
+                 double discount = 0;
+                 if(discountLabel != "")
+                 {
+                     discount = Convert.ToDouble(discountLabel);
+                  <div class="sale-block">
+                      <h3>@discountLabel %<span>скидка</span></h3>
+                  </div>
+             }
+         }
+                 
+         <h3>
+             <strong>@Model.Name</strong>
+         </h3>
+         <span>@Model.Description</span>
+         @{ 
+             if (discount != 0)
+             {
+                 double newPrice = Math.Round(Model.Price - Model.Price * (discount / 100),2);
+                 <span class="price"><strike>@Model.Price р.</strike></span>
+                 <span class="price">@newPrice р.</span>
+             }
+             else
+             {
+                   <span class="price">@Model.Price р.</span>
+             }
+         }
+         <img style="width: 257px; height: 244px; margin-left: 224px; " src="@Url.Content(imageUrl)" />
+         <a href="" class="button">В корзину</a>
+         <a href="/GoodItem/CartItem?goodId=@Model.GoodID" class="button">Подробнее</a>
+         <span id="eye"></span>
+         <span style="float: right;margin-right: -25px;margin-top: 16px;">@Model.Views</span>
+         <img style="float: left; margin-right: 4px; margin-top: 16px; height:40px; width:40px" src="~/Content/rating.jpg" />
+         <strong style="float: left;margin-right: 0px;margin-top: 25px;">@Model.Rating</strong>
+     </div>
   </div>
 
 

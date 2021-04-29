@@ -24,13 +24,16 @@ namespace AlutechShopDiploma.Controllers
             repository = repo;
         }
 
-        public ViewResult List(string category, string subcategory, int page = 1)
+        /*public ViewResult List(string category, string subcategory, int page = 1)
         {
             int tblID = -1;
             if (category != null && subcategory != null)
             { 
-                string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Name = '" + category + "') and TableName = '"+subcategory+"'");
-                tblID = Convert.ToInt32(tbid);
+                string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Description = '" + category + "') and TableName = '"+subcategory+"'");
+                if (tbid != null)
+                {
+                    tblID = Convert.ToInt32(tbid);
+                }
             }
             GoodViewModel model = new GoodViewModel
             {
@@ -53,17 +56,24 @@ namespace AlutechShopDiploma.Controllers
             };
 
             return View(model);
-        }
+        }*/
 
-        public ViewResult Sort(string category, string subcategory,SortState sortState = SortState.IdAsc, int page = 1)
+        public ViewResult List(string category, string subcategory,SortState sortState = SortState.IdAsc, int page = 1)
         {
+            List<string> tbid1 = new List<string>();
             int tblID = -1;
             if (category != null && subcategory != null)
             {
-                string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Name = '" + category + "') and TableName = '" + subcategory + "'");
+                string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Description = '" + category + "') and TableName = '" + subcategory + "'");
                 if (tbid != null)
                 {
                     tblID = Convert.ToInt32(tbid);
+                }
+            }
+            else if(subcategory == null)
+            {
+                {
+                    tbid1 = sqlWorker.SelectDataFromDBMult("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Name = '" + category + "') ");
                 }
             }
 
@@ -74,7 +84,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.IdAsc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderBy(good => good.GoodID)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -83,7 +93,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.NameAsc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderBy(good => good.Name)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -92,7 +102,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.NameDesc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderByDescending(good => good.Name)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -101,7 +111,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.PriceAsc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderBy(good => good.Price)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -110,7 +120,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.PriceDesc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderByDescending(good => good.Price)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -119,7 +129,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.RatingAsc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderBy(good => good.Rating)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -128,7 +138,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.RatingDesc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderByDescending(good => good.Rating)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -137,7 +147,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.ViewsAsc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderBy(good => good.Views)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -146,7 +156,7 @@ namespace AlutechShopDiploma.Controllers
                 case SortState.ViewsDesc:
                     {
                         goods = repository.Goods
-                        .Where(good => tblID == -1 || good.TableID == tblID)
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
                         .OrderByDescending(good => good.Views)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize);
@@ -154,7 +164,7 @@ namespace AlutechShopDiploma.Controllers
                     }
             }
 
-
+            int c = goods.Count();
             GoodViewModel model = new GoodViewModel
             {
                 Goods = goods,
@@ -163,8 +173,8 @@ namespace AlutechShopDiploma.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems =  repository.Goods.Count()
-                },
+                    TotalItems = repository.Goods.Count()
+        },
                 CurrentCategory = category,
                 CurrentSubcategory = subcategory,
                 SortState = sortState

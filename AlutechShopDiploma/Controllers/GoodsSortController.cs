@@ -1,5 +1,8 @@
 ﻿using AlutechShopDiploma.Models.Abstract;
 using AlutechShopDiploma.Models.Entities;
+using AlutechShopDiploma.Models.Enums;
+using AlutechShopDiploma.Models.ViewModels;
+using AlutechShopDiploma.SQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,80 +15,138 @@ namespace AlutechShopDiploma.Controllers
     {
         // GET: Sort
         private IGoodRepository rep;
+        SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+        public int pageSize = 3;
 
         public GoodsSortController(IGoodRepository repository)
         {
             rep = repository;
+           
         }
         
-        public PartialViewResult Sort(string fieldsort = "id", string sorttype = "asc")
+        public PartialViewResult Sort(string category, string subcategory, SortState sortState = SortState.IdAsc, int page = 1)
         {
-            IEnumerable<Good> goods = rep.Goods;
-            switch (fieldsort)
+            List<string> tbid1 = new List<string>();
+            int tblID = -1;
+            if (category != null && subcategory != null)
             {
-                case "id":
+                string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Description = '" + category + "') and TableName = '" + subcategory + "'");
+                if (tbid != null)
+                {
+                    tblID = Convert.ToInt32(tbid);
+                }
+            }
+            else if (subcategory == null)
+            {
+                {
+                    tbid1 = sqlWorker.SelectDataFromDBMult("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Name = '" + category + "') ");
+                }
+            }
+
+            IEnumerable<Good> goods = rep.Goods;
+
+            switch (sortState)
+            {
+                case SortState.IdAsc:
                     {
-                        if (sorttype == "asc")
-                        {
-                            goods = rep.Goods.OrderBy(good => good.GoodID);
-                        }
-                        else
-                        {
-                            goods = rep.Goods.OrderByDescending(good => good.GoodID);
-                        }
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderBy(good => good.GoodID)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
                         break;
                     }
-                case "name":
+                case SortState.NameAsc:
                     {
-                        if (sorttype == "asc")
-                        {
-                            goods = rep.Goods.OrderBy(good => good.Name);
-                        }
-                        else
-                        {
-                            goods = rep.Goods.OrderByDescending(good => good.Name);
-                        }
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderBy(good => good.Name)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
                         break;
                     }
-                case "price":
+                case SortState.NameDesc:
                     {
-                        if (sorttype == "asc")
-                        {
-                            goods = rep.Goods.OrderBy(good => good.Price);
-                        }
-                        else
-                        {
-                            goods = rep.Goods.OrderByDescending(good => good.Price);
-                        }
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderByDescending(good => good.Name)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
                         break;
                     }
-                case "views":
+                case SortState.PriceAsc:
                     {
-                        if (sorttype == "asc")
-                        {
-                            goods = rep.Goods.OrderBy(good => good.Views);
-                        }
-                        else
-                        {
-                            goods = rep.Goods.OrderByDescending(good => good.Views);
-                        }
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderBy(good => good.Price)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
                         break;
                     }
-                case "rating":
+                case SortState.PriceDesc:
                     {
-                        if (sorttype == "asc")
-                        {
-                            goods = rep.Goods.OrderBy(good => good.Rating);
-                        }
-                        else
-                        {
-                            goods = rep.Goods.OrderByDescending(good => good.Rating);
-                        }
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderByDescending(good => good.Price)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
+                        break;
+                    }
+                case SortState.RatingAsc:
+                    {
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderBy(good => good.Rating)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
+                        break;
+                    }
+                case SortState.RatingDesc:
+                    {
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderByDescending(good => good.Rating)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
+                        break;
+                    }
+                case SortState.ViewsAsc:
+                    {
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderBy(good => good.Views)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
+                        break;
+                    }
+                case SortState.ViewsDesc:
+                    {
+                        goods = rep.Goods
+                        .Where(good => tblID == -1 || good.TableID == tblID || tbid1.Contains(Convert.ToString(good.TableID)))
+                        .OrderByDescending(good => good.Views)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize);
                         break;
                     }
             }
-            
-            return PartialView(goods.ToList());
+
+            int c = goods.Count();
+            GoodViewModel model = new GoodViewModel
+            {
+                Goods = goods,
+
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = rep.Goods.Count()
+                },
+                CurrentCategory = category,
+                CurrentSubcategory = subcategory,
+                SortState = sortState
+            };
+
+            return PartialView(model);
         }
     }
 }

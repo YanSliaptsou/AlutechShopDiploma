@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta ="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" / rel="stylesheet">
+    <link href="~/Content/css/menu.css" / rel="stylesheet">
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -18,45 +22,86 @@
 </head>
 
 <body>
-    <style>
-        .language-selection {
-            margin-top: 5%;
-            margin-left: 420%;
-        }
-
-    </style>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+    <img src="~/Content/preview/shop_preview.jpg" style="height: 24%;width: 100%;margin-top: -4%;"/>
+    <header style="z-index: 2;position: sticky;">
+        <nav class="dws-menu" style="margin-top: -3.31%;">
+            <ul>
+                <li><a href="/Home/Index"><i class="fa fa-home"></i>Главная</a></li>
+                @if (Request.IsAuthenticated)
+                {
                     <li>
-                        <div class="dropdown" style="margin-top:5%">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                Управление и администрирование
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation" style="background-image: url(~/Content/Icons/united_kingdom_640.png)">@Html.ActionLink("Управление категориями", "Index", "AdminCategories")</li>
-                                <li role="presentation" style="background-image: url(~/Content/Icons/russia_640.png)">@Html.ActionLink("Управление подкатегориями", "Index", "AdminSubcategories")</li>
-                            </ul>
-                        </div>
+                        <a href="/Good/List"><i class="fa fa-shopping-cart"></i>Продукция</a>
+                        <ul>
+                            <li>
+                                <a href="/Good/List?category=GatesAutomation">Автоматика для ворот</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=ComunelloAccessories">Comunello Аксесуары</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=ComunelloDriveUnits ">Comunello Приводы</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=GarageGateOperatorAnMotors ">Приводы для гаражных ворот</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=RecoilingGateOperatorAnMotors ">Приводы для откатных ворот</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=AlutechBarriers ">Шлагбаумы Alutech</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Good/List?category=EntranceGates">Въездные ворота (комплектация)</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=AdditionalComplectations">Дополнительн. комплектация</a></li>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=BusProfiles">Профили шины стальные</a></li>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=RollerAndSteelComplects">Комплектующие стальные</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Good/List?category=SectionalGates">Секционные ворота (комплектация)</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=InsertAndSeals ">Вставки и уплотнения</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=RollerAndRings ">Втулки, ригеля</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Brackets">Кронштейны</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Clutches">Муфты</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Loops">Петли</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=RollerAndRings ">Ролики и дистанцион. кольца</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
+                }
+                    <li><a href="#"><i class="fa fa-th-list"></i>Новости и акции</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-open"></i>Контакты</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-language"></i>Смена языка</a>
+                        <ul>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">Русский</a></li>
+                        </ul>
+                    </li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Здравствуйте " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Выполнить вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            <li>
+
+                            </li>
+                        </ul>
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+        </nav>
+    </header>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -68,6 +113,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
+
 </body>
 </html>

@@ -35,8 +35,8 @@ namespace AlutechShopDiploma.Controllers
             List<string> ids = sqlWorker.SelectDataFromDBMult("SELECT CategoryID from Subcategories where CategoryID="+categoryId);
             if (ids.Count == 0)
             {
-                TempData["message"] = string.Format("Категория \"{0}\" удалена.", repository.Categories.FirstOrDefault(c => c.CategoryID == categoryId).Name);
                 repository.DeleteCategory(categoryId);
+                TempData["message"] = string.Format("Категория \"{0}\" удалена.", repository.Categories.FirstOrDefault(c => c.CategoryID == categoryId).Name);
             }
             else
             {

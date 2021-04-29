@@ -213,11 +213,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminSubcategoriesController.cs" />
+    <Compile Include="Controllers\CommnetController.cs" />
     <Compile Include="Controllers\GoodController.cs" />
+    <Compile Include="Controllers\GoodItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\GoodsSortController.cs" />
+    <Compile Include="Controllers\UserMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -322,11 +325,20 @@
     <Compile Include="Migrations\202104131854227_Discount_table.Designer.cs">
       <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104261101533_New_fields_of_user_message.cs" />
+    <Compile Include="Migrations\202104261101533_New_fields_of_user_message.Designer.cs">
+      <DependentUpon>202104261101533_New_fields_of_user_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104261358410_New_fields_of_user_message_datefield.cs" />
+    <Compile Include="Migrations\202104261358410_New_fields_of_user_message_datefield.Designer.cs">
+      <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
     <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
+    <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
@@ -335,7 +347,9 @@
     <Compile Include="Models\Concrete\EFCommentRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
     <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
+    <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
+    <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Discount.cs" />
@@ -383,6 +397,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Services\GoodCharacteristicsGetter.cs" />
     <Compile Include="SQL\SqlWorker.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -391,12 +406,67 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\characteristics_table.css" />
+    <Content Include="Content\css\comparison_table.css" />
+    <Content Include="Content\css\contactForm.css" />
+    <Content Include="Content\css\discount.css" />
+    <Content Include="Content\css\goodsummary.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\gallery.css" />
+    <Content Include="Content\css\tabstyles.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\preview\shop_preview.jpg" />
+    <Content Include="Content\rating.jpg" />
+    <Content Include="Content\Товары Alutech\1.jpg" />
+    <Content Include="Content\Товары Alutech\468404-pic4_zoom-1000x1000-25061.jpg" />
+    <Content Include="Content\Товары Alutech\553f2696115ac.jpg" />
+    <Content Include="Content\Товары Alutech\ae19881ba1fce417051483345c810ae6.jpg" />
+    <Content Include="Content\Товары Alutech\Alutech.jpg" />
+    <Content Include="Content\Товары Alutech\b2b912089704c22b5743b69753d93323.png" />
+    <Content Include="Content\Товары Alutech\shop_preview.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\DART SLIM Фотоэлементы.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\Светодиодная лампа SWIFT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Приводы ГВ\Rampart 600 - высота 2.7м2 площадь до 8.4м2.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Приводы ГВ\Rampart 600 - высота 3.4м2 площадь до 8.4м2.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Аксессуары Marantec\Соединительное звено цепи 98020.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Аксессуары Marantec\Удлинительная тяга 150082.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для гаражных ворот AN-MOTORS\Комплект для автоматизации гаражных ворот ASG1000_3KITL.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для гаражных ворот AN-MOTORS\Комплект для автоматизации гаражных ворот ASG1000_4KIT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Nicepage-3.12.1-full.exe" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Nicepage-3.12.1.exe" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Комплект для автоматизации откатных ворот ASL500KIT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Шлагбаумы Alutech\Шлагбаум BV-5.jpg" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\30-защелка_118WE.jpg" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\замок_ригкльныйFLGU.400.1006.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\Цилиндр замковый FLGU.400.1007.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SG.01 - профили шины стальные\Шина направляющая_SG.01.001.PNG" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SG.01 - профили шины стальные\Шина направляющая_SGN.01.002.PNG" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Опоры роликовые\Кронщтейн-sgn_02_717.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Опоры роликовые\Подставка-sgn_02_200.png" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Вставки и уплотнения\Вставка уплотнительная RSB20.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Вставки и уплотнения\Вставка уплотнительная RST01.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Засов SB0100.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Ригель WL0202.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Устройство запирающее RLT-403.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Кронштейны\Кронштейн RBG900.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Кронштейны\Кронштейн RBG900R.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Муфты\AC-1.png" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Петли\Петля промежуточная ih113.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Петли\Петля промежуточная wh013.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Ролики, дистанционные кольца\Ролик ходовой R-130-11_R-130-12_I9eD4Io.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Ролики, дистанционные кольца\Ролик ходовой R-205-12-G.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -453,9 +523,14 @@
     <Content Include="Views\Shared\_GoodSummary.cshtml" />
     <Content Include="Views\GoodsSort\Sort.cshtml" />
     <Content Include="Views\Good\Sort.cshtml" />
+    <Content Include="Views\Shared\GoodsGallery.cshtml" />
+    <Content Include="Views\UserMessage\Create.cshtml" />
+    <Content Include="Views\GoodItem\CartItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Комплектующие стальные\" />
+    <Folder Include="Views\Commnet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -545,6 +620,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104131854227_Discount_table.resx">
       <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104261101533_New_fields_of_user_message.resx">
+      <DependentUpon>202104261101533_New_fields_of_user_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104261358410_New_fields_of_user_message_datefield.resx">
+      <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

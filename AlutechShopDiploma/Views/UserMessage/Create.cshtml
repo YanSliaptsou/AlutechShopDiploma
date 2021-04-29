@@ -1,0 +1,46 @@
+﻿@model AlutechShopDiploma.Models.Entities.UserMessage
+<head>
+    <link href="~/Content/css/contactForm.css" rel="stylesheet" />
+</head>
+
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<body>
+    <div>
+        <form action="/UserMessage/Create" method="post" class="decor">
+            <div class="circle"></div>
+            <div class="form-inner">
+                <h3>Написать нам</h3>
+                @Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { @placeholder = "Ваше имя" } })
+                @Html.EditorFor(model => model.ContactMail, new { htmlAttributes = new { @placeholder = "Электронная почта" } })
+                @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @placeholder = "Мобильный телефон" } })
+                @Html.EditorFor(model => model.MessageTopic, new { htmlAttributes = new { @placeholder = "Тема сообщения" } })
+                @Html.TextAreaFor(model => model.MessageText, new { @placeholder = "Сообщение..." })
+                <input type="submit" class="" value="Отправить">
+            </div>
+
+        </form>
+        <p>
+
+        </p>
+        <p>
+
+        </p>
+        @if (TempData["mistake"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["mistake"]
+            </div>
+        }
+        @if (TempData["succsess"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["succsess"]
+            </div>
+        }
+    </div>
+</body>
+

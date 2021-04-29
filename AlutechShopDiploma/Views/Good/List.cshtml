@@ -7,12 +7,13 @@
     ViewBag.Title = "Goods";
 }
 
-<h3 class="text-center">Выбранная категория: @Model.CurrentCategory</h3>
-<h3 class="text-center">Выбранная подкатегория: @Model.CurrentSubcategory</h3>
+<h3 class="text-center">@Model.CurrentCategory</h3>
+<h3 class="text-center">@Model.CurrentSubcategory</h3>
 
 <link href="~/Content/Site.css" rel="stylesheet" />
 <div>
-    @Html.Action("Sort","GoodsSort")
+    @Html.Action("Sort", "GoodsSort")
+    <p>  </p>
 </div>
 <div>
 
@@ -23,5 +24,5 @@
 </div>
 
 <div class="btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory, subcategory = Model.CurrentSubcategory }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory, subcategory = Model.CurrentSubcategory, sortState = Model.SortState }))
 </div>
