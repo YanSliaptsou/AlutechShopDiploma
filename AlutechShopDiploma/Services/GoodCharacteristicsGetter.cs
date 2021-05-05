@@ -99,11 +99,11 @@ namespace AlutechShopDiploma.Services
 
                 case "1899153811": //GarageGateOperatorAnMotors 
                     {
-                        characteristics.Add("Интенсивность использования", sqlWorker.SelectDataFromDB("SELECT UsageIntensity FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorID = " + itemNum));
-                        characteristics.Add("Максимальная высота ворот, м.", sqlWorker.SelectDataFromDB("SELECT MaxGatesHeight FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorID = " + itemNum));
-                        characteristics.Add("Максимальная площадь ворот, м. кв.", sqlWorker.SelectDataFromDB("SELECT MaxGatesSquare FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorID = " + itemNum));
-                        characteristics.Add("Тяговое усилие, Н.", sqlWorker.SelectDataFromDB("SELECT TractiveEffort FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorID = " + itemNum));
-                        characteristics.Add("Электродвигатель, В.", sqlWorker.SelectDataFromDB("SELECT ElectricalMotor FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorID = " + itemNum));
+                        characteristics.Add("Интенсивность использования", sqlWorker.SelectDataFromDB("SELECT UsageIntensity FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorsID = " + itemNum));
+                        characteristics.Add("Максимальная высота ворот, м.", sqlWorker.SelectDataFromDB("SELECT MaxGatesHeight FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorsID = " + itemNum));
+                        characteristics.Add("Максимальная площадь ворот, м. кв.", sqlWorker.SelectDataFromDB("SELECT MaxGatesSquare FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorsID = " + itemNum));
+                        characteristics.Add("Тяговое усилие, Н.", sqlWorker.SelectDataFromDB("SELECT TractiveEffort FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorsID = " + itemNum));
+                        characteristics.Add("Электродвигатель, В.", sqlWorker.SelectDataFromDB("SELECT ElectricalMotor FROM GarageGateOperatorAnMotors WHERE GarageGateOperatorAnMotorsID = " + itemNum));
 
                         break;
                     }

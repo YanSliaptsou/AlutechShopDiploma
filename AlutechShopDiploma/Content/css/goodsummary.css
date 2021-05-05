@@ -64,7 +64,7 @@
     background: currentColor; /* цвет иконки как цвет текста */
     border-radius: 70% 0 / 70%;
     transform: rotate(45deg);
-    margin-right: 25px;
+    margin-right: 35px;
     float: right;
     margin-top: 20px;
 }

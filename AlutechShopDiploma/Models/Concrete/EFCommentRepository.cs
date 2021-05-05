@@ -1,5 +1,7 @@
-﻿using AlutechShopDiploma.Models.Abstract;
+﻿using AlutechShopDiploma.Controllers;
+using AlutechShopDiploma.Models.Abstract;
 using AlutechShopDiploma.Models.Entities;
+using AlutechShopDiploma.SQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace AlutechShopDiploma.Models.Concrete
     public class EFCommentRepository : ICommentRepository
     {
         ApplicationDbContext context = new ApplicationDbContext();
+        SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+
 
         public IEnumerable<Comment> Comments
         {
@@ -18,12 +22,14 @@ namespace AlutechShopDiploma.Models.Concrete
 
         public void CreateComment(Comment comment)
         {
+            var name = HttpContext.Current.User.Identity.Name;
+            string userID = sqlWorker.SelectDataFromDB("SELECT Id FROM AspNetUsers WHERE UserName = '" + name + "'");
             context.Comments.Add(
                 new Comment
                 {
                     CommentText = comment.CommentText,
-                    GoodID = comment.GoodID,
-                    UserID = comment.UserID,
+                    GoodID = GoodItemController.goodID,
+                    UserID = userID,
                     DateTime = DateTime.Now,
                 });
             context.SaveChanges();
@@ -47,8 +53,6 @@ namespace AlutechShopDiploma.Models.Concrete
                 if (dbEntry != null)
                 {
                     dbEntry.CommentText = comment.CommentText;
-                    dbEntry.GoodID = comment.GoodID;
-                    dbEntry.UserID = comment.UserID;
                     dbEntry.DateTime = DateTime.Now;
                 }
             }

@@ -1,0 +1,21 @@
+﻿@model AlutechShopDiploma.Models.Entities.Comment
+
+
+<head>
+    <link href="~/Content/css/contactForm.css" rel="stylesheet" />
+    <link href="~/Content/css/comment_field.css" rel="stylesheet"/>
+</head>
+
+
+<body>
+    <div class="container1">
+        <form action="/Comment/Create" method="post">
+            <label>Ваш комментарий</label>
+            @Html.TextAreaFor(model => model.CommentText, new { @placeholder = "Комментарий", @style = "height: 170px" })
+            <input type="submit" class="" value="Добавить комментарий">
+        </form>
+        <p>
+
+        </p>
+    </div>
+</body>

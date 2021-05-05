@@ -3,7 +3,6 @@ using AlutechShopDiploma.Models.Entities;
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using System.Security.Principal;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;

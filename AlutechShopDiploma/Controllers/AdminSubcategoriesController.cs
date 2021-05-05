@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace AlutechShopDiploma.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //*[Authorize(Roles = "admin")]
     public class AdminSubcategoriesController : Controller
     {
         ISubcategoryRepository repository;

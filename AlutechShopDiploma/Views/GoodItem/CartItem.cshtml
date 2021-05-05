@@ -3,6 +3,7 @@
 @using AlutechShopDiploma.SQL
 
 @{  
+    int goodID = AlutechShopDiploma.Controllers.GoodItemController.goodID;
     GoodCharacteristicsGetter getter = new GoodCharacteristicsGetter();
     Dictionary<string, string> characteristics = getter.GetGoodCharacteristics(Model.GoodID);
 
@@ -21,6 +22,8 @@
     }
 
     List<string> goodsList = sqlWorker.SelectDataFromDBMult("SELECT GoodID FROM Goods WHERE TableID = " + tableNumb);
+    string isBanned = sqlWorker.SelectDataFromDB("SELECT isBanned from AspNetUsers WHERE UserName = '" + HttpContext.Current.User.Identity.Name + "'");
+    int b;
 }
 <head>
     <link href="~/Content/css/characteristics_table.css" rel="stylesheet"/>
@@ -30,6 +33,24 @@
 
 
 <body>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
     <div class="col-xs-10">
         <h1>@Model.Name</h1>
         <p>
@@ -50,17 +71,17 @@
             </tr>
             <tr class="tr1">
                 <td class="td1">Цена</td>
-                @{ 
-                    if(discountLabel != "")
+                @{
+                    if (discountLabel != "")
                     {
-                       <td class="td1"><s>@Model.Price Руб.</s> @newPrice Руб.</td>
+                        <td class="td1"><s>@Model.Price Руб.</s> @newPrice Руб.</td>
                     }
                     else
                     {
                         <td class="td1">@Model.Price Руб.</td>
                     }
                 }
-                
+
             </tr>
             <tr class="tr1">
                 <td class="td1">Наличие скидки</td>
@@ -139,8 +160,21 @@
     </div>
 
     <div id="Tokyo" class="tabcontent" style="width:105%">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+        @{
+            if (isBanned == "False")
+            {
+                @Html.Action("Create", "Comment")
+            }
+            else
+            {
+                <div class="alert alert-warning" style="margin-left: 45px;">
+                    Вы заблокированы по причине грубого нарушения правил написания комментариев. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.
+                    <a href="/Home/Index#message">Обратиться в поддержку можно здесь.</a>
+                </div>
+            }
+            <p></p>
+            @Html.Action("List", "Comment")
+        }
     </div>
 
     <div id="Minsk" class="tabcontent" style="width:105%">
@@ -154,8 +188,8 @@
                 <table class="table_blur">
                     <tr>
                         <th>Товар/Характеристика</th>
-                        @{ 
-                            foreach(var element in characteristics)
+                        @{
+                            foreach (var element in characteristics)
                             {
                                 <th>@element.Key</th>
                             }
@@ -164,36 +198,52 @@
                             <th>Просмотры</th>
                         }
                     </tr>
-                    @{ 
+                    @{
                         List<string> goods = sqlWorker.SelectDataFromDBMult("SELECT GoodID from Goods WHERE TableID = " + tableNumb);
 
-                        foreach(var good in goods)
+                        foreach (var good in goods)
                         {
-                            string goodName = sqlWorker.SelectDataFromDB("SELECT Name from Goods WHERE GoodID = "+ good);
+                            string goodName = sqlWorker.SelectDataFromDB("SELECT Name from Goods WHERE GoodID = " + good);
                             int gID = Convert.ToInt32(good);
                             characteristics = getter.GetGoodCharacteristics(gID);
 
-                             <tr>
-                                   <td><a href="~/GoodItem/CartItem?goodId=@good">@goodName</a></td>
-                                       @{
-                                             foreach (var characteristic in characteristics)
-                                             {
-                                                 <td>@characteristic.Value</td>
-                                             }
-                                         }
-                                     <td>@sqlWorker.SelectDataFromDB("SELECT Price FROM Goods Where GoodID=" + good) Руб.</td>
-                                     <td>@sqlWorker.SelectDataFromDB("SELECT Rating FROM Goods Where GoodID=" + good) / 10.0</td>
-                                     <td>@sqlWorker.SelectDataFromDB("SELECT Views FROM Goods Where GoodID=" + good)</td>
-                             </tr>
+                            <tr>
+                                <td><a href="~/GoodItem/CartItem?goodId=@good">@goodName</a></td>
+                                @{
+                                    foreach (var characteristic in characteristics)
+                                    {
+                                        <td>@characteristic.Value</td>
+                                    }
+                                }
+                                <td>@sqlWorker.SelectDataFromDB("SELECT Price FROM Goods Where GoodID=" + good) Руб.</td>
+                                <td>@sqlWorker.SelectDataFromDB("SELECT Rating FROM Goods Where GoodID=" + good) / 10.0</td>
+                                <td>@sqlWorker.SelectDataFromDB("SELECT Views FROM Goods Where GoodID=" + good)</td>
+                            </tr>
                         }
-                    }   
+                    }
                 </table>
             }
         }
     </div>
 
     <div id="Moscow" class="tabcontent" style="width:105%">
-        <h3>Оценить товар</h3>
+        @{
+            MarksWorker marksWorker = new MarksWorker(Model.GoodID);
+            int mrkId = 0;
+
+            if (marksWorker.IsAvailableToPutMark(HttpContext.Current.User.Identity.Name))
+            {
+                @Html.Action("Create", "Mark")
+            }
+            else
+            {
+                mrkId = marksWorker.GetMarkId(HttpContext.Current.User.Identity.Name);
+                <div class="alert alert-warning">
+                    Спасибо, ваша оценка уже учтена за этот товар. Вы можете её отменить, нажав @Html.ActionLink("сюда","Delete", "Mark", new { markId = mrkId }, null).
+                </div>
+            }
+        }
+
     </div>
 
 

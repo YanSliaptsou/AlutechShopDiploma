@@ -36,7 +36,7 @@ namespace AlutechShopDiploma.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Good> Goods { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<GoodMarks> GoodsMarks { get; set; }
+        public DbSet<Mark> Marks { get; set; }
         public DbSet<UserMessage> UserMessages { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Order> Orders { get; set; }

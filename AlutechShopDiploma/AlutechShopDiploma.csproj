@@ -213,13 +213,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdminSubcategoriesController.cs" />
-    <Compile Include="Controllers\CommnetController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GoodController.cs" />
     <Compile Include="Controllers\GoodItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\GoodsSortController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\UserMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -333,10 +334,27 @@
     <Compile Include="Migrations\202104261358410_New_fields_of_user_message_datefield.Designer.cs">
       <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105030941351_New_fields_marks.cs" />
+    <Compile Include="Migrations\202105030941351_New_fields_marks.Designer.cs">
+      <DependentUpon>202105030941351_New_fields_marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031205325_New_name_marks.cs" />
+    <Compile Include="Migrations\202105031205325_New_name_marks.Designer.cs">
+      <DependentUpon>202105031205325_New_name_marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031222109_New_name_marks1.cs" />
+    <Compile Include="Migrations\202105031222109_New_name_marks1.Designer.cs">
+      <DependentUpon>202105031222109_New_name_marks1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031310570_Marks.cs" />
+    <Compile Include="Migrations\202105031310570_Marks.Designer.cs">
+      <DependentUpon>202105031310570_Marks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
+    <Compile Include="Models\Abstract\IMarkRepository.cs" />
     <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
     <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
@@ -346,15 +364,16 @@
     <Compile Include="Models\Concrete\EFCategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFCommentRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
+    <Compile Include="Models\Concrete\EFMarkRepository.cs" />
     <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
+    <Compile Include="Models\Entities\Mark.cs" />
     <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Discount.cs" />
     <Compile Include="Models\Entities\Good.cs" />
-    <Compile Include="Models\Entities\GoodsMarks.cs" />
     <Compile Include="Models\Entities\GoodsTables.cs" />
     <Compile Include="Models\Entities\Goods\Category 1\AdditionalComplectation.cs" />
     <Compile Include="Models\Entities\Goods\Category 1\AlutechBarrier.cs" />
@@ -398,6 +417,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\GoodCharacteristicsGetter.cs" />
+    <Compile Include="Services\MarksWorker.cs" />
     <Compile Include="SQL\SqlWorker.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -407,6 +427,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\characteristics_table.css" />
+    <Content Include="Content\css\comment_field.css" />
+    <Content Include="Content\css\commnets_block.css" />
     <Content Include="Content\css\comparison_table.css" />
     <Content Include="Content\css\contactForm.css" />
     <Content Include="Content\css\discount.css" />
@@ -416,6 +438,7 @@
     <Content Include="Content\css\tabstyles.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\preview\avatar.png" />
     <Content Include="Content\preview\shop_preview.jpg" />
     <Content Include="Content\rating.jpg" />
     <Content Include="Content\Товары Alutech\1.jpg" />
@@ -526,11 +549,14 @@
     <Content Include="Views\Shared\GoodsGallery.cshtml" />
     <Content Include="Views\UserMessage\Create.cshtml" />
     <Content Include="Views\GoodItem\CartItem.cshtml" />
+    <Content Include="Views\Comment\List.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Mark\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Комплектующие стальные\" />
-    <Folder Include="Views\Commnet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -626,6 +652,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104261358410_New_fields_of_user_message_datefield.resx">
       <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105030941351_New_fields_marks.resx">
+      <DependentUpon>202105030941351_New_fields_marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031205325_New_name_marks.resx">
+      <DependentUpon>202105031205325_New_name_marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031222109_New_name_marks1.resx">
+      <DependentUpon>202105031222109_New_name_marks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031310570_Marks.resx">
+      <DependentUpon>202105031310570_Marks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

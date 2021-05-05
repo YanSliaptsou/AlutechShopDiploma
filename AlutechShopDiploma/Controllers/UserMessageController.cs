@@ -46,16 +46,5 @@ namespace AlutechShopDiploma.Controllers
 
             return Content("Message");
         }
-
-        public ActionResult Detail(int mesId)
-        {
-            UserMessage message = repository.UserMessages.FirstOrDefault(mes => mes.UserMessageID == mesId);
-            if(message != null)
-            {
-                return PartialView(message);
-            }
-
-            return HttpNotFound();
-        }
     }
 }
