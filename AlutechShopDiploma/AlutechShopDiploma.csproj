@@ -350,6 +350,22 @@
     <Compile Include="Migrations\202105031310570_Marks.Designer.cs">
       <DependentUpon>202105031310570_Marks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105061504077_Orders.cs" />
+    <Compile Include="Migrations\202105061504077_Orders.Designer.cs">
+      <DependentUpon>202105061504077_Orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061506306_Orders2.cs" />
+    <Compile Include="Migrations\202105061506306_Orders2.Designer.cs">
+      <DependentUpon>202105061506306_Orders2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061616350_New_orders.cs" />
+    <Compile Include="Migrations\202105061616350_New_orders.Designer.cs">
+      <DependentUpon>202105061616350_New_orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105071041102_SessionID.cs" />
+    <Compile Include="Migrations\202105071041102_SessionID.Designer.cs">
+      <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -369,6 +385,8 @@
     <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
     <Compile Include="Models\Entities\Mark.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\OrderItem.cs" />
     <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -390,8 +408,6 @@
     <Compile Include="Models\Entities\Goods\Category 3\Loop.cs" />
     <Compile Include="Models\Entities\Goods\Category 3\RollerAndRing.cs" />
     <Compile Include="Models\Entities\ImageContainer.cs" />
-    <Compile Include="Models\Entities\Order.cs" />
-    <Compile Include="Models\Entities\Purchase.cs" />
     <Compile Include="Models\Entities\Subcategory.cs" />
     <Compile Include="Models\Entities\UserMessage.cs" />
     <Compile Include="Models\Entities\Warehouse.cs" />
@@ -664,6 +680,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105031310570_Marks.resx">
       <DependentUpon>202105031310570_Marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061504077_Orders.resx">
+      <DependentUpon>202105061504077_Orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061506306_Orders2.resx">
+      <DependentUpon>202105061506306_Orders2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061616350_New_orders.resx">
+      <DependentUpon>202105061616350_New_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105071041102_SessionID.resx">
+      <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
