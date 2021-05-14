@@ -1,0 +1,72 @@
+﻿@model AlutechShopDiploma.Models.Entities.OrderItem
+@using AlutechShopDiploma.Controllers;
+@using AlutechShopDiploma.Services;
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="~/Content/css/goodAmmount.css" rel="stylesheet" />
+</head>
+
+@{ 
+    GoodWorker worker = new GoodWorker(GoodItemController.goodID);
+
+    double goodPrice = Math.Round(worker.CalculateGoodPrice(),2);
+}
+
+
+<body>
+    <form action="/Purchase/Create" method="post">
+        <div class="quantity-block" style="display:inline-block">
+            <h4 style="display:inline-block">Количество единиц: </h4>
+            @Html.EditorFor(model => model.Ammount, new { htmlAttributes = new { @class = "quantity-num", @type = "number", @value = 1 } })
+            <h4 style="display:inline-block">шт.</h4>
+            <button type="button" class="quantity-arrow-minus" style="display:inline-block"> - </button>
+            <button type="button" class="quantity-arrow-plus" style="display:inline-block"> + </button>
+        </div>
+
+        <p>
+
+        </p>
+
+        <div style="margin-left: 48px;">
+            <h4 style="display:inline-block">Общая сумма: </h4>
+            <input class="testClass quantity-num" disabled="disabled" />
+            <h4 style="display:inline-block">руб. </h4>
+        </div>
+        <p>
+
+        </p>
+        <input style="margin-left: 110px;" type="submit" value="Добавить в корзину"/>
+    </form>
+    
+
+</body>
+
+
+<script>
+    $(function () {
+
+        (function quantityProducts() {
+            var $quantityArrowMinus = $(".quantity-arrow-minus");
+            var $quantityArrowPlus = $(".quantity-arrow-plus");
+            var $quantityNum = $(".quantity-num");
+            var $inputetClass = $(".testClass");
+
+
+            $quantityArrowMinus.click(quantityMinus);
+            $quantityArrowPlus.click(quantityPlus);
+
+            function quantityMinus() {
+                if ($quantityNum.val() > 1) {
+                    $quantityNum.val(+$quantityNum.val() - 1);
+                    $inputetClass.val(+$quantityNum.val() * @goodPrice);
+                }
+            }
+
+            function quantityPlus() {
+                $quantityNum.val(+$quantityNum.val() + 1);
+                $inputetClass.val(+$quantityNum.val() * @goodPrice);
+            }
+        }) ();
+    });
+
+</script>

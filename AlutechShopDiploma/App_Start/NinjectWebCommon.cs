@@ -50,6 +50,8 @@ namespace AlutechShopDiploma.App_Start
                 kernel.Bind<IUserMessageRepository>().To<EFUserMessageRepository>();
                 kernel.Bind<ICommentRepository>().To<EFCommentRepository>();
                 kernel.Bind<IMarkRepository>().To<EFMarkRepository>();
+                kernel.Bind<IOrderRepository>().To<EFOrderRepository>();
+                kernel.Bind<IOrderItemRepository>().To<EFOrderItemRepository>();
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);

@@ -19,7 +19,7 @@
     if (discountLabel != "")
     {
         discount = Convert.ToDouble(discountLabel);
-        newPrice = Math.Round(Model.Price - Model.Price * (discount / 100), 2);
+        Model.Price = Math.Round(Model.Price - Model.Price * (discount / 100), 2);
     }
 
     List<string> goodsList = sqlWorker.SelectDataFromDBMult("SELECT GoodID FROM Goods WHERE TableID = " + tableNumb);
@@ -33,66 +33,7 @@
     <link href="~/Content/css/characteristics_table.css" rel="stylesheet" />
     <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
     <link href="~/Content/css/comparison_table.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-
-<style>
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
-
-    .quantity-block {
-        margin: auto;
-        font-size: 20px;
-    }
-
-    .quantity-arrow-minus,
-    .quantity-arrow-plus {
-        cursor: pointer;
-        font-size: 20px;
-        padding: 5px 12px;
-        width: 40px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        outline: none;
-    }
-
-    .quantity-num {
-        font-size: 20px;
-        padding: 5px 10px;
-        border-radius: 4px;
-        outline: none;
-</style>
-
-<script>
-    $(function () {
-
-        (function quantityProducts() {
-            var $quantityArrowMinus = $(".quantity-arrow-minus");
-            var $quantityArrowPlus = $(".quantity-arrow-plus");
-            var $quantityNum = $(".quantity-num");
-            var $labelinput = $(".affix");
-            var jsData = @Html.Raw(Json.Encode(Model.Price)) + 1;
-
-
-            $quantityArrowMinus.click(quantityMinus);
-            $quantityArrowPlus.click(quantityPlus);
-
-            function quantityMinus() {
-                if ($quantityNum.val() > 1) {
-                    $quantityNum.val(+$quantityNum.val() - 1);
-                }
-            }
-
-            function quantityPlus() {
-                $quantityNum.val(+$quantityNum.val() + 1);
-
-            }
-        }) ();
-    });
-
-
-</script>
 
 <body>
     @if (TempData["message"] != null)
@@ -114,22 +55,19 @@
         </div>
     }
 
-    <div class="quantity-block">
-        <button class="quantity-arrow-minus"> - </button>
-        <input class="quantity-num" type="number" value="1" />
-        <button class="quantity-arrow-plus"> + </button>
-    </div>
+    <p>
 
-    <h1>@sessionID</h1>
+    </p>
 
-    <div class="col-xs-10">
-        <h1>@Model.Name</h1>
+    <div class="col-xs-10" style="width:102%">
+        <h1 style="display:inline-block">@Model.Name</h1>
         <p>
             <img src="@Url.Content(url)" style="width: 40%" />
         </p>
-        <p style="position:absolute;right:0px;left:433px;top:111px;word-break:break-all;overflow:hidden">
 
-        </p>
+        <div style="position:absolute;right:0px;left:615px;top:111px;word-break:break-all;overflow:hidden">
+            @Html.Action("Create", "Purchase")
+        </div>
     </div>
     <div class="product-item well" style="width:105%">
         <table class="table1">

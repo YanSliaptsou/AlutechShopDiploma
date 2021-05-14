@@ -1,0 +1,178 @@
+﻿@model AlutechShopDiploma.Models.ViewModels.PurchaseViewModel
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Enums
+
+<head>
+    <link href="~/Content/css/vertical_tabs.css" rel="stylesheet"/>
+</head>
+
+@{ 
+    OrderWorker orderWorker = new OrderWorker();
+    int orderItemsCount = 0;
+    double totalPrice = 0;
+
+    List<string> orderItemsIds = new List<string>();
+    List<string> orderItemsNames = new List<string>();
+    List<string> orderItemsImages = new List<string>();
+    List<string> orderItemsPricesPerGoodItems = new List<string>();
+    List<string> orderItemsPricesAmmounts = new List<string>();
+    List<string> orderItemsPricesPerOrderItems = new List<string>();
+
+    if (Request.IsAuthenticated)
+    {
+        orderItemsCount = orderWorker.DefineOrderItemsCountInOrder();
+        totalPrice = orderWorker.CountOrderPrice();
+
+        orderItemsIds = orderWorker.GetOrderDetails(OrderDetail.Id);
+        orderItemsNames = orderWorker.GetOrderDetails(OrderDetail.Name);
+        orderItemsImages = orderWorker.GetOrderDetails(OrderDetail.Image);
+        orderItemsPricesPerGoodItems = orderWorker.GetOrderDetails(OrderDetail.PricePerGoodItem);
+        orderItemsPricesAmmounts = orderWorker.GetOrderDetails(OrderDetail.AmountOfItems);
+        orderItemsPricesPerOrderItems = orderWorker.GetOrderDetails(OrderDetail.PricePerOrderItem);
+    }
+}
+
+<body>
+
+    <p>
+
+    </p>
+    <h1>Ваша корзина</h1>
+    <p>
+
+    </p>
+    <div class="tab">
+        <button class="tablinks active" onclick="openCity(event, 'London')">Ваши покупки</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Ваш бонусный счёт</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Сумма покупок и % отчисления на бонусный счёт</button>
+    </div>
+
+    <div id="London" style="display:flex; height: 70%; border:1px solid" class="tabcontent">
+        <table style="margin-top: 1%;margin-bottom: 1%;">
+            <tr>
+                <th colspan="2">Покупка</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итого</th>
+                <th>Действие</th>
+            </tr>
+            <tr>
+                <th style="background:transparent"></th>
+            </tr>
+            @{
+                for (int i = 0; i < orderItemsCount; i++)
+                {
+                    <tr>
+                        <td><img style="width:60px;height:70px;" src="@Url.Content(orderItemsImages[i])" /></td>
+                        <td>@orderItemsNames[i]</td>
+                        <td>@orderItemsPricesPerGoodItems[i] р.</td>
+                        <td>@orderItemsPricesAmmounts[i] шт.</td>
+                        <td>@orderItemsPricesPerOrderItems[i] р.</td>
+                        <td>
+                            @using (Html.BeginForm("Delete", "Purchase", new { orderItemID = orderItemsIds[i] }))
+                            {
+                                <button class="btn btn-danger">Удалить</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div id="Paris" style=" border: 1px solid" class="tabcontent">
+        <p>Balance: @Model.userBalance</p>
+    </div>
+
+    <div id="Tokyo" style=" border: 1px solid" class="tabcontent">
+        <p>Tab 3</p>
+    </div>
+</body>
+
+<style>
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+
+    th {
+        padding: 10px 20px;
+        background: #56433D;
+        color: #F9C941;
+        border-right: 2px solid;
+        font-size: 0.9em;
+    }
+
+        th:first-child {
+            text-align: left;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+    td {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+        border-top: 2px solid #56433D;
+        border-bottom: 2px solid #56433D;
+        border-right: 2px solid #56433D;
+    }
+
+        td:first-child {
+            border-left: 2px solid #56433D;
+            border-right: none;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+    .btn {
+        color: #fff; /* цвет текста */
+        text-decoration: none; /* убирать подчёркивание у ссылок */
+        user-select: none; /* убирать выделение текста */
+        background: rgb(212,75,56); /* фон кнопки */
+        padding: .7em 1.5em; /* отступ от текста */
+        outline: none; /* убирать контур в Mozilla */
+    }
+
+    btn:hover {
+        background: rgb(232,95,76);
+    }
+    /* при наведении курсора мышки */
+    btn:active {
+        background: rgb(152,15,0);
+    }
+    /* при нажатии */
+</style>
+
+
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        document.getElementById("London").style.display = "active";
+        evt.currentTarget.className += " active";
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    } 
+</script>

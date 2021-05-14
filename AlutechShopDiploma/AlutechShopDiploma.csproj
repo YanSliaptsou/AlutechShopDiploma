@@ -221,6 +221,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\GoodsSortController.cs" />
     <Compile Include="Controllers\MarkController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\UserMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -371,6 +372,8 @@
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
     <Compile Include="Models\Abstract\IMarkRepository.cs" />
+    <Compile Include="Models\Abstract\IOrderItemRepository.cs" />
+    <Compile Include="Models\Abstract\IOrderRepository.cs" />
     <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
     <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
@@ -381,12 +384,17 @@
     <Compile Include="Models\Concrete\EFCommentRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
     <Compile Include="Models\Concrete\EFMarkRepository.cs" />
+    <Compile Include="Models\Concrete\EFOrderItemRepository.cs" />
+    <Compile Include="Models\Concrete\EFOrderRepository.cs" />
     <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
     <Compile Include="Models\Entities\Mark.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\OrderItem.cs" />
+    <Compile Include="Models\Enums\OrderDetail.cs" />
+    <Compile Include="Models\ViewModels\PurchaseItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
     <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -433,7 +441,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Services\GoodCharacteristicsGetter.cs" />
+    <Compile Include="Services\GoodWorker.cs" />
     <Compile Include="Services\MarksWorker.cs" />
+    <Compile Include="Services\OrderDetailsGetter.cs" />
+    <Compile Include="Services\OrderItemsWorker.cs" />
+    <Compile Include="Services\OrderWorker.cs" />
+    <Compile Include="Services\UsersWorker.cs" />
     <Compile Include="SQL\SqlWorker.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -447,11 +460,13 @@
     <Content Include="Content\css\commnets_block.css" />
     <Content Include="Content\css\comparison_table.css" />
     <Content Include="Content\css\contactForm.css" />
+    <Content Include="Content\css\goodAmmount.css" />
     <Content Include="Content\css\discount.css" />
     <Content Include="Content\css\goodsummary.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\gallery.css" />
     <Content Include="Content\css\tabstyles.css" />
+    <Content Include="Content\css\vertical_tabs.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\preview\avatar.png" />
@@ -569,6 +584,8 @@
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />
     <Content Include="Views\Mark\Create.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
