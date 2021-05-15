@@ -65,12 +65,12 @@ namespace AlutechShopDiploma.Models.Concrete
             context.SaveChanges();
         }
 
-        public void EditOrderItemByAmount(OrderItem orderItem)
+        public void EditOrderItemByAmount(int orderItemID, int ammount)
         {
-           OrderItem item = context.OrderItems.Find(orderItem.OrderItemID);
+           OrderItem item = context.OrderItems.Find(orderItemID);
            if(item != null)
            {
-                  item.Ammount = orderItem.Ammount;
+                  item.Ammount = ammount;
            }
            context.SaveChanges();
         }

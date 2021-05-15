@@ -16,7 +16,7 @@ namespace AlutechShopDiploma.Models
     public class ApplicationUser : IdentityUser
     {
         public int Age { get; set; } // добавляем свойство Age
-        public int bonusAmmount { get; set; } //бонусный счёт
+        public double bonusAmmount { get; set; } //бонусный счёт
         public bool isBanned { get; set; } // добавление свойства заблокирован
         public int purchasesAmmount { get; set; } //кол-во покупок
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

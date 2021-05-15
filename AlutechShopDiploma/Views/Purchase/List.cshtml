@@ -10,7 +10,9 @@
     OrderWorker orderWorker = new OrderWorker();
     int orderItemsCount = 0;
     double totalPrice = 0;
-
+    double finalPrice = 0;
+    double discount = 0;
+    double bonusAdded = 0;
     List<string> orderItemsIds = new List<string>();
     List<string> orderItemsNames = new List<string>();
     List<string> orderItemsImages = new List<string>();
@@ -21,8 +23,10 @@
     if (Request.IsAuthenticated)
     {
         orderItemsCount = orderWorker.DefineOrderItemsCountInOrder();
-        totalPrice = orderWorker.CountOrderPrice();
-
+        totalPrice = Math.Round(orderWorker.CountOrderPrice(),2);
+        finalPrice = Math.Round(orderWorker.GetOrderPrice(),2);
+        discount = totalPrice-finalPrice;
+        bonusAdded = Math.Round(finalPrice * 0.02,2);
         orderItemsIds = orderWorker.GetOrderDetails(OrderDetail.Id);
         orderItemsNames = orderWorker.GetOrderDetails(OrderDetail.Name);
         orderItemsImages = orderWorker.GetOrderDetails(OrderDetail.Image);
@@ -41,10 +45,11 @@
     <p>
 
     </p>
-    <div class="tab">
+    <div class="tab" style="height: 272px;">
         <button class="tablinks active" onclick="openCity(event, 'London')">Ваши покупки</button>
         <button class="tablinks" onclick="openCity(event, 'Paris')">Ваш бонусный счёт</button>
         <button class="tablinks" onclick="openCity(event, 'Tokyo')">Сумма покупок и % отчисления на бонусный счёт</button>
+        <button class="tablinks" onclick="openCity(event, 'Minsk')">Сделать заказ</button>
     </div>
 
     <div id="London" style="display:flex; height: 70%; border:1px solid" class="tabcontent">
@@ -66,7 +71,19 @@
                         <td><img style="width:60px;height:70px;" src="@Url.Content(orderItemsImages[i])" /></td>
                         <td>@orderItemsNames[i]</td>
                         <td>@orderItemsPricesPerGoodItems[i] р.</td>
-                        <td>@orderItemsPricesAmmounts[i] шт.</td>
+                        <td>
+                            @{
+                                int _ammount = Convert.ToInt32(orderItemsPricesAmmounts[i]);
+                                <p>У вас в корзине: @_ammount шт.</p>
+                            }
+                            @using (Html.BeginForm("Edit", "Purchase", new { orderItemID = orderItemsIds[i] }))
+                            {
+                                <p>Изменить на:</p>
+                                @Html.EditorFor(model => model.goodAmmount, new { htmlAttributes = new { @class = "", @type = "number", @value = "_ammount", @min = "1" } })
+                                <h4 style="display:inline-block">шт.</h4>
+                                <input type="submit" value="Изменить" />
+                            }
+                        </td>
                         <td>@orderItemsPricesPerOrderItems[i] р.</td>
                         <td>
                             @using (Html.BeginForm("Delete", "Purchase", new { orderItemID = orderItemsIds[i] }))
@@ -82,14 +99,79 @@
     </div>
 
     <div id="Paris" style=" border: 1px solid" class="tabcontent">
-        <p>Balance: @Model.userBalance</p>
+        <div class="product-item well">
+            <div class="product-item row">
+                Ваш бонусный счёт: @Model.userBalance руб.
+            </div>
+        </div>
     </div>
 
-    <div id="Tokyo" style=" border: 1px solid" class="tabcontent">
-        <p>Tab 3</p>
+    <div id="Tokyo" style=" border: 1px solid" ; class="tabcontent">
+        <div class="product-item well"  style="/*! margin-top: -11px; */ margin-bottom: -2%; margin-left: 0%; margin-top: 2%;">
+            <div class="product-item row" style="/*! margin-top: -11px; */ margin-bottom: -2%; margin-left: 0%; margin-top: -1%;">
+                <table style="display:inline-block; margin-left: 40px;">
+                    <tr>
+                        <th>Операция</th>
+                        <th>Стоимость</th>
+                    </tr>
+                    <tr>
+                        <th style="background:transparent"></th>
+                    </tr>
+
+                    <tr>
+                        <td><h4>Общая сумма покупки</h4></td>
+                        <td><a style="color:blue;"><u>@totalPrice руб.</u></a></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Списание с бон. счёта </h4></td>
+                        <td><a style="color:green;"><u>@discount руб.</u></a></td>
+                    </tr>
+                    <tr>
+                        <td><h4>К оплате</h4></td>
+                        <td><a style="color:red;"><u>@finalPrice руб.</u></a></td>
+                    </tr>
+
+                </table>
+
+                <table style="display:inline-block; margin-right:5px;">
+                    <tr>
+                        <th>Операция</th>
+                        <th>Стоимость</th>
+                    </tr>
+                    <tr>
+                        <th style="background:transparent"></th>
+                    </tr>
+
+                    <tr>
+                        <td><h4>Общая сумма покупки</h4></td>
+                        <td><a style="color:blue;"><u>@finalPrice руб.</u></a></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Начисление на бон. счёт </h4></td>
+                        <td><a style="color:green;"><u>2 %</u></a></td>
+                    </tr>
+                    <tr>
+                        <td><h4>Сумма начисления</h4></td>
+                        <td><a style="color:blue;"><u>@bonusAdded руб.</u></a></td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
     </div>
+    <div id="Minsk" style=" border: 1px solid" class="tabcontent">
+        <div class="product-item well">
+            <div class="product-item row">
+                Ваш бонусный счёт: @Model.userBalance руб.
+            </div>
+        </div>
+    </div>
+    
 </body>
+<p style="margin-left: 57px;margin-top: 25%;">
 
+</p>
 <style>
     table {
         border-spacing: 0 10px;

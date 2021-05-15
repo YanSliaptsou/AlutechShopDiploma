@@ -43,6 +43,11 @@ namespace AlutechShopDiploma.Controllers
             if(ModelState.IsValid)
             {
                 orderItemRepository.CreateOrderItem(item);
+
+                OrderWorker orderWorker = new OrderWorker();
+                double price = orderWorker.CountOrderPrice();
+
+                orderRepository.EditOrderByTotalPrice(orderWorker.DefineOrderID(), price);
                 TempData["succsess"] = string.Format("Товар успешно добавлен.");
             }
             else
@@ -58,6 +63,12 @@ namespace AlutechShopDiploma.Controllers
         {
             TempData["message"] = string.Format("Товар удалён из корзины");
             orderItemRepository.DeleteOrderItem(orderItemID);
+
+            OrderWorker orderWorker = new OrderWorker();
+            double price = orderWorker.CountOrderPrice();
+
+            orderRepository.EditOrderByTotalPrice(orderWorker.DefineOrderID(), price);
+
             if (Request.UrlReferrer != null)
                 Response.Redirect(Request.UrlReferrer.ToString());
 
@@ -65,12 +76,17 @@ namespace AlutechShopDiploma.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(OrderItem item)
+        public ActionResult Edit(int orderItemID, PurchaseViewModel model)
         {
             if(ModelState.IsValid)
             {
                 TempData["succsess"] = string.Format("Количество единиц товара успешно изменено.");
-                orderItemRepository.EditOrderItemByAmount(item);
+                orderItemRepository.EditOrderItemByAmount(orderItemID, model.goodAmmount);
+
+                OrderWorker orderWorker = new OrderWorker();
+                double price = orderWorker.CountOrderPrice();
+
+                orderRepository.EditOrderByTotalPrice(orderWorker.DefineOrderID(), price);
             }
             else
             {
@@ -79,6 +95,30 @@ namespace AlutechShopDiploma.Controllers
             if (Request.UrlReferrer != null)
                 Response.Redirect(Request.UrlReferrer.ToString());
 
+            return Content("Message");
+        }
+
+        [HttpPost]
+        public ActionResult SpendBonuses(PurchaseViewModel model)
+        {
+            UsersWorker worker = new UsersWorker(HttpContext.User.Identity.Name);
+            double bonusAmmount = worker.GetUserBalance();
+
+            if(bonusAmmount < model.userBalance)
+            {
+                TempData["mistake"] = string.Format("Вашего баланса недостаточно. Введите меньшую сумму.");
+            }
+            else
+            {
+                OrderWorker orderWorker = new OrderWorker();
+                double totalPrice = orderWorker.CountOrderPrice() - model.userBalance;
+                orderRepository.EditOrderByTotalPrice(orderWorker.DefineOrderID(), totalPrice);
+                TempData["succsess"] = string.Format("Сумма в " + model.userBalance + " руб. успешно списана с вашего баланса.");
+                ApplicationUser applicationUser = context.Users.Find(worker.GetUserID());
+
+                applicationUser.bonusAmmount = applicationUser.bonusAmmount - model.userBalance;
+                context.SaveChanges();
+            }
             return Content("Message");
         }
     }

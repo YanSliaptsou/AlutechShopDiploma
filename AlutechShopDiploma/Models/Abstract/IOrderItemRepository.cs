@@ -11,7 +11,7 @@ namespace AlutechShopDiploma.Models.Abstract
     {
         IEnumerable<OrderItem> OrderItems { get; }
         void CreateOrderItem(OrderItem orderItem);
-        void EditOrderItemByAmount(OrderItem orderItem);
+        void EditOrderItemByAmount(int orderItemID, int ammount);
         void EditOrderItemByCompletedItem(int orderItemID, bool isCompleted);
         void EditOrderItemByRestGoods(int orderItemID, int restGoods);
         void DeleteOrderItem(int orderItemID);

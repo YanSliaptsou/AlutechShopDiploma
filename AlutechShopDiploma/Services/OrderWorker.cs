@@ -62,6 +62,11 @@ namespace AlutechShopDiploma.Services
             return totalPrice;
         }
 
+        public double GetOrderPrice()
+        {
+            return Convert.ToDouble(sqlWorker.SelectDataFromDB("SELECT TotalSum FROM Orders WHERE OrderID = " + DefineOrderID()));
+        }
+
         public double CountOrderItemPrice(int orderItemID)
         {
             int goodID = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodID FROM OrderItems WHERE OrderItemID = " + orderItemID));

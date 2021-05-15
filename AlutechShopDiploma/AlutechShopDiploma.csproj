@@ -367,6 +367,10 @@
     <Compile Include="Migrations\202105071041102_SessionID.Designer.cs">
       <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105152030048_UserBalance.cs" />
+    <Compile Include="Migrations\202105152030048_UserBalance.Designer.cs">
+      <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -709,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105071041102_SessionID.resx">
       <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105152030048_UserBalance.resx">
+      <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

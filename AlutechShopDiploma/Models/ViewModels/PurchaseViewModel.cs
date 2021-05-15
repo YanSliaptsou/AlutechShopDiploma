@@ -24,5 +24,8 @@ namespace AlutechShopDiploma.Models.ViewModels
                 return worker.GetUserBalance();
                }
         }
+
+        public int goodAmmount { get; set; }
+
     }
 }
