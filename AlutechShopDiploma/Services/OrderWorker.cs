@@ -132,5 +132,87 @@ namespace AlutechShopDiploma.Services
 
             return data;
         }
+
+        public double GetBonusPercentage()
+        {
+            double totalPrice = GetOrderPrice();
+
+            double percentage = 0;
+
+            if(totalPrice < 1000)
+            {
+                percentage = 0.5;
+            }
+            else if(totalPrice >= 1000 && totalPrice < 2500)
+            {
+                percentage = 1;
+            }
+            else if (totalPrice >= 2500 && totalPrice < 5000)
+            {
+                percentage = 1.5;
+            }
+            else if (totalPrice >= 5000 && totalPrice < 7500)
+            {
+                percentage = 2;
+            }
+            else if (totalPrice >= 7500 && totalPrice < 10000)
+            {
+                percentage = 2.5;
+            }
+            else if (totalPrice >= 10000 && totalPrice < 12500)
+            {
+                percentage = 3;
+            }
+            else if (totalPrice >= 12500 && totalPrice < 15000)
+            {
+                percentage = 3.5;
+            }
+            else if (totalPrice >= 15000 && totalPrice < 17500)
+            {
+                percentage = 4;
+            }
+            else if (totalPrice >= 17500 && totalPrice < 20000)
+            {
+                percentage = 4.5;
+            }
+            else if (totalPrice >= 20000 && totalPrice < 25000)
+            {
+                percentage = 5;
+            }
+            else if (totalPrice >= 25000 && totalPrice < 30000)
+            {
+                percentage = 5.5;
+            }
+            else if (totalPrice >= 30000 && totalPrice < 35000)
+            {
+                percentage = 6;
+            }
+            else if (totalPrice >= 35000 && totalPrice < 40000)
+            {
+                percentage = 6.5;
+            }
+            else if (totalPrice >= 40000 && totalPrice < 45000)
+            {
+                percentage = 7;
+            }
+            else if (totalPrice >= 45000 && totalPrice < 50000)
+            {
+                percentage = 7.5;
+            }
+            else if (totalPrice >= 50000 && totalPrice < 75000)
+            {
+                percentage = 8;
+            }
+            else if (totalPrice >= 75000 && totalPrice < 100000)
+            {
+                percentage = 9;
+            }
+            else if(totalPrice >= 100000)
+            {
+                percentage = 10;
+            }
+
+            return percentage;
+        }
     }
 }

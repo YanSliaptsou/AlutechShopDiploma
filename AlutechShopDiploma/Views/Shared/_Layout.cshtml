@@ -34,10 +34,10 @@
     List<string> orderItemsPricesAmmounts = new List<string>();
     List<string> orderItemsPricesPerOrderItems = new List<string>();
 
-    if (Request.IsAuthenticated)
+    if (Request.IsAuthenticated && orderWorker.DefineOrderID() != 0)
     {
         orderItemsCount = orderWorker.DefineOrderItemsCountInOrder();
-        totalPrice = orderWorker.CountOrderPrice();
+        totalPrice = orderWorker.GetOrderPrice();
 
         orderItemsIds = orderWorker.GetOrderDetails(OrderDetail.Id);
         orderItemsNames = orderWorker.GetOrderDetails(OrderDetail.Name);

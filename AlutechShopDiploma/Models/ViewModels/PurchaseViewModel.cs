@@ -17,13 +17,7 @@ namespace AlutechShopDiploma.Models.ViewModels
                 return orderWorker.DefineOrderID();
             }
         }
-        public double userBalance
-        {
-            get {
-                UsersWorker worker = new UsersWorker(HttpContext.Current.User.Identity.Name);
-                return worker.GetUserBalance();
-               }
-        }
+        public double userBalance { get; set; }
 
         public int goodAmmount { get; set; }
 

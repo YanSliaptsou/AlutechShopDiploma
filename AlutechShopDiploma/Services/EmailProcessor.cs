@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web;
+using AlutechShopDiploma.Services;
 
 namespace AlutechShopDiploma.Models.Concrete
 {
@@ -72,6 +73,91 @@ namespace AlutechShopDiploma.Models.Concrete
                     );
 
                 smptClient.Send(messageToAdmin);
+                smptClient.Send(messageToClient);
+            }
+        }
+        public void ProcessUserOrder(ShippingDetail detail)
+        {
+            OrderWorker orderWorker = new OrderWorker();
+
+            List<string> items = orderWorker.GetOrderDetails(Enums.OrderDetail.Name);
+            List<string> pricesPerGoodItems = orderWorker.GetOrderDetails(Enums.OrderDetail.PricePerGoodItem);
+            List<string> ammounts = orderWorker.GetOrderDetails(Enums.OrderDetail.AmountOfItems);
+            List<string> pricesPerOrderItems = orderWorker.GetOrderDetails(Enums.OrderDetail.PricePerOrderItem);
+
+            double totalOrderPrice = orderWorker.GetOrderPrice();
+            int ammountOfitems = orderWorker.DefineOrderItemsCountInOrder();
+
+            using (var smptClient = new SmtpClient())
+            {
+                smptClient.EnableSsl = emailSettings.UseSsl;
+                smptClient.Host = emailSettings.ServerName;
+                smptClient.Port = emailSettings.ServerPort;
+                smptClient.UseDefaultCredentials = false;
+                smptClient.Credentials = new NetworkCredential(emailSettings.Username, emailSettings.Password);
+
+                //------------------------------------------------------------------------------------------
+                StringBuilder messageBodyToAdmin = new StringBuilder();
+
+                messageBodyToAdmin.AppendLine("Поступил новый заказ от клиента. Номер заказа: " + orderWorker.DefineOrderID());
+                messageBodyToAdmin.AppendLine("");
+
+                messageBodyToAdmin.AppendLine("Детали заказа:");
+                for(int i = 0; i < ammountOfitems;i++)
+                {
+                    messageBodyToAdmin.AppendLine(i + 1 + ". " + items[i] + " " + pricesPerGoodItems[i] + " р. x " + ammounts[i] + " шт." + " = " + pricesPerOrderItems[i] + " р.");
+                }
+                messageBodyToAdmin.AppendLine("Итоговая сумма: " + orderWorker.CountOrderPrice().ToString() + " р.");
+                messageBodyToAdmin.AppendLine("");
+                messageBodyToAdmin.AppendLine("Контактные данные клиента:");
+                messageBodyToAdmin.AppendLine("Имя: " + detail.ContactName);
+                messageBodyToAdmin.AppendLine("Мобильный телефон: " + detail.ContactPhone);
+                messageBodyToAdmin.AppendLine("Электронная почта: " + detail.ContactMail);
+                messageBodyToAdmin.AppendLine("Адрес доставки: " + detail.DeliveryAdress);
+                messageBodyToAdmin.AppendLine("Комментарий: " + detail.UserMessage);
+                messageBodyToAdmin.AppendLine("Дата и время оформления заказа: " + DateTime.Now);
+
+                MailMessage messageToAdmin = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    "yansleptsov4@gmail.com",
+                    "Новый заказ от клиента",
+                    messageBodyToAdmin.ToString()
+                );
+
+                smptClient.Send(messageToAdmin);
+
+                //------------------------------------------------------------------------------------------
+                StringBuilder messageBodyToClient = new StringBuilder();
+
+                messageBodyToClient.AppendLine("Спасибо за покупку в нашем магазине. Ваш номер заказа: " + orderWorker.DefineOrderID());
+                messageBodyToClient.AppendLine("");
+
+                messageBodyToClient.AppendLine("Детали заказа:");
+                for (int i = 0; i < ammountOfitems; i++)
+                {
+                    messageBodyToClient.AppendLine(i + 1 + ". " + items[i] + " " + pricesPerGoodItems[i] + " р. x " + ammounts[i] + " шт." + " = " + pricesPerOrderItems[i] + " р.");
+                }
+                messageBodyToClient.AppendLine("Итоговая сумма: " + orderWorker.CountOrderPrice().ToString() + " р.");
+                messageBodyToClient.AppendLine("");
+                messageBodyToClient.AppendLine("Контактные данные клиента:");
+                messageBodyToClient.AppendLine("Имя: " + detail.ContactName);
+                messageBodyToClient.AppendLine("Мобильный телефон: " + detail.ContactPhone);
+                messageBodyToClient.AppendLine("Электронная почта: " + detail.ContactMail);
+                messageBodyToClient.AppendLine("Адрес доставки: " + detail.DeliveryAdress);
+                messageBodyToClient.AppendLine("Комментарий: " + detail.UserMessage);
+                messageBodyToClient.AppendLine("Дата и время оформления заказа: " + DateTime.Now);
+
+                messageBodyToClient.AppendLine("");
+                messageBodyToClient.AppendLine("С вами вскоре свяжутся. Ожидайте.");
+
+
+
+                MailMessage messageToClient = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    detail.ContactMail,
+                    "Заказ в AlutechShop",
+                    messageBodyToClient.ToString()
+                );
                 smptClient.Send(messageToClient);
             }
         }

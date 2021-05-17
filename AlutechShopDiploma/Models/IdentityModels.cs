@@ -43,6 +43,7 @@ namespace AlutechShopDiploma.Models
         public DbSet<ImageContainer> ImageContainers { get; set; }
         public DbSet<GoodsTable> GoodsTables { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<ShippingDetail> ShippingDetails { get; set; }
 
         //-----------------------------ALUTECH GOODS-----------------------------//
         //-----------------------------CATEGORY 1--------------------------------//

@@ -4,7 +4,24 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["message"]
+    </div>
+}
+@if (TempData["mistake"] != null)
+{
+    <div class="alert alert-danger" style="margin-left: 45px;">
+        @TempData["mistake"]
+    </div>
+}
+@if (TempData["succsess"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["succsess"]
+    </div>
+}
 <div class="jumbotron">
     <h1>Добро пожаловать в наш интернет-магазин Alutech Shop</h1>
     <p class="lead">Мы заботимся о каждом клиенте, кто заходит в наш интернет-магазин. Чтобы ознакомится с нами поближе, кликните по кнопке!</p>
@@ -35,12 +52,12 @@
     Специальные предложения
 </h1>
 <div>
-    @Html.Partial("GoodsGallery",Model)
+    @Html.Partial("GoodsGallery", Model)
 </div>
 
 <a name="message">
 
 </a>
 <div>
-    @Html.Action("Create","UserMessage")
+    @Html.Action("Create", "UserMessage")
 </div>

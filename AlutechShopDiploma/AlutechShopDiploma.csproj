@@ -371,6 +371,10 @@
     <Compile Include="Migrations\202105152030048_UserBalance.Designer.cs">
       <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105171028577_Shipping_details.cs" />
+    <Compile Include="Migrations\202105171028577_Shipping_details.Designer.cs">
+      <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -378,6 +382,7 @@
     <Compile Include="Models\Abstract\IMarkRepository.cs" />
     <Compile Include="Models\Abstract\IOrderItemRepository.cs" />
     <Compile Include="Models\Abstract\IOrderRepository.cs" />
+    <Compile Include="Models\Abstract\IShippingDetailRepository.cs" />
     <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
     <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
@@ -390,11 +395,13 @@
     <Compile Include="Models\Concrete\EFMarkRepository.cs" />
     <Compile Include="Models\Concrete\EFOrderItemRepository.cs" />
     <Compile Include="Models\Concrete\EFOrderRepository.cs" />
+    <Compile Include="Models\Concrete\EFShippingDetailRepository.cs" />
     <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
     <Compile Include="Models\Entities\Mark.cs" />
     <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\ShippingDetail.cs" />
     <Compile Include="Models\Entities\OrderItem.cs" />
     <Compile Include="Models\Enums\OrderDetail.cs" />
     <Compile Include="Models\ViewModels\PurchaseItemViewModel.cs" />
@@ -469,6 +476,7 @@
     <Content Include="Content\css\goodsummary.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\gallery.css" />
+    <Content Include="Content\css\orderForm.css" />
     <Content Include="Content\css\tabstyles.css" />
     <Content Include="Content\css\vertical_tabs.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
@@ -590,6 +598,7 @@
     <Content Include="Views\Mark\Create.cshtml" />
     <Content Include="Views\Purchase\Create.cshtml" />
     <Content Include="Views\Purchase\List.cshtml" />
+    <Content Include="Views\Purchase\FinishOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -716,6 +725,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105152030048_UserBalance.resx">
       <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171028577_Shipping_details.resx">
+      <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

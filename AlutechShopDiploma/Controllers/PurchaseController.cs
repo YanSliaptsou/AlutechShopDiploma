@@ -8,6 +8,7 @@ using AlutechShopDiploma.Models.Abstract;
 using AlutechShopDiploma.Models.Entities;
 using AlutechShopDiploma.Services;
 using AlutechShopDiploma.Models.ViewModels;
+using AlutechShopDiploma.Models.Concrete;
 
 namespace AlutechShopDiploma.Controllers
 {
@@ -15,12 +16,14 @@ namespace AlutechShopDiploma.Controllers
     {
         private IOrderRepository orderRepository;
         private IOrderItemRepository orderItemRepository;
+        private IShippingDetailRepository shippingDetailRepository;
         ApplicationDbContext context = new ApplicationDbContext();
         
-        public PurchaseController(IOrderItemRepository _orderItemRepository, IOrderRepository _orderRepository)
+        public PurchaseController(IOrderItemRepository _orderItemRepository, IOrderRepository _orderRepository, IShippingDetailRepository _shippingDetailRepository)
         {
             orderRepository = _orderRepository;
             orderItemRepository = _orderItemRepository;
+            shippingDetailRepository = _shippingDetailRepository;
         }
 
         // GET: Purchase
@@ -111,7 +114,7 @@ namespace AlutechShopDiploma.Controllers
             else
             {
                 OrderWorker orderWorker = new OrderWorker();
-                double totalPrice = orderWorker.CountOrderPrice() - model.userBalance;
+                double totalPrice = orderWorker.GetOrderPrice() - model.userBalance;
                 orderRepository.EditOrderByTotalPrice(orderWorker.DefineOrderID(), totalPrice);
                 TempData["succsess"] = string.Format("Сумма в " + model.userBalance + " руб. успешно списана с вашего баланса.");
                 ApplicationUser applicationUser = context.Users.Find(worker.GetUserID());
@@ -119,7 +122,39 @@ namespace AlutechShopDiploma.Controllers
                 applicationUser.bonusAmmount = applicationUser.bonusAmmount - model.userBalance;
                 context.SaveChanges();
             }
+            if (Request.UrlReferrer != null)
+                Response.Redirect(Request.UrlReferrer.ToString());
             return Content("Message");
+        }
+
+        public PartialViewResult FinishOrder()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult FinishOrder(ShippingDetail shippingDetail)
+        {
+            if(ModelState.IsValid)
+            {
+                OrderWorker orderWorker = new OrderWorker();
+
+                EmailSettings emailSettings = new EmailSettings();
+                EmailProcessor emailService = new EmailProcessor(emailSettings);
+
+                shippingDetailRepository.CreateShippingDetail(shippingDetail);
+                emailService.ProcessUserOrder(shippingDetail);
+
+                orderRepository.EditOrderByIsFinished(orderWorker.DefineOrderID(), true);
+
+                TempData["succsess"] = string.Format("Ваш заказ отправлен. Пожалуйста, ожидайте связи менеджера с вами.");
+            }
+            else
+            {
+                TempData["mistake"] = string.Format("Произошла ошибка при вводе контактных данных. Проверьте правильность ввода.");
+            }
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
