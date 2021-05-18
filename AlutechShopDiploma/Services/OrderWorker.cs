@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using AlutechShopDiploma.Models.Enums;
+using System.Web.Mvc;
 
 namespace AlutechShopDiploma.Services
 {
@@ -213,6 +214,91 @@ namespace AlutechShopDiploma.Services
             }
 
             return percentage;
+        }
+
+        public double GetBonusPercentage(Order order)
+        {
+            double percentage = 0;
+
+            if (order.TotalSum < 1000)
+            {
+                percentage = 0.5;
+            }
+            else if (order.TotalSum >= 1000 && order.TotalSum < 2500)
+            {
+                percentage = 1;
+            }
+            else if (order.TotalSum >= 2500 && order.TotalSum < 5000)
+            {
+                percentage = 1.5;
+            }
+            else if (order.TotalSum >= 5000 && order.TotalSum < 7500)
+            {
+                percentage = 2;
+            }
+            else if (order.TotalSum >= 7500 && order.TotalSum < 10000)
+            {
+                percentage = 2.5;
+            }
+            else if (order.TotalSum >= 10000 && order.TotalSum < 12500)
+            {
+                percentage = 3;
+            }
+            else if (order.TotalSum >= 12500 && order.TotalSum < 15000)
+            {
+                percentage = 3.5;
+            }
+            else if (order.TotalSum >= 15000 && order.TotalSum < 17500)
+            {
+                percentage = 4;
+            }
+            else if (order.TotalSum >= 17500 && order.TotalSum < 20000)
+            {
+                percentage = 4.5;
+            }
+            else if (order.TotalSum >= 20000 && order.TotalSum < 25000)
+            {
+                percentage = 5;
+            }
+            else if (order.TotalSum >= 25000 && order.TotalSum < 30000)
+            {
+                percentage = 5.5;
+            }
+            else if (order.TotalSum >= 30000 && order.TotalSum < 35000)
+            {
+                percentage = 6;
+            }
+            else if (order.TotalSum >= 35000 && order.TotalSum < 40000)
+            {
+                percentage = 6.5;
+            }
+            else if (order.TotalSum >= 40000 && order.TotalSum < 45000)
+            {
+                percentage = 7;
+            }
+            else if (order.TotalSum >= 45000 && order.TotalSum < 50000)
+            {
+                percentage = 7.5;
+            }
+            else if (order.TotalSum >= 50000 && order.TotalSum < 75000)
+            {
+                percentage = 8;
+            }
+            else if (order.TotalSum >= 75000 && order.TotalSum < 100000)
+            {
+                percentage = 9;
+            }
+            else if (order.TotalSum >= 100000)
+            {
+                percentage = 10;
+            }
+
+            return percentage;
+        }
+
+        public double CountUserBonus(Order order)
+        {
+            return Math.Round(order.TotalSum * GetBonusPercentage(order) / 100, 2);
         }
     }
 }

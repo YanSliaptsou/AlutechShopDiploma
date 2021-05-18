@@ -174,9 +174,9 @@ namespace AlutechShopDiploma.Controllers
                        protocol: Request.Url.Scheme);
 
                     await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты",
-                       "Для завершения регистрации перейдите по ссылке:: <a href=\""
-                                                       + callbackUrl + "\">завершить регистрацию</a>");
+                       "Для завершения регистрации перейдите по ссылке:: <a href=\""+ callbackUrl + "\">завершить регистрацию</a>");
 
+                                                       
                     await UserManager.AddToRoleAsync(user.Id, "user");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

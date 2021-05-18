@@ -458,6 +458,7 @@
     <Compile Include="Services\OrderItemsWorker.cs" />
     <Compile Include="Services\OrderWorker.cs" />
     <Compile Include="Services\UsersWorker.cs" />
+    <Compile Include="Services\WarehouseWorker.cs" />
     <Compile Include="SQL\SqlWorker.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -599,6 +600,7 @@
     <Content Include="Views\Purchase\Create.cshtml" />
     <Content Include="Views\Purchase\List.cshtml" />
     <Content Include="Views\Purchase\FinishOrder.cshtml" />
+    <Content Include="Views\Purchase\ConfirmPurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

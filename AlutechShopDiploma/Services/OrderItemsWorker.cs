@@ -48,6 +48,22 @@ namespace AlutechShopDiploma.Services
             return restGoods;
         }
 
+        public int GetGoodCountOnWarehouse()
+        {
+            return Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodAmmount from Warehouses WHERE GoodID = " + goodID));
+        }
+        
+        public Dictionary<Good,int> GetGoodsCountOnWarehouse()
+        {
+            Good good = context.Goods.Find(goodID);
+            int goodCount = GetGoodCountOnWarehouse();
+
+            Dictionary<Good, int> restGoods = new Dictionary<Good, int>();
+            restGoods.Add(good, goodCount);
+
+            return restGoods;
+        }
+
         public bool IsCompletedItem()
         {
             int restGoods = GetRestGoods();

@@ -1,9 +1,16 @@
 ﻿@model AlutechShopDiploma.Models.Entities.ShippingDetail
+@using AlutechShopDiploma.Services
 
 <head>
     <link href="~/Content/css/orderForm.css" rel="stylesheet"/>
 </head>
+@{ 
+    /*OrderWorker worker = new OrderWorker();
+    @Model.OrderId = worker.DefineOrderID();
 
+    UsersWorker usersWorker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+    @Model.UserId = usersWorker.GetUserID();*/
+}
 <body>
     @{using (Html.BeginForm("FinishOrder", "Purchase", FormMethod.Post, new { @style = "margin-left: 15%;" }))
         {

@@ -5,8 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Web;
+using System.Web.Mvc;
 using AlutechShopDiploma.Services;
+using Microsoft.AspNet;
+using System.Web;
+using System.Web.Routing;
+
+
 
 namespace AlutechShopDiploma.Models.Concrete
 {
@@ -76,9 +81,13 @@ namespace AlutechShopDiploma.Models.Concrete
                 smptClient.Send(messageToClient);
             }
         }
-        public void ProcessUserOrder(ShippingDetail detail)
+
+        public void ProcessUserOrder(ShippingDetail detail, double bonusAmmount)
         {
             OrderWorker orderWorker = new OrderWorker();
+            UsersWorker usersWorker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+            string _userId = usersWorker.GetUserID();
+            int _orderId = orderWorker.DefineOrderID();
 
             List<string> items = orderWorker.GetOrderDetails(Enums.OrderDetail.Name);
             List<string> pricesPerGoodItems = orderWorker.GetOrderDetails(Enums.OrderDetail.PricePerGoodItem);
@@ -87,6 +96,9 @@ namespace AlutechShopDiploma.Models.Concrete
 
             double totalOrderPrice = orderWorker.GetOrderPrice();
             int ammountOfitems = orderWorker.DefineOrderItemsCountInOrder();
+
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var confirmBonusUrl = urlHelper.Action("ConfirmPurchase", "Purchase", new {userId = _userId, orderId = _orderId },protocol:HttpContext.Current.Request.Url.Scheme);
 
             using (var smptClient = new SmtpClient())
             {
@@ -107,7 +119,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 {
                     messageBodyToAdmin.AppendLine(i + 1 + ". " + items[i] + " " + pricesPerGoodItems[i] + " р. x " + ammounts[i] + " шт." + " = " + pricesPerOrderItems[i] + " р.");
                 }
-                messageBodyToAdmin.AppendLine("Итоговая сумма: " + orderWorker.CountOrderPrice().ToString() + " р.");
+                messageBodyToAdmin.AppendLine("Итоговая сумма: " + totalOrderPrice.ToString() + " р.");
                 messageBodyToAdmin.AppendLine("");
                 messageBodyToAdmin.AppendLine("Контактные данные клиента:");
                 messageBodyToAdmin.AppendLine("Имя: " + detail.ContactName);
@@ -116,6 +128,9 @@ namespace AlutechShopDiploma.Models.Concrete
                 messageBodyToAdmin.AppendLine("Адрес доставки: " + detail.DeliveryAdress);
                 messageBodyToAdmin.AppendLine("Комментарий: " + detail.UserMessage);
                 messageBodyToAdmin.AppendLine("Дата и время оформления заказа: " + DateTime.Now);
+                messageBodyToAdmin.AppendLine("");
+
+                messageBodyToAdmin.AppendLine("Подтвердить покупку здесь: " + confirmBonusUrl);
 
                 MailMessage messageToAdmin = new MailMessage(
                     emailSettings.MailFromAddress,
@@ -137,7 +152,7 @@ namespace AlutechShopDiploma.Models.Concrete
                 {
                     messageBodyToClient.AppendLine(i + 1 + ". " + items[i] + " " + pricesPerGoodItems[i] + " р. x " + ammounts[i] + " шт." + " = " + pricesPerOrderItems[i] + " р.");
                 }
-                messageBodyToClient.AppendLine("Итоговая сумма: " + orderWorker.CountOrderPrice().ToString() + " р.");
+                messageBodyToClient.AppendLine("Итоговая сумма: " + totalOrderPrice.ToString() + " р.");
                 messageBodyToClient.AppendLine("");
                 messageBodyToClient.AppendLine("Контактные данные клиента:");
                 messageBodyToClient.AppendLine("Имя: " + detail.ContactName);
@@ -149,6 +164,11 @@ namespace AlutechShopDiploma.Models.Concrete
 
                 messageBodyToClient.AppendLine("");
                 messageBodyToClient.AppendLine("С вами вскоре свяжутся. Ожидайте.");
+                messageBodyToClient.AppendLine("");
+                messageBodyToClient.AppendLine("Внимание!!!");
+                messageBodyToClient.AppendLine("При успешном завершении и оплаты заказа на ваш бонусный счёт будет зачислено " + bonusAmmount + " р., которые вы в любой момент сможете потратить на любой другой заказ.");
+                messageBodyToClient.AppendLine("Зачисление денежных средств на ваш бонусный счёт осуществляется только после подтверждения нашим менеджером вашего заказа.");
+                messageBodyToClient.AppendLine("После подтверждения заказа нашим менеджером вам на почту, которую вы указывали про оформлении заказа, придёт письмо о зачислении. Если вы его не найдёте, проверьте его в папке 'Спам'.");
 
 
 
@@ -156,6 +176,31 @@ namespace AlutechShopDiploma.Models.Concrete
                     emailSettings.MailFromAddress,
                     detail.ContactMail,
                     "Заказ в AlutechShop",
+                    messageBodyToClient.ToString()
+                );
+                smptClient.Send(messageToClient);
+            }
+        }
+
+        public void ProcessPurchaseConfrimation(double bonusSum, ShippingDetail detail)
+        {
+            using (var smptClient = new SmtpClient())
+            {
+                smptClient.EnableSsl = emailSettings.UseSsl;
+                smptClient.Host = emailSettings.ServerName;
+                smptClient.Port = emailSettings.ServerPort;
+                smptClient.UseDefaultCredentials = false;
+                smptClient.Credentials = new NetworkCredential(emailSettings.Username, emailSettings.Password);
+
+                //------------------------------------------------------------------------------------------
+                StringBuilder messageBodyToClient = new StringBuilder();
+
+                messageBodyToClient.AppendLine("На ваш бонусный баланс успешно начислена сумма: " + bonusSum + " р.");
+
+                MailMessage messageToClient = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    detail.ContactMail,
+                    "Зачисление бонусного счёта",
                     messageBodyToClient.ToString()
                 );
                 smptClient.Send(messageToClient);
