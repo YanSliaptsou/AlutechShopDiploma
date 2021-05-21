@@ -1,4 +1,6 @@
-﻿using AlutechShopDiploma.SQL;
+﻿using AlutechShopDiploma.Models;
+using AlutechShopDiploma.Models.Entities;
+using AlutechShopDiploma.SQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace AlutechShopDiploma.Services
     {
         private int goodID;
         SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+        ApplicationDbContext applicationDbContext = new ApplicationDbContext();
 
         public GoodWorker(int _goodID)
         {
@@ -34,6 +37,22 @@ namespace AlutechShopDiploma.Services
                 }
 
             return newgoodPrice;
+        }
+        public string GetGoodName()
+        {
+            Good good = applicationDbContext.Goods.Find(goodID);
+            return good.Name;
+        }
+        public string GetGoodImage()
+        {
+            Good good = applicationDbContext.Goods.Find(goodID);
+            string imageContainerId = sqlWorker.SelectDataFromDB("SELECT Url FROM ImageContainers WHERE GoodID = " + good.GoodID);
+            return imageContainerId;
+        }
+        public double GetGoodCost()
+        {
+            Good good = applicationDbContext.Goods.Find(goodID);
+            return good.Price;
         }
     }
 }

@@ -38,5 +38,12 @@ namespace AlutechShopDiploma.Models.Concrete
             context.Marks.Remove(context.Marks.FirstOrDefault(x => x.MarkID == goodMarkID));
             context.SaveChanges();
         }
+
+        public void EditMark(Mark mark)
+        {
+            Mark myMark = context.Marks.Find(mark.MarkID);
+            myMark.UserMark = mark.UserMark;
+            context.SaveChanges();
+        }
     }
 }

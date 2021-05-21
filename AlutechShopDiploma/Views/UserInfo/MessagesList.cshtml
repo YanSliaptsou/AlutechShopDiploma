@@ -1,0 +1,28 @@
+﻿@using AlutechShopDiploma.Models.Entities
+
+@model IEnumerable<UserMessage>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet"/>
+</head>
+@{ 
+    <table class="table_info">
+        <caption>Мои сообщения</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Тема сообщения</center></th>
+            <th><center>Текст сообщения</center></th>
+            <th><center>Дата и время сообщения</center></th>
+        </tr>
+
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td><center>@item.UserMessageID</center></td>
+            <td><center>@item.MessageTopic</center></td>
+            <td><center>@item.MessageText</center></td>
+            <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+        </tr>
+        }
+    </table>
+}

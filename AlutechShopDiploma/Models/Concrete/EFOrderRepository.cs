@@ -46,6 +46,7 @@ namespace AlutechShopDiploma.Models.Concrete
             if (order != null)
             {
                 order.IsFinished = isFinished;
+                order.DateTime = DateTime.Now;
             }
 
             context.SaveChanges();
@@ -58,6 +59,7 @@ namespace AlutechShopDiploma.Models.Concrete
             if (order != null)
             {
                 order.IsOrdered = isOrdered;
+                order.DateTime = DateTime.Now;
             }
 
             context.SaveChanges();

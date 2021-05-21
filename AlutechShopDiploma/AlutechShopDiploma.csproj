@@ -222,6 +222,7 @@
     <Compile Include="Controllers\GoodsSortController.cs" />
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -375,6 +376,10 @@
     <Compile Include="Migrations\202105171028577_Shipping_details.Designer.cs">
       <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105212038275_Properties_delete.cs" />
+    <Compile Include="Migrations\202105212038275_Properties_delete.Designer.cs">
+      <DependentUpon>202105212038275_Properties_delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -406,6 +411,7 @@
     <Compile Include="Models\Enums\OrderDetail.cs" />
     <Compile Include="Models\ViewModels\PurchaseItemViewModel.cs" />
     <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserBalanceViewModel.cs" />
     <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -467,6 +473,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\authorization_form.css" />
     <Content Include="Content\css\characteristics_table.css" />
     <Content Include="Content\css\comment_field.css" />
     <Content Include="Content\css\commnets_block.css" />
@@ -478,6 +485,7 @@
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\gallery.css" />
     <Content Include="Content\css\orderForm.css" />
+    <Content Include="Content\css\table_info.css" />
     <Content Include="Content\css\tabstyles.css" />
     <Content Include="Content\css\vertical_tabs.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
@@ -601,6 +609,14 @@
     <Content Include="Views\Purchase\List.cshtml" />
     <Content Include="Views\Purchase\FinishOrder.cshtml" />
     <Content Include="Views\Purchase\ConfirmPurchase.cshtml" />
+    <Content Include="Views\UserInfo\Statistics.cshtml" />
+    <Content Include="Views\UserInfo\MessagesList.cshtml" />
+    <Content Include="Views\UserInfo\MarksList.cshtml" />
+    <Content Include="Views\UserInfo\CommentsList.cshtml" />
+    <Content Include="Views\UserInfo\OrdersList.cshtml" />
+    <Content Include="Views\UserInfo\BonusBalance.cshtml" />
+    <Content Include="Views\UserInfo\Settings.cshtml" />
+    <Content Include="Views\UserInfo\Graphics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -730,6 +746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105171028577_Shipping_details.resx">
       <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105212038275_Properties_delete.resx">
+      <DependentUpon>202105212038275_Properties_delete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

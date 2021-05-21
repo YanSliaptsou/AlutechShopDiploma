@@ -156,7 +156,7 @@ namespace AlutechShopDiploma.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Age = model.Age, isBanned = false, bonusAmmount = 0, purchasesAmmount = 0  };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, isBanned = false, bonusAmmount = 0};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

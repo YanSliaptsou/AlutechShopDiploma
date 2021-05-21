@@ -63,9 +63,34 @@ namespace AlutechShopDiploma.Services
             return totalPrice;
         }
 
+        public double CountOrderPrice(Order order)
+        {
+            int orderID = order.OrderID;
+            double totalPrice = 0;
+
+            List<string> orderItemsIDs = sqlWorker.SelectDataFromDBMult("SELECT OrderItemID FROM OrderItems WHERE OrderID = " + orderID);
+
+            foreach (var element in orderItemsIDs)
+            {
+                int goodID = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodID FROM OrderItems WHERE OrderItemID = " + element));
+
+                GoodWorker goodWorker = new GoodWorker(goodID);
+                double goodPrice = goodWorker.CalculateGoodPrice();
+
+                int ammount = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT Ammount FROM OrderItems WHERE OrderItemID = " + element));
+
+                totalPrice += goodPrice * ammount;
+            }
+            return totalPrice;
+        }
+
         public double GetOrderPrice()
         {
             return Convert.ToDouble(sqlWorker.SelectDataFromDB("SELECT TotalSum FROM Orders WHERE OrderID = " + DefineOrderID()));
+        }
+        public double GetOrderPrice(Order order)
+        {
+            return Convert.ToDouble(sqlWorker.SelectDataFromDB("SELECT TotalSum FROM Orders WHERE OrderID = " + order.OrderID));
         }
 
         public double CountOrderItemPrice(int orderItemID)
@@ -75,7 +100,7 @@ namespace AlutechShopDiploma.Services
             GoodWorker goodWorker = new GoodWorker(goodID);
             double goodPrice = goodWorker.CalculateGoodPrice();
 
-            int ammount = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT Ammount FROM OrderItems WHERE GoodID = " + goodID));
+            int ammount = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT Ammount FROM OrderItems WHERE GoodID = " + goodID + "AND OrderItemID = " + orderItemID));
 
             return goodPrice * ammount;
         }

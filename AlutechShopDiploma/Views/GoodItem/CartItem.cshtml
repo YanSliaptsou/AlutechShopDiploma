@@ -12,7 +12,8 @@
 
     string url = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers WHERE GoodID = " + Model.GoodID);
     string tableNumb = sqlWorker.SelectDataFromDB("SELECT TableID FROM Goods WHERE GoodID = " + Model.GoodID);
-    string goodAmmount = sqlWorker.SelectDataFromDB("SELECT GoodAmmount from Warehouses WHERE GoodID = " + Model.GoodID);
+    WarehouseWorker warehouseWorker = new WarehouseWorker();
+    int goodAmmount = warehouseWorker.GetProductAmmount(Model.GoodID);
     string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts WHERE GoodID = " + Model.GoodID);
     double discount = 0;
     double newPrice = 0;
@@ -24,10 +25,6 @@
 
     List<string> goodsList = sqlWorker.SelectDataFromDBMult("SELECT GoodID FROM Goods WHERE TableID = " + tableNumb);
     string isBanned = sqlWorker.SelectDataFromDB("SELECT isBanned from AspNetUsers WHERE UserName = '" + HttpContext.Current.User.Identity.Name + "'");
-    double test = 0;
-
-    string sessionID = System.Web.HttpContext.Current.Session.SessionID;
-
 }
 <head>
     <link href="~/Content/css/characteristics_table.css" rel="stylesheet" />
@@ -66,7 +63,17 @@
         </p>
 
         <div style="position:absolute;right:0px;left:615px;top:111px;word-break:break-all;overflow:hidden">
-            @Html.Action("Create", "Purchase")
+            @{
+                if (goodAmmount > 0)
+                {
+                    @Html.Action("Create", "Purchase")
+                }
+                else
+                {
+                    <div class="alert alert-warning">К сожалению, данного товара нет на складе.</div>
+                }
+            }
+
         </div>
     </div>
     <div class="product-item well" style="width:105%">
@@ -83,6 +90,8 @@
                 @{
                     if (discountLabel != "")
                     {
+                        GoodWorker goodWorker = new GoodWorker(Model.GoodID);
+                        newPrice = goodWorker.CalculateGoodPrice();
                         <td class="td1"><s>@Model.Price Руб.</s> @newPrice Руб.</td>
                     }
                     else
@@ -176,10 +185,10 @@
             }
             else
             {
-                <div class="alert alert-warning" style="margin-left: 45px;">
-                    Вы заблокированы по причине грубого нарушения правил написания комментариев. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.
-                    <a href="/Home/Index#message">Обратиться в поддержку можно здесь.</a>
-                </div>
+        <div class="alert alert-warning" style="margin-left: 45px;">
+            Вы заблокированы по причине грубого нарушения правил написания комментариев. Эта функция недоступна заблокированным пользователям. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.Обратиться в поддержку можно
+            <a href="/Home/Index#message">здесь</a>. Также можете подать заявку на разблокировку со своего аккаунта. Для этого щёлкнете <a href="/Manage#statistics">здесь</a>. Затем перейдите в раздел 'Моя статистика'.
+        </div>
             }
             <p></p>
             @Html.Action("List", "Comment")
@@ -237,19 +246,29 @@
 
     <div id="Moscow" class="tabcontent" style="width:105%">
         @{
-            MarksWorker marksWorker = new MarksWorker(Model.GoodID);
-            int mrkId = 0;
-
-            if (marksWorker.IsAvailableToPutMark(HttpContext.Current.User.Identity.Name))
+            if (isBanned == "False")
             {
-                @Html.Action("Create", "Mark")
+                MarksWorker marksWorker = new MarksWorker(Model.GoodID);
+                int mrkId = 0;
+
+                if (marksWorker.IsAvailableToPutMark(HttpContext.Current.User.Identity.Name))
+                {
+                    @Html.Action("Create", "Mark")
+                }
+                else
+                {
+                    mrkId = marksWorker.GetMarkId(HttpContext.Current.User.Identity.Name);
+                    <div class="alert alert-warning">
+                        Спасибо, ваша оценка уже учтена за этот товар. Вы можете её отменить, нажав @Html.ActionLink("сюда", "Delete", "Mark", new { markId = mrkId }, null).
+                    </div>
+                }
             }
             else
             {
-                mrkId = marksWorker.GetMarkId(HttpContext.Current.User.Identity.Name);
-                <div class="alert alert-warning">
-                    Спасибо, ваша оценка уже учтена за этот товар. Вы можете её отменить, нажав @Html.ActionLink("сюда", "Delete", "Mark", new { markId = mrkId }, null).
-                </div>
+    <div class="alert alert-warning" style="margin-left: 45px;">
+        Вы заблокированы по причине грубого нарушения правил написания комментариев. Эта функция недоступна заблокированным пользователям. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.Обратиться в поддержку можно
+        <a href="/Home/Index#message">здесь</a>. Также можете подать заявку на разблокировку со своего аккаунта. Для этого щёлкнете <a href="/Manage#statistics">здесь</a>. Затем перейдите в раздел 'Моя статистика'.
+    </div>
             }
         }
 

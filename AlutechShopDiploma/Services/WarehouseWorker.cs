@@ -20,22 +20,32 @@ namespace AlutechShopDiploma.Services
         {
             order = _order;
         }
+        public WarehouseWorker()
+        {
+
+        }
 
         public void SubtractGoodsAmmount()
         {
-            IEnumerable<OrderItem> items = applicationDbContext.OrderItems.Where(x => x.OrderID == order.OrderID);
-            
-            foreach(var item in items)
+            IEnumerable<OrderItem> items = applicationDbContext.OrderItems.Where(x => x.OrderID == order.OrderID).ToList();
+            //Warehouse warehouse = applicationDbContext.Warehouses.FirstOrDefault(x => x.GoodID == 3);
+
+            foreach (var item in items)
             {
                 int goodId = item.GoodID;
                 int ammount = item.Ammount;
 
-                int warehouseId = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT WarehouseID FROM Warehouses WHERE GoodID = " + goodId));
-
-                Warehouse warehouse = applicationDbContext.Warehouses.Find(warehouseId);
+                Warehouse warehouse = applicationDbContext.Warehouses.FirstOrDefault(x => x.GoodID == item.GoodID);
                 warehouse.GoodAmmount -= ammount;
                 applicationDbContext.SaveChanges();
+
+
             }
         }
+        public int GetProductAmmount(int goodId)
+        {
+            return Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodAmmount from Warehouses WHERE GoodID = " + goodId));
+        }
+
     }
 }

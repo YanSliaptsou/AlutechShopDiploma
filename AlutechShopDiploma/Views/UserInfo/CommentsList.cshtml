@@ -1,0 +1,41 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+
+@model IEnumerable<Comment>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+
+@{
+    <table class="table_info">
+        <caption>Мои отзывы</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Изображение товара</center></th>
+            <th><center>Название товара</center></th>
+            <th><center>Отзыв</center></th>
+            <th><center>Дата и время</center></th>
+            <th><center>Удалить отзыв</center></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            GoodWorker goodWorker = new GoodWorker(item.GoodID);
+            string imageUrl = goodWorker.GetGoodImage();
+            string name = goodWorker.GetGoodName();
+            <tr>
+                <td><center>@item.CommentID</center></td>
+                <td><center><img style="width:40%" src="@Url.Content(imageUrl)" /></center></td>
+                <td><center><a href="~/GoodItem/CartItem?goodId=@item.GoodID">@name</a></center></td>
+                <td><center>@item.CommentText</center></td>
+                <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+                <td>
+                    <form action="/Comment/Delete?commentID=@item.CommentID" method="post">
+                        <input class="btn btn-success" type="submit" value="Удалить " />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

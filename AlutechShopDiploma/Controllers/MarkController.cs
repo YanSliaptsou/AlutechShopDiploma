@@ -49,6 +49,26 @@ namespace AlutechShopDiploma.Controllers
             return Content("Message");
         }
 
+        [HttpPost]
+        public ActionResult Edit(int markID, int userMark)
+        {
+            if (userMark != null)
+            {
+                Mark mark = context.Marks.Find(markID);
+                mark.UserMark = userMark;
+                repository.EditMark(mark);
+                TempData["succsess"] = string.Format("Оценка успешно изменена на " + mark.UserMark);
+            }
+            else
+            {
+                TempData["mistake"] = string.Format("Произошла ошибка.");
+            }
+            if (Request.UrlReferrer != null)
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+            return Content("Message");
+        }
+
         public ActionResult Delete(int markID)
         {
             int goodID = Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodID FROM Marks WHERE MarkId = " + markID));

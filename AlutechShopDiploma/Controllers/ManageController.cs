@@ -15,7 +15,7 @@ namespace AlutechShopDiploma.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        public static IndexViewModel model;
         public ManageController()
         {
         }
@@ -49,7 +49,6 @@ namespace AlutechShopDiploma.Controllers
                 _userManager = value;
             }
         }
-
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -64,7 +63,7 @@ namespace AlutechShopDiploma.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
+            model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -320,6 +319,11 @@ namespace AlutechShopDiploma.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        public PartialViewResult TestView()
+        {
+            return PartialView();
         }
 
         protected override void Dispose(bool disposing)

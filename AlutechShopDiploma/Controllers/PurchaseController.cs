@@ -236,6 +236,9 @@ namespace AlutechShopDiploma.Controllers
                 orderRepository.EditOrderByIsOrdered(orderId, true);
                 ViewData["success"] = "Заказ успешно обработан. Клиенту " + applicationUser.UserName + " направлено вознаграждение за покупку в размере " + orderWorker.CountUserBonus(order) + " р.";
                 emailService.ProcessPurchaseConfrimation(orderWorker.CountUserBonus(order), shippingDetail);
+
+                WarehouseWorker warehouseWorker = new WarehouseWorker(order);
+                warehouseWorker.SubtractGoodsAmmount();
             }
             else
             {

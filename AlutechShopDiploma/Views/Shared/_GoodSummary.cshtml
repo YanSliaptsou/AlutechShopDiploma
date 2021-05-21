@@ -1,6 +1,7 @@
 ﻿@model AlutechShopDiploma.Models.Entities.Good
 
 @using AlutechShopDiploma.SQL;
+@using AlutechShopDiploma.Services
 
 <head>
     <link href="~/Content/css/goodsummary.css" rel="stylesheet">
@@ -14,42 +15,56 @@
  <div class="product-item well">
      <div class="product-list row">
          @{
-                 SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
-                 string imageUrl = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers Where GoodID = " + Model.GoodID);
-                 string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts Where GoodID = " + Model.GoodID);
-                 double discount = 0;
-                 if(discountLabel != "")
-                 {
-                     discount = Convert.ToDouble(discountLabel);
-                  <div class="sale-block">
-                      <h3>@discountLabel %<span>скидка</span></h3>
-                  </div>
+             SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+             string imageUrl = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers Where GoodID = " + Model.GoodID);
+             string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts Where GoodID = " + Model.GoodID);
+             double discount = 0;
+             if (discountLabel != "")
+             {
+                 discount = Convert.ToDouble(discountLabel);
+                 <div class="sale-block">
+                     <h3>@discountLabel %<span>скидка</span></h3>
+                 </div>
+
+
              }
          }
-                 
+
          <h3>
              <strong>@Model.Name</strong>
          </h3>
          <span>@Model.Description</span>
-         @{ 
+         @{
              if (discount != 0)
              {
-                 double newPrice = Math.Round(Model.Price - Model.Price * (discount / 100),2);
+                 GoodWorker goodWorker = new GoodWorker(Model.GoodID);
+                 double newPrice = goodWorker.CalculateGoodPrice();
                  <span class="price"><strike>@Model.Price р.</strike></span>
                  <span class="price">@newPrice р.</span>
              }
              else
              {
-                   <span class="price">@Model.Price р.</span>
+                 <span class="price">@Model.Price р.</span>
              }
          }
          <img style="width: 257px; height: 244px; margin-left: 224px; " src="@Url.Content(imageUrl)" />
-         <a href="" class="button">В корзину</a>
+         <p></p>
          <a href="/GoodItem/CartItem?goodId=@Model.GoodID" class="button">Подробнее</a>
          <span id="eye" style="margin-right: 35px;"></span>
          <span style="float: right;margin-right: -35px;margin-top: 16px;">@Model.Views</span>
          <img style="float: left; margin-right: 4px; margin-top: 16px; height:40px; width:40px" src="~/Content/rating.jpg" />
          <strong style="float: left;margin-right: 0px;margin-top: 25px;">@Model.Rating</strong>
+         <p></p>
+         @{WarehouseWorker warehouseWorker = new WarehouseWorker();
+             int goodAmmount = warehouseWorker.GetProductAmmount(Model.GoodID);
+
+             if (goodAmmount == 0)
+             {
+         <div class="label label-warning" style="font-size: 15px;margin-left: -5%;">
+             Товара нет в наличии
+         </div>
+                 }
+             }
      </div>
   </div>
 

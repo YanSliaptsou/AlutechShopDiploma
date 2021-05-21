@@ -12,5 +12,6 @@ namespace AlutechShopDiploma.Models.Abstract
         IEnumerable<Mark> Marks { get; }
         void CreateMark(Mark mark);
         void DeleteMark(int goodMarkID);
+        void EditMark(Mark mark);
     }
 }

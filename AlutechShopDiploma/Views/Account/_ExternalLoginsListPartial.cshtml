@@ -1,6 +1,9 @@
 ﻿@model AlutechShopDiploma.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
+<head>
+    <link href="~/Content/css/authorization_form.css" rel="stylesheet"/>
+</head>
 <h4>Используйте для входа другую службу.</h4>
 <hr />
 @{
@@ -18,8 +21,9 @@
             @Html.AntiForgeryToken()
             <div id="socialLoginList">
                 <p>
-                    @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Войти с помощью учетной записи @p.Caption">@p.AuthenticationType</button>
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        <button type="submit" class="google btn" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Войти с помощью учетной записи @p.Caption"><i class="fa fa-google fa-fw"></i> Использовать Google+</button>
                     }
                 </p>
             </div>

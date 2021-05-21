@@ -21,14 +21,17 @@ namespace AlutechShopDiploma.SQL
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    var reader = command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
                         data += reader.GetValue(0) + "";
                     }
                     reader.Close();
+                    command.Dispose();
                 }
+                connection.Close();
+                connection.Dispose();
             }
             return data;
         }

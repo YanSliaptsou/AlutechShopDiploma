@@ -3,7 +3,65 @@
     ViewBag.Title = "Управление";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
+
+<head>
+    <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
+</head>
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["message"]
+    </div>
+}
+@if (TempData["mistake"] != null)
+{
+    <div class="alert alert-danger" style="margin-left: 45px;">
+        @TempData["mistake"]
+    </div>
+}
+@if (TempData["succsess"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["succsess"]
+    </div>
+}
+<div class="tab" style="width:105%">
+    <button class="tablinks" onclick="openCity(event, 'Messages')"><i class="fa fa-envelope"></i> Мои сообщения</button>
+    <button class="tablinks" onclick="openCity(event, 'Marks')"><i class="fa fa-mortar-board"></i> Мои оценки</button>
+    <button class="tablinks" onclick="openCity(event, 'Comments')"><i class="fa fa-comment"></i> Мои отзывы</button>
+    <button class="tablinks" onclick="openCity(event, 'Purchases')"><i class="fa fa-shopping-basket"></i> Мои покупки</button>
+    <button class="tablinks" onclick="openCity(event, 'Balance')"><i class="fa fa-rub"></i> Мой бонусный баланс</button>
+    <button class="tablinks" onclick="openCity(event, 'Statistics')"><i class="fa fa-pencil"></i> Моя статистика</button>
+    <button class="tablinks" onclick="openCity(event, 'Graphics')"><i class="fa fa-line-chart"></i> Графики</button>
+</div>
+<div id="Messages" class="tabcontent" style="width:105%">
+    @Html.Action("MessagesList", "UserInfo")
+</div>
+<div id="Marks" class="tabcontent" style="width:105%">
+    @Html.Action("MarksList", "UserInfo")
+</div>
+
+<div id="Comments" class="tabcontent" style="width:105%">
+    @Html.Action("CommentsList", "UserInfo")
+</div>
+
+<div id="Purchases" class="tabcontent" style="width:105%">
+    @Html.Action("OrdersList", "UserInfo")
+</div>
+
+<div id="Balance" class="tabcontent" style="width:105%">
+    @Html.Action("BonusBalance", "UserInfo")
+</div>
+
+<div id="Statistics" class="tabcontent" style="width:105%">
+    @Html.Action("Statistics","UserInfo")
+</div>
+
+<div id="Graphics" class="tabcontent" style="width:105%">
+    @Html.Action("Graphics", "UserInfo")
+</div>
+
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
@@ -30,13 +88,13 @@
         </dd>
         @*
             Номера телефонов можно использовать в качестве второго проверочного фактора для системы двухфакторной проверки подлинности.
-             
+
              В <a href="https://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
                 можно узнать, как для этого приложения ASP.NET настроить двухфакторную проверку подлинности с использованием SMS.
-             
+
              Настроив двухфакторную проверку подлинности, раскомментируйте следующий блок
         *@
-        @*  
+        @*
             <dt>Номер телефона:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
@@ -85,3 +143,26 @@
         </dd>
     </dl>
 </div>
+
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>

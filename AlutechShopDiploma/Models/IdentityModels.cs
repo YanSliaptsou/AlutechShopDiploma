@@ -15,16 +15,14 @@ namespace AlutechShopDiploma.Models
     // В профиль пользователя можно добавить дополнительные данные, если указать больше свойств для класса ApplicationUser. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
-        public int Age { get; set; } // добавляем свойство Age
+
         public double bonusAmmount { get; set; } //бонусный счёт
         public bool isBanned { get; set; } // добавление свойства заблокирован
-        public int purchasesAmmount { get; set; } //кол-во покупок
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Обратите внимание, что authenticationType должен совпадать с типом, определенным в CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Здесь добавьте утверждения пользователя
-            userIdentity.AddClaim(new Claim("age", this.Age.ToString()));
             return userIdentity;
         }
     }

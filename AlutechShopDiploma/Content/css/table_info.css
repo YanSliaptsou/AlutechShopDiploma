@@ -1,0 +1,39 @@
+﻿.table_info {
+    border-collapse: collapse;
+    border-left: 3px solid #F79361;
+    border-right: 3px solid #F79361;
+    border-bottom: 3px solid #F79361;
+    font-family: "Lucida Grande", sans-serif;
+}
+
+    .table_info caption {
+        background: #F79361;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+        color: white;
+        font-family: "Roboto Slab",serif;
+        font-style: normal;
+        font-size: 26px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .table_info td, .table_info th {
+        padding: 10px;
+        width:2%;
+    }
+
+    .table_info th {
+        text-align: left;
+        font-size: 18px;
+    }
+
+    .table_info tr:nth-child(2n) {
+        background: #E5E5E5;
+    }
+
+    .table_info td:last-of-type {
+        text-align: center;
+    }

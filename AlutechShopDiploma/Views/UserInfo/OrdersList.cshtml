@@ -1,0 +1,90 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models
+
+@model IEnumerable<Order>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+
+@{
+    <table class="table_info">
+        <caption>Мои покупки</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Товары в заказе</center></th>
+            <th><center>Итоговая сумма</center></th>
+            <th><center>Завершён</center></th>
+            <th><center>Оплачен</center></th>
+            <th><center>Дата и время</center></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><center>@item.OrderID</center></td>
+                <td><center>
+                    @{
+                        ApplicationDbContext context = new ApplicationDbContext();
+                        IEnumerable<OrderItem> orderItems = context.OrderItems.Where(x => x.OrderID == item.OrderID);
+
+                        <table>
+                                <tr>
+                                    <th><center>ID</center></th>
+                                    <th><center>Изображение товара</center></th>
+                                    <th><center>Название</center></th>
+                                    <th><center>Цена за 1 шт.</center></th>
+                                    <th><center>Количество</center></th>
+                                    <th><center>Общая стоимость</center></th>
+                                </tr>
+
+                        @foreach(var orderItem in orderItems)
+                        {
+                            GoodWorker goodWorker = new GoodWorker(orderItem.GoodID);
+                            string imageUrl = goodWorker.GetGoodImage();
+                            string name = goodWorker.GetGoodName();
+                            double price = goodWorker.GetGoodCost();
+                            double itemPrice = price * orderItem.Ammount;
+                           
+
+                                <tr>
+                                    <td><center>@orderItem.OrderItemID</center></td>
+                                    <td><center><img style="width:30%" src="@Url.Content(imageUrl)" /></center></td>
+                                    <td><center><a href="~/GoodItem/CartItem?goodId=@orderItem.GoodID">@name</a></center></td>
+                                    <td><center>@price р.</center></td>
+                                    <td><center>@orderItem.Ammount</center></td>
+                                    <td><center>@itemPrice р.</center></td>
+                                </tr>
+                            
+                        }
+                    </table>
+                    }
+                </center>
+                </td>
+                <td>@item.TotalSum р.</td>
+                @{
+                    if (item.IsFinished)
+                    {
+                        <td><center>Да</center></td>
+                    }
+                    else
+                    {
+                        <td><center>Нет</center></td>
+                    }
+                }
+                @{
+                    if (item.IsOrdered)
+                    {
+                        <td><center>Да</center></td>
+                    }
+                    else
+                    {
+                        <td><center>Нет</center></td>
+                    }
+                }
+                <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+            </tr>
+        }
+    </table>
+}
