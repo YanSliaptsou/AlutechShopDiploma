@@ -22,6 +22,17 @@ namespace AlutechShopDiploma.Services
             return sqlWorker.SelectDataFromDB("SELECT Id from AspNetUsers WHERE UserName = '" + username + "'");
         }
 
+        public string GetUserRole()
+        {
+            string userID = GetUserID();
+            ApplicationUser applicationUser = applicationDbContext.Users.Find(userID);
+
+            string roleID = sqlWorker.SelectDataFromDB("SELECT RoleID FROM AspNetUserRoles WHERE UserID = '" + applicationUser.Id +"'");
+            string roleName = sqlWorker.SelectDataFromDB("SELECT Name FROM AspNetRoles WHERE Id = '" + roleID + "'");
+
+            return roleName;
+        }
+
         public double GetUserBalance()
         {
             return Convert.ToDouble(sqlWorker.SelectDataFromDB("SELECT bonusAmmount from AspNetUsers WHERE Id = '" + GetUserID() +"'"));

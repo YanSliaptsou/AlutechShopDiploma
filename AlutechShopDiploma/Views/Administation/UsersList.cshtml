@@ -1,0 +1,155 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.ApplicationUser>
+@using AlutechShopDiploma.Services
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1>
+
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+    @{ 
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<AlutechShopDiploma.Models.ApplicationUser> users = context.Users.OrderBy(x => x.UserName).ToList();
+
+        List<string> userIds = new List<string>();
+        List<string> usernames = new List<string>();
+
+        foreach (var user in users)
+        {
+            userIds.Add(user.Id);
+            usernames.Add(user.UserName);
+        }
+
+        SelectList serIdsitems = new SelectList(userIds);
+        SelectList usernamesitems = new SelectList(usernames);
+    }
+    @{
+        <h1><center>Управление пользователями</center></h1>
+        <h3><center>Найти пользователя</center></h3>
+        using (Html.BeginForm("UsersList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                @Html.Label("Найти пользователя по ID")
+            </div>
+            <div style="display:inline-block">
+                @Html.DropDownList("ID", serIdsitems, new { @class = "form-control", @style = "margin-left: 18%;" })
+            </div>
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 85%;" />
+            </div>
+
+        }
+        <h1>
+        </h1>
+        using (Html.BeginForm("UsersList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                @Html.Label("Найти пользователя по имени")
+            </div>
+            <div style="display:inline-block">
+                @Html.DropDownList("name", usernamesitems, new { @class = "form-control", @style = "margin-left: 35%;" })
+            </div>
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 130%;" />
+            </div>
+        }
+        <h1>
+        </h1>
+        using (Html.BeginForm("UsersList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-danger" value="Показать всех пользователей" style="margin-left: 50%;" />
+            </div>
+        }
+    }
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+
+    <table class="table_info">
+        <caption>Пользователи</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Логин</center></th>
+            <th><center>Бонусный баланс</center></th>
+            <th><center>Заблокирован</center></th>
+            <th><center>Роль</center></th>
+            <th><center>Действия</center></th>
+        </tr>
+        @{
+            foreach (var user in Model)
+            {
+                <tr>
+                    <th><center>@user.Id</center></th>
+                    <th><center>@user.UserName</center></th>
+                    <th><center>@user.bonusAmmount</center></th>
+                    @{
+                        if (user.isBanned)
+                        {
+                            <th><center>Да</center></th>
+                        }
+                        else
+                        {
+                            <th><center>Нет</center></th>
+                        }
+                        UsersWorker usersWorker = new UsersWorker(user.UserName);
+
+                        <th><center>@usersWorker.GetUserRole()</center></th>
+                        if (usersWorker.GetUserRole() != "admin")
+                        {
+                            if (!user.isBanned)
+                            {
+                                <th>
+                                    <center>
+                                        @using (Html.BeginForm("BlockUser", "Administation",new { userId =  user.Id }))
+                                        {
+                                            <input class="btn btn-danger" type="submit" value="Заблокировать " />
+                                        }
+                                        </center>
+                                </th>
+                            }
+                            else
+                            {
+                                <th>
+                                    <center>
+                                        @using (Html.BeginForm("UnlbockUser", "Administation", new { userId = user.Id }))
+                                        {
+                                            <input class="btn btn-success" type="submit" value="Разблокировать " />
+                                        }
+                                    </center>
+                                </th>
+                            }
+                        }
+                        else
+                        {
+                            <th><center></center></th>
+                        }
+                    }
+
+                </tr>
+            }
+        }
+    </table>
+</body>

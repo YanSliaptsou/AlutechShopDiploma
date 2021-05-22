@@ -1,0 +1,173 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Comment>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+
+    @{
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<Good> goods = context.Goods.OrderBy(x => x.Name).ToList();
+        IEnumerable<AlutechShopDiploma.Models.ApplicationUser> users = context.Users.OrderBy(x => x.UserName).ToList();
+
+        List<string> goodsNames = new List<string>();
+        List<string> usernames = new List<string>();
+        List<string> commnetIds = new List<string>();
+
+        foreach (var good in goods)
+        {
+            goodsNames.Add(good.Name);
+        }
+
+        foreach (var user in users)
+        {
+            usernames.Add(user.UserName);
+        }
+
+        foreach (var comment in Model)
+        {
+            commnetIds.Add(Convert.ToString(comment.CommentID));
+        }
+
+        SelectList goodsNamesitems = new SelectList(goodsNames);
+        SelectList usernamesitems = new SelectList(usernames);
+        SelectList commnetIdsitems = new SelectList(commnetIds);
+
+    }
+    <h1><center>Управление отзывами</center></h1>
+    <h3><center>Найти отзыв</center></h3>
+    @using (Html.BeginForm("CommentsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти отзыв по ID")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("commentId", commnetIdsitems, new { @class = "form-control", @style = "margin-left: 579%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 589%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("CommentsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти отзывы по названию товара")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("goodName", goodsNamesitems, new { @class = "form-control", @style = "margin-left: 18%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 84%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("CommentsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти отзывы по именю пользователя")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("userName", usernamesitems, new { @class = "form-control", @style = "margin-left: 37%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 130%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("CommentsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-danger" value="Показать все отзывы" style="margin-left: 150%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    <table class="table_info">
+        <caption>Отзывы</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Изображение товара</center></th>
+            <th><center>Товар</center></th>
+            <th><center>Пользователь</center></th>
+            <th><center>Комментарий</center></th>
+            <th><center>Дата и время</center></th>
+            <th><center>Действия</center></th>
+        </tr>
+        @{
+            foreach (var comment in Model)
+            {
+                <tr>
+                    <td><center>@comment.CommentID</center></td>
+
+                    @{
+                        GoodWorker goodWorker = new GoodWorker(comment.GoodID);
+                        <td><center><img style="width:40%" src="@Url.Content(goodWorker.GetGoodImage())" /></center></td>
+                        <td><center>@goodWorker.GetGoodName()</center></td>
+                        <td><center>@context.Users.Find(comment.UserID).UserName</center></td>
+                    }
+                    <td><center>@comment.CommentText</center></td>
+                    <td><center>@comment.DateTime.Day.@comment.DateTime.Month.@comment.DateTime.Year  @comment.DateTime.Hour:@comment.DateTime.Minute:@comment.DateTime.Second</center></td>
+                    <td><center>
+                    @{ 
+                        AlutechShopDiploma.Models.ApplicationUser user = context.Users.Find(comment.UserID);
+                        UsersWorker usersWorker = new UsersWorker(user.UserName);
+
+                        if (usersWorker.GetUserRole() != "admin")
+                        {
+                            if (!user.isBanned)
+                            {
+                                using (Html.BeginForm("BlockUser", "Administation", new { userId = comment.UserID }))
+                                {
+                                <input class="btn btn-danger" type="submit" value="Заблокировать пользователя" />
+                                }
+                            }
+                            else
+                            {
+                                using (Html.BeginForm("UnlbockUser", "Administation", new { userId = user.Id }))
+                                        {
+                                            <input class="btn btn-success" type="submit" value="Разблокировать " />
+                                        }
+                            }
+                        }
+                        <h1>
+
+                        </h1>
+                        <form action="/Comment/Delete?commentID=@comment.CommentID" method="post">
+                            <input class="btn btn-danger" type="submit" value="Удалить комментарий" />
+                        </form> 
+                      }
+                    </center></td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>
+

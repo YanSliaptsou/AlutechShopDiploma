@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Администрирование";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<head>
+    <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
+</head>
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["message"]
+    </div>
+}
+@if (TempData["mistake"] != null)
+{
+    <div class="alert alert-danger" style="margin-left: 45px;">
+        @TempData["mistake"]
+    </div>
+}
+@if (TempData["succsess"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["succsess"]
+    </div>
+}
+
+<div class="product-item well" style="margin-top: 2%;">              
+    <div class="product-item row">
+        <center>
+            @using (Html.BeginForm("UsersList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление пользователями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("CommentsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление комментариями" />
+            }
+        </center>
+    </div>
+</div>
+
+
+
+
+

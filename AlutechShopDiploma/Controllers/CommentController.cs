@@ -73,7 +73,7 @@ namespace AlutechShopDiploma.Controllers
         public ActionResult Delete(int commentID)
         {
 
-            TempData["message"] = string.Format("Ваш комментарий удалён");
+            TempData["message"] = string.Format("Комментарий удалён");
             repository.DeleteComment(commentID);
 
             if (Request.UrlReferrer != null)

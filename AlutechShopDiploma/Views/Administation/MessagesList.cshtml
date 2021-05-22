@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.UserMessage>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+
+    @{
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<AlutechShopDiploma.Models.ApplicationUser> users = context.Users.OrderBy(x => x.UserName).ToList();
+
+        List<string> usernames = new List<string>();
+        List<string> usermesIds = new List<string>();
+
+        foreach (var user in users)
+        {
+            usernames.Add(user.UserName);
+        }
+
+        foreach(var message in Model)
+        {
+            usermesIds.Add(message.UserMessageID.ToString());
+        }
+
+        SelectList usernamesitems = new SelectList(usernames);
+    }
+ </body>
