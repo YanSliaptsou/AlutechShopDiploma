@@ -39,6 +39,30 @@
             {
                 <input type="submit" class="btn btn-success" value="Управление комментариями" />
             }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("MessagesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление сообщениями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("CategoriesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление категориями товаров" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("DiscountsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление скидками" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("ImagesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление изображениями" />
+            }
         </center>
     </div>
 </div>

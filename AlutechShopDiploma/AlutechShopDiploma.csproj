@@ -384,7 +384,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
+    <Compile Include="Models\Abstract\IDiscountRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
+    <Compile Include="Models\Abstract\IImageContainerRepositiry.cs" />
     <Compile Include="Models\Abstract\IMarkRepository.cs" />
     <Compile Include="Models\Abstract\IOrderItemRepository.cs" />
     <Compile Include="Models\Abstract\IOrderRepository.cs" />
@@ -397,7 +399,9 @@
     <Compile Include="Models\ApplicationManager.cs" />
     <Compile Include="Models\Concrete\EFCategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFCommentRepository.cs" />
+    <Compile Include="Models\Concrete\EFDiscountRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
+    <Compile Include="Models\Concrete\EFImageContainerRepositiry.cs" />
     <Compile Include="Models\Concrete\EFMarkRepository.cs" />
     <Compile Include="Models\Concrete\EFOrderItemRepository.cs" />
     <Compile Include="Models\Concrete\EFOrderRepository.cs" />
@@ -414,6 +418,7 @@
     <Compile Include="Models\ViewModels\PurchaseItemViewModel.cs" />
     <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
     <Compile Include="Models\ViewModels\UserBalanceViewModel.cs" />
+    <Compile Include="Services\CategoriesWorker.cs" />
     <Compile Include="Services\EmailProcessor.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -623,6 +628,11 @@
     <Content Include="Views\Administation\UsersList.cshtml" />
     <Content Include="Views\Administation\CommentsList.cshtml" />
     <Content Include="Views\Administation\MessagesList.cshtml" />
+    <Content Include="Views\Administation\CategoriesList.cshtml" />
+    <Content Include="Views\Administation\CreateСategory.cshtml" />
+    <Content Include="Views\Administation\EditСategory.cshtml" />
+    <Content Include="Views\Administation\DiscountsList.cshtml" />
+    <Content Include="Views\Administation\CreateDiscount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

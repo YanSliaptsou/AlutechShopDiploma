@@ -1,0 +1,143 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Discount>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+    @{
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<Good> goods = context.Goods.OrderBy(x => x.Name).ToList();
+
+        List<string> goodsNames = new List<string>();
+        List<string> discountsids = new List<string>();
+
+        foreach (var good in goods)
+        {
+            goodsNames.Add(good.Name);
+        }
+
+
+        foreach (var discount in Model)
+        {
+            discountsids.Add(Convert.ToString(discount.DiscountID));
+        }
+
+        SelectList goodsNamesitems = new SelectList(goodsNames);
+        SelectList discountIdsitems = new SelectList(discountsids);
+    }
+
+    <h1><center>Управление скидками</center></h1>
+    <h3><center>Найти скидку</center></h3>
+
+    @using (Html.BeginForm("DiscountsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти скидку по ID")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("discountId", discountIdsitems, new { @class = "form-control", @style = "margin-left: 733%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 656%;" />
+        </div>
+
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("DiscountsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти скидку по названию товара")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("goodName", goodsNamesitems, new { @class = "form-control", @style = "margin-left: 35%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 158%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("DiscountsList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-danger" value="Показать все скидки" style="margin-left: 133%;" />
+        </div>
+    }
+    <center>
+        <form action="/Administation/CreateDiscount">
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-info" value="Создать скидку" style="margin-left: 6%;" />
+
+            </div>
+        </form>
+    </center>
+    <h1></h1>
+    <table class="table_info">
+        <caption>Скидки на товары</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Изображение товара</center></th>
+            <th><center>Название товара</center></th>
+            <th><center>Величина скидки</center></th>
+            <th><center>Дейстаия</center></th>
+        </tr>
+        @{
+            foreach (var discount in Model)
+            {
+                <tr>
+                    <td><center>@discount.DiscountID</center></td>
+                    @{
+                        GoodWorker goodWorker = new GoodWorker(discount.GoodID);
+                        <td><center><img style="width:40%" src="@Url.Content(goodWorker.GetGoodImage())" /></center></td>
+                        <td><center>@goodWorker.GetGoodName()</center></td>
+                    }
+                    <td><center>
+                            @discount.DiscountAmmount %
+                        <h1></h1>
+                        @using(Html.BeginForm("EditDiscount", "Administation", FormMethod.Post))
+                        {
+                            @Html.Hidden("DiscountId", discount.DiscountID)
+                            @Html.Editor("DiscountAmmount", new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                            <h1></h1>
+                            <input class="btn btn-success" type="submit" value="Редактировать скидку" />
+                        }
+                        </center></td>
+                    <td><center>
+
+                            @using (Html.BeginForm("DeleteDiscount", "Administation",FormMethod.Post))
+                            {
+                                @Html.Hidden("discountId", discount.DiscountID)
+                                <input class="btn btn-danger" type="submit" value="Удалить скидку" />
+                            }
+
+                        </center></td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>
