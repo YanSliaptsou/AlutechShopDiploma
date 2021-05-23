@@ -2,7 +2,7 @@
     ViewBag.Title = "Администрирование";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2><center>@ViewBag.Title</center></h2>
 
 <head>
     <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
@@ -62,6 +62,24 @@
             @using (Html.BeginForm("ImagesList", "Administation"))
             {
                 <input type="submit" class="btn btn-success" value="Управление изображениями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("WarehousesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление складами" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("GoodsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление товарами" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("Statistics", "Administation"))
+            {
+                <input type="submit" class="btn btn-info" value="Статистика" />
             }
         </center>
     </div>

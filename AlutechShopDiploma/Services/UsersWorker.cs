@@ -213,7 +213,7 @@ namespace AlutechShopDiploma.Services
                 totalSum += Math.Round(orderWorker.CountOrderPrice(item) - orderWorker.GetOrderPrice(item), 2);
             }
 
-            return totalSum;
+            return Math.Abs(totalSum);
         }
 
         public int GetTotalGoodsAmmountInAllOrders()

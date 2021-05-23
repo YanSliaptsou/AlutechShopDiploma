@@ -1,0 +1,127 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models
+
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+@{ 
+    AdminStatisticsGetter asg = new AdminStatisticsGetter();
+}
+<h1><center>Сводная статистика</center></h1>
+<table class="table_info">
+    <caption>Полная статистика</caption>
+    <tr>
+        <th><center>Показатель</center></th>
+        <th><center>Значение</center></th>
+    </tr>
+    <tr>
+        <th colspan="2"><center>Статистика по активности пользователей</center></th>
+    </tr>
+    <tr>
+        <td><center>Количество оценок</center></td>
+        <td><center>@asg.GetMarksAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Максимальное количество оценок</center></td>
+        <td><center>@asg.GetmaxMarksCount().Item1 шт. у товара @asg.GetmaxMarksCount().Item2</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество комментариев</center></td>
+        <td><center>@asg.GetCommentsCount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Максимальное количество комментариев</center></td>
+        <td><center>@asg.GetmaxCommentsCount().Item1 шт. у товара @asg.GetmaxCommentsCount().Item2</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество сообщений от пользователей</center></td>
+        <td><center>@asg.GetMessagesAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <th colspan="2"><center>Статистика по пользователям</center></th>
+    </tr>
+    <tr>
+        <td><center>Количество пользователей всего</center></td>
+        <td><center>@asg.GetUsersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество заблокированных пользователей </center></td>
+        <td><center>@asg.GetBlockedUsersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество незаблокированных пользователей </center></td>
+        <td><center>@asg.GetNotBlockedUsersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Общее количество средств на бонусных счетах пользователей </center></td>
+        <td><center style="color:green; font-weight:bold">@asg.GetBonusAmmountTotal() р.</center></td>
+    </tr>
+    <tr>
+        <td><center>Среднее количество средств на бонусных счетах пользователей </center></td>
+        <td><center style="color:green; font-weight:bold">@asg.GetBonusAmmountAvg() р.</center></td>
+    </tr>
+    <tr>
+        <th colspan="2"><center>Статистика по товарам</center></th>
+    </tr>
+    <tr>
+        <td><center>Среднеяя цена всех товаров</center></td>
+        <td><center>@asg.AvgGoodPrice() р.</center></td>
+    </tr>
+    <tr>
+        <td><center>Средний рейтинг всех товаров</center></td>
+        <td><center>@asg.GetAvgRating() / 10</center></td>
+    </tr>
+    <tr>
+        <td><center>Наилучший рейтинг</center></td>
+        <td><center>@asg.GetMaxGoodRating().Item1 / 10 у товара @asg.GetMaxGoodRating().Item2</center></td>
+    </tr>
+    <tr>
+        <td><center>Общее количество просмотров всех товаров</center></td>
+        <td><center>@asg.GetTotalViews() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Среднее количество просмотров всех товаров</center></td>
+        <td><center>@asg.GetAvgViews() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Максимальное количество просмотров всех товаров</center></td>
+        <td><center>@asg.GetMaxGoodViews().Item1 шт. у товара @asg.GetMaxGoodViews().Item2</center></td>
+    </tr>
+    <tr>
+        <th colspan="2"><center>Статистика по заказам</center></th>
+    </tr>
+    <tr>
+        <td><center>Количество всех заказов</center></td>
+        <td><center>@asg.GetOrdersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество оплаченных заказов</center></td>
+        <td><center>@asg.GetOrderedOrdersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество неоплаченных заказов</center></td>
+        <td><center>@asg.GetNotOrderedOrdersAmmount() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество купленных товаров</center></td>
+        <td><center>@asg.GetTotalAmountOrderedGoods() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Количество купленных уникальных товаров</center></td>
+        <td><center>@asg.GetTotalUniqueAmountOrderedGoods() шт.</center></td>
+    </tr>
+    <tr>
+        <td><center>Сумма всех заказов</center></td>
+        <td><center style="color:blue; font-weight:bold">@asg.GetTotalSumOfAllOrders() р.</center></td>
+    </tr>
+    <tr>
+        <td><center>Сумма всех начисленных бонусов</center></td>
+        <td><center style="color:green; font-weight:bold">@asg.GetAddedBonusesSumOfAllOrders() р.</center></td>
+    </tr>
+    <tr>
+        <td><center>Сумма всех потраченных бонусов</center></td>
+        <td><center style="color:red; font-weight:bold">@asg.GetSpentBonusesSumOfAllOrders() р.</center></td>
+    </tr>
+</table>

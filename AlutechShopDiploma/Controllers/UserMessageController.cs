@@ -7,13 +7,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using AlutechShopDiploma.Models;
 
 namespace AlutechShopDiploma.Controllers
 {
     public class UserMessageController : Controller
     {
         IUserMessageRepository repository;
-
+        ApplicationDbContext context = new ApplicationDbContext();
         public UserMessageController(IUserMessageRepository rep)
         {
             repository = rep;
@@ -41,6 +42,18 @@ namespace AlutechShopDiploma.Controllers
             {
                 TempData["mistake"] = string.Format("Произошла ошибка. Проверьте введённые данные.");
             }
+            if (Request.UrlReferrer != null)
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+            return Content("Message");
+        }
+
+        public ActionResult AskToUnban()
+        {
+            EmailSettings settings = new EmailSettings();
+            EmailProcessor processor = new EmailProcessor(settings);
+            processor.ProcessAskingToUnbanUser(context.Users.FirstOrDefault(x => x.UserName == HttpContext.User.Identity.Name));
+            TempData["succsess"] = string.Format("Заявка о вашей разблокировке подана.");
             if (Request.UrlReferrer != null)
                 Response.Redirect(Request.UrlReferrer.ToString());
 

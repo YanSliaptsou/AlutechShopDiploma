@@ -43,7 +43,6 @@ namespace AlutechShopDiploma.Models.Concrete
                 Warehouse dbEntry = context.Warehouses.Find(warehouse.WarehouseID);
                 if (dbEntry != null)
                 {
-                    dbEntry.GoodID = warehouse.GoodID;
                     dbEntry.GoodAmmount = warehouse.GoodAmmount;
                 }
             }

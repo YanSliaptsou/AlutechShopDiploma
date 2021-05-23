@@ -34,6 +34,7 @@ namespace AlutechShopDiploma.Models.Concrete
         public void EditImage(ImageContainer image)
         {
             ImageContainer img = context.ImageContainers.Find(image.ImageContainerID);
+
             img.Url = image.Url;
             context.SaveChanges();
         }

@@ -7,9 +7,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AlutechShopDiploma.Models.Abstract;
+using AlutechShopDiploma.Services;
+using AlutechShopDiploma.Models.Concrete;
 
 namespace AlutechShopDiploma.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdministationController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
@@ -17,16 +20,21 @@ namespace AlutechShopDiploma.Controllers
         ICategoryRepository categoryRepository;
         IDiscountRepository discountRepository;
         IImageContainerRepositiry imageContainerRepositiry;
+        IWarehouseRepository warehouseRepository;
+        IGoodRepository goodRepository;
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public AdministationController(ICategoryRepository _repoCateg, IDiscountRepository _repoDisc, IImageContainerRepositiry _repoImg)
+        public AdministationController(ICategoryRepository _repoCateg, IDiscountRepository _repoDisc, IImageContainerRepositiry _repoImg, IWarehouseRepository _warehouse, IGoodRepository _goodRepository)
         {
             categoryRepository = _repoCateg;
             discountRepository = _repoDisc;
             imageContainerRepositiry = _repoImg;
+            warehouseRepository = _warehouse;
+            goodRepository = _goodRepository;
         }
 
         public ViewResult UsersList(string ID,string name)
@@ -178,10 +186,58 @@ namespace AlutechShopDiploma.Controllers
         }
 
 
-        public PartialViewResult GoodsList()
+        public ViewResult GoodsList(string goodId, string goodName)
         {
-            IEnumerable<Good> goods = applicationDbContext.Goods;
-            return PartialView(goods);
+            IEnumerable<Good> goods;
+            if (goodId != null)
+            {
+                int gId = Convert.ToInt32(goodId);
+                goods = applicationDbContext.Goods.Where(x => x.GoodID == gId);
+            }
+            else if (goodName != null)
+            {
+                goods = applicationDbContext.Goods.Where(x => x.Name == goodName);
+            }
+            else
+            {
+                goods = applicationDbContext.Goods;
+            }
+            return View(goods);
+        }
+
+        public ViewResult EditGood(int goodId)
+        {
+            Good good = applicationDbContext.Goods.FirstOrDefault(x => x.GoodID == goodId);
+            return View(good);
+        }
+
+        [HttpPost]
+        public ActionResult EditGood(Good good)
+        {
+            if (ModelState.IsValid)
+            {
+                goodRepository.EditGood(good);
+                TempData["message"] = string.Format("Изменение информации о \"{0}\" сохранены", good.Name);
+                return RedirectToAction("GoodsList");
+            }
+            else
+            {
+                return View(good);
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteGood(int goodId)
+        {
+            try
+            {
+                TempData["message"] = string.Format("Товар \"{0}\" удален.", goodRepository.Goods.FirstOrDefault(c => c.GoodID == goodId).Name);
+                goodRepository.DeleteGood(goodId);
+            }
+            catch
+            {
+                TempData["mistake"] = string.Format("Невозможно удалить категорию");
+            }
+            return RedirectToAction("GoodsList");
         }
 
         public ViewResult DiscountsList(string discountId, string goodName)
@@ -232,7 +288,7 @@ namespace AlutechShopDiploma.Controllers
         [HttpPost]
         public ActionResult CreateDiscount(Discount discount)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && discount.GoodID != 0)
             {
                 discountRepository.CreateDiscount(discount);
                 TempData["message"] = string.Format("Скидка успешно добавлена");
@@ -240,6 +296,7 @@ namespace AlutechShopDiploma.Controllers
             }
             else
             {
+                TempData["mistake"] = string.Format("Произошла ошибка");
                 return View(discount);
             }
         }
@@ -271,7 +328,7 @@ namespace AlutechShopDiploma.Controllers
 
         public ActionResult DeleteImage(int imageId)
         {
-            discountRepository.DeleteDiscount(imageId);
+            imageContainerRepositiry.DeleteImage(imageId);
             TempData["message"] = string.Format("Изображение удалено");
             if (Request.UrlReferrer != null)
                 Response.Redirect(Request.UrlReferrer.ToString());
@@ -279,15 +336,15 @@ namespace AlutechShopDiploma.Controllers
             return Content("Message");
         }
 
-        public ViewResult CreateIamge()
+        public ViewResult CreateImage()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateImaget(ImageContainer image)
+        public ActionResult CreateImage(ImageContainer image)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && image.GoodID != 0)
             {
                 imageContainerRepositiry.CreateImage(image);
                 TempData["message"] = string.Format("Изображение успешно добавлено");
@@ -295,15 +352,80 @@ namespace AlutechShopDiploma.Controllers
             }
             else
             {
+                TempData["mistake"] = string.Format("Произошла ошибка");
                 return View(image);
             }
         }
 
-        public PartialViewResult WarehousesList()
+        public ViewResult WarehousesList(string goodName)
         {
-            IEnumerable<Warehouse> warehouses = applicationDbContext.Warehouses;
-            return PartialView(warehouses);
+            IEnumerable<Warehouse> warehouses;
+            if (goodName != null)
+            {
+                Good good = applicationDbContext.Goods.FirstOrDefault(x => x.Name == goodName);
+                warehouses = applicationDbContext.Warehouses.Where(x => x.GoodID == good.GoodID);
+            }
+            else
+            {
+                warehouses = applicationDbContext.Warehouses;
+            }
+            return View(warehouses);
+        }
+        public ActionResult EditWarehouse(Warehouse warehouse)
+        {
+            warehouseRepository.EditWarehouse(warehouse);
+            TempData["message"] = string.Format("Количество товаров изменено");
+            if (Request.UrlReferrer != null)
+                Response.Redirect(Request.UrlReferrer.ToString());
+
+            return Content("Message");
         }
 
+        public ViewResult CreateWarehouse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateWarehouse(Warehouse warehouse)
+        {
+            if (ModelState.IsValid && warehouse.GoodID != 0)
+            {
+                warehouseRepository.CreateWarehouse(warehouse);
+                TempData["message"] = string.Format("Склад успешно добавлен");
+                return RedirectToAction("WarehousesList");
+            }
+            else
+            {
+                TempData["mistake"] = string.Format("Произошла ошибка");
+                return View(warehouse);
+            }
+        }
+
+        public ViewResult Statistics()
+        {
+            return View();
+        }
+
+        public ViewResult UnbanUser(string userId)
+        {
+            ApplicationUser user = applicationDbContext.Users.Find(userId);
+            if (user.isBanned == true)
+            {
+                user.isBanned = false;
+                applicationDbContext.SaveChanges();
+                EmailSettings emailSettings = new EmailSettings();
+                EmailProcessor emailProcessor = new EmailProcessor(emailSettings);
+
+                emailProcessor.ProcessInformClientAboutUnban(user);
+
+                ViewData["success"] = string.Format("Пользователь " + user.UserName + " успешно разблокирован.");
+            }
+            else
+            {
+                ViewData["mistake"] = string.Format("Пользователь " + user.UserName + " уже разблокирован.");
+            }
+            return View();
+        }
     }
 }

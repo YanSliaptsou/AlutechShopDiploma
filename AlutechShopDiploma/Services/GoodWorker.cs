@@ -54,5 +54,14 @@ namespace AlutechShopDiploma.Services
             Good good = applicationDbContext.Goods.Find(goodID);
             return good.Price;
         }
+
+        public string GetGoodCategory()
+        {
+            int table = applicationDbContext.Goods.Find(goodID).TableID;
+            string categoryId = sqlWorker.SelectDataFromDB("SELECT CategoryID FROM GoodsTables WHERE GoodTableID = " + table);
+            int catId = Convert.ToInt32(categoryId);
+
+            return applicationDbContext.Categories.FirstOrDefault(x => x.CategoryID == catId).Name;
+        }
     }
 }

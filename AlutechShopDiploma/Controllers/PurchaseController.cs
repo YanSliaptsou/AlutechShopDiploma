@@ -217,6 +217,7 @@ namespace AlutechShopDiploma.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        [Authorize(Roles = "admin")]
         public ViewResult ConfirmPurchase(string userId, int orderId)
         {
             OrderWorker orderWorker = new OrderWorker();

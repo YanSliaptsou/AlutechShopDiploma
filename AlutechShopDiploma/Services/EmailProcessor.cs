@@ -206,5 +206,75 @@ namespace AlutechShopDiploma.Models.Concrete
                 smptClient.Send(messageToClient);
             }
         }
+
+        public void ProcessAskingToUnbanUser(ApplicationUser user)
+        {
+            using (var smptClient = new SmtpClient())
+            {
+                smptClient.EnableSsl = emailSettings.UseSsl;
+                smptClient.Host = emailSettings.ServerName;
+                smptClient.Port = emailSettings.ServerPort;
+                smptClient.UseDefaultCredentials = false;
+                smptClient.Credentials = new NetworkCredential(emailSettings.Username, emailSettings.Password);
+
+                StringBuilder messageBodyToClient = new StringBuilder();
+
+                messageBodyToClient.AppendLine("Уважаемый(-ая) " + user.UserName);
+                messageBodyToClient.AppendLine("Вы успешно подали запрос на разблокировку вас.");
+                messageBodyToClient.AppendLine("Ваша заявка будет рассмотрена в течение некоторого времени. Результат о рассмотрении придёт вам на почту, указанную при регистрации");
+                messageBodyToClient.AppendLine("С уважением, админимтрация AlutechShop");
+                MailMessage messageToClient = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    user.Email,
+                    "Заявка о разблокировке",
+                    messageBodyToClient.ToString()
+                );
+                smptClient.Send(messageToClient);
+
+                StringBuilder messageBodyToAdmin = new StringBuilder();
+
+                var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                var confirmBonusUrl = urlHelper.Action("UnbanUser", "Administation", new { userId = user.Id }, protocol: HttpContext.Current.Request.Url.Scheme);
+
+                messageBodyToAdmin.AppendLine("Поступила заяка о разблокировке от клиента " + user.UserName + " Id = " + user.Id);
+                messageBodyToAdmin.AppendLine("Разблокировать можно по ссылке: " + confirmBonusUrl);
+
+                MailMessage messageToAdmin = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    "yansleptsov4@gmail.com",
+                    "Заявка о разблокировке",
+                    messageBodyToAdmin.ToString()
+                );
+                smptClient.Send(messageToAdmin);
+            }
+        }
+
+        public void ProcessInformClientAboutUnban(ApplicationUser user)
+        {
+            using (var smptClient = new SmtpClient())
+            {
+                smptClient.EnableSsl = emailSettings.UseSsl;
+                smptClient.Host = emailSettings.ServerName;
+                smptClient.Port = emailSettings.ServerPort;
+                smptClient.UseDefaultCredentials = false;
+                smptClient.Credentials = new NetworkCredential(emailSettings.Username, emailSettings.Password);
+
+                StringBuilder messageBodyToClient = new StringBuilder();
+
+                messageBodyToClient.AppendLine("Уважаемый(-ая) " + user.UserName);
+                messageBodyToClient.AppendLine("Мы проверили вашу учётную запись.");
+                messageBodyToClient.AppendLine("Ваша учётная запись была успешно разблокирована. Теперь вы можете писать комментарии и оценивать наши товары.");
+                messageBodyToClient.AppendLine("Приносим извинения за ваше беспокойство.");
+                messageBodyToClient.AppendLine("С уважением, админимтрация AlutechShop");
+
+                MailMessage messageToClient = new MailMessage(
+                    emailSettings.MailFromAddress,
+                    user.Email,
+                    "Сообщение о разблокировке",
+                    messageBodyToClient.ToString()
+                );
+                smptClient.Send(messageToClient);
+            }
+        }
     }
 }

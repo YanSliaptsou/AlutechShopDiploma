@@ -51,10 +51,6 @@ namespace AlutechShopDiploma.Models.Concrete
                 {
                     dbEntry.Name = good.Name;
                     dbEntry.Price = good.Price;
-                    dbEntry.Rating = good.Rating;
-                    dbEntry.Views = good.Views;
-                    dbEntry.ItemID = good.ItemID;
-                    dbEntry.TableID = good.TableID;
                     dbEntry.Description = good.Description;
                 }
             }

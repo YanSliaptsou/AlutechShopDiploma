@@ -52,13 +52,28 @@
                 @{
                     if (usersWorker.GetUserStatus())
                     {
-                        <td><center>Заблокирован. Подать заявку на разблокировку можно <a href="#">здесь</a></center></td>
+                        <td><center>Заблокирован. Подать заявку на разблокировку можно <a href="/UserMessage/AskToUnban">здесь</a></center></td>
                     }
                     else
                     {
                         <td><center>Не заблокирован</center></td>
                     }
                 }
+            </tr>
+            <tr>
+                <td><center>Роль</center></td>
+                @{
+                    UsersWorker worker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+                    if (worker.GetUserRole() == "admin")
+                    {
+                        <td><center>@worker.GetUserRole() <a href="/Administation/Index">Администрирование</a></center></td>
+                    }
+                    else
+                    {
+                        <td><center>@worker.GetUserRole()</center></td>
+                    }
+                }
+
             </tr>
             <tr>
                 <th colspan="2"><center>Активность на сайте</center></th>
