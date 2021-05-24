@@ -14,7 +14,7 @@
 
 <body>
   <div class="comments">
-  <h3 class="title-comments">Отзывы (@comments.Count)</h3>
+      <h3 class="title-comments">@AlutechShopDiploma.Resources.Views.Comment.List.CommentLabel (@comments.Count)</h3>
   @{ 
       foreach(var comment in Model)
       {
@@ -33,7 +33,7 @@
                           <div class="media-heading">
                               <div class="author">@username</div>
                               <div class="metadata">
-                                  <span class="date">@comment.DateTime</span>
+                                  <span class="date">@comment.DateTime.Day.@comment.DateTime.Month.@comment.DateTime.Year  @comment.DateTime.Hour:@comment.DateTime.Minute:@comment.DateTime.Second</span>
                               </div>
                           </div>
                           <div class="media-text text-justify">@comment.CommentText</div>
@@ -42,7 +42,7 @@
                               {
                           <div class="footer-comment">
                               <span class="comment-reply">
-                                  @Html.ActionLink("Удалить", "Delete", "Comment", new { commentID = comment.CommentID }, null)
+                                  @Html.ActionLink(AlutechShopDiploma.Resources.Views.Comment.List.ActionLink, "Delete", "Comment", new { commentID = comment.CommentID }, null)
                               </span>
                           </div>
                                   }

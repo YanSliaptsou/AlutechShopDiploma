@@ -70,7 +70,7 @@
                 }
                 else
                 {
-                    <div class="alert alert-warning">К сожалению, данного товара нет на складе.</div>
+                    <div class="alert alert-warning">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.NoGood</div>
                 }
             }
 
@@ -79,43 +79,43 @@
     <div class="product-item well" style="width:105%">
         <table class="table1">
             <caption class="caption1">
-                Общие характеристики
+                @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CommonChar
             </caption>
             <tr class="tr1">
-                <th class="th1">Характиеристика</th>
-                <th class="th1">Значение</th>
+                <th class="th1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CharLabel</th>
+                <th class="th1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ValueLabel</th>
             </tr>
             <tr class="tr1">
-                <td class="td1">Цена</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.PriceLabel</td>
                 @{
                     if (discountLabel != "")
                     {
                         GoodWorker goodWorker = new GoodWorker(Model.GoodID);
                         newPrice = goodWorker.CalculateGoodPrice();
-                        <td class="td1"><s>@Model.Price Руб.</s> @newPrice Руб.</td>
+                                <td class="td1"><s>@Model.Price @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CurrencyLabel</s> @newPrice @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CurrencyLabel</td>
                     }
                     else
                     {
-                        <td class="td1">@Model.Price Руб.</td>
+            <td class="td1">@Model.Price @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CurrencyLabel</td>
                     }
                 }
 
             </tr>
             <tr class="tr1">
-                <td class="td1">Наличие скидки</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.DiscAvailableLabel</td>
                 @{
                     if (discountLabel != "")
                     {
-                        <td class="td1">Да</td>
+                        <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.Yes</td>
                     }
                     else
                     {
-                        <td class="td1">Нет</td>
+                        <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.No</td>
                     }
                 }
             </tr>
             <tr class="tr1">
-                <td class="td1">Скидка</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.DiscountLabel</td>
                 @{
                     if (discountLabel != "")
                     {
@@ -128,26 +128,26 @@
                 }
             </tr>
             <tr class="tr1">
-                <td class="td1">Рейтинг товара</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.RatingLabel</td>
                 <td class="td1">@Model.Rating / 10.0</td>
             </tr>
             <tr class="tr1">
-                <td class="td1">Количество просмотров товара</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ViewsLabel</td>
                 <td class="td1">@Model.Views</td>
             </tr>
             <tr class="tr1">
-                <td class="td1">Количество товара на складе</td>
+                <td class="td1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.GoodAmmountLabel</td>
                 <td class="td1">@goodAmmount шт.</td>
             </tr>
         </table>
     </div>
 
     <div class="tab" style="width:105%">
-        <button class="tablinks" onclick="openCity(event, 'London')">Технические характеристики</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Описание товара</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Отзывы</button>
-        <button class="tablinks" onclick="openCity(event, 'Moscow')">Оценить товар</button>
-        <button class="tablinks" onclick="openCity(event, 'Minsk')">Подобные товары</button>
+        <button class="tablinks" onclick="openCity(event, 'London')">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.TechCharLabel</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.GoodDescrLabel</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ReviewsLabel</button>
+        <button class="tablinks" onclick="openCity(event, 'Moscow')">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.MarkGoodLabel</button>
+        <button class="tablinks" onclick="openCity(event, 'Minsk')">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.SimilarGoodsLabel</button>
     </div>
 
     <!-- Tab content -->
@@ -155,11 +155,11 @@
         <div class="product-item well">
             <table class="table1">
                 <caption class="caption1">
-                    Технические характеристики
+                    @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.TechCharLabel
                 </caption>
                 <tr class="tr1">
-                    <th class="th1">Характиеристика</th>
-                    <th class="th1">Значение</th>
+                    <th class="th1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CharLabel</th>
+                    <th class="th1">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ValueLabel</th>
                 </tr>
 
                 @foreach (var element in characteristics)
@@ -186,8 +186,8 @@
             else
             {
         <div class="alert alert-warning" style="margin-left: 45px;">
-            Вы заблокированы по причине грубого нарушения правил написания комментариев. Эта функция недоступна заблокированным пользователям. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.Обратиться в поддержку можно
-            <a href="/Home/Index#message">здесь</a>. Также можете подать заявку на разблокировку со своего аккаунта. Для этого щёлкнете <a href="/Manage#statistics">здесь</a>. Затем перейдите в раздел 'Моя статистика'.
+            @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo1
+            <a href="/Home/Index#message">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ActionLink</a>. @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo2 <a href="/Manage#statistics">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ActionLink</a>. @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo3.
         </div>
             }
             <p></p>
@@ -199,21 +199,21 @@
         @{
             if (goodsList.Count == 1)
             {
-                <h3>К сожалению, подобных товаров пока нет.</h3>
+                <h3>@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.NoSimGoodLabel</h3>
             }
             else
             {
                 <table class="table_blur">
                     <tr>
-                        <th>Товар/Характеристика</th>
+                        <th>@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.CharLabel</th>
                         @{
                             foreach (var element in characteristics)
                             {
                                 <th>@element.Key</th>
                             }
-                            <th>Цена</th>
-                            <th>Рейтинг</th>
-                            <th>Просмотры</th>
+                    <th>@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.PriceLabel</th>
+                    <th>@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.RatingLabel</th>
+                    <th>@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ViewsLabel</th>
                         }
                     </tr>
                     @{
@@ -258,16 +258,16 @@
                 else
                 {
                     mrkId = marksWorker.GetMarkId(HttpContext.Current.User.Identity.Name);
-                    <div class="alert alert-warning">
-                        Спасибо, ваша оценка уже учтена за этот товар. Вы можете её отменить, нажав @Html.ActionLink("сюда", "Delete", "Mark", new { markId = mrkId }, null).
-                    </div>
+        <div class="alert alert-warning">
+            @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ExistMarkLabel @Html.ActionLink("сюда", "Delete", "Mark", new { markId = mrkId }, null).
+        </div>
                 }
             }
             else
             {
     <div class="alert alert-warning" style="margin-left: 45px;">
-        Вы заблокированы по причине грубого нарушения правил написания комментариев. Эта функция недоступна заблокированным пользователям. Пожалуйста, обратитсь в службу поддержки для уточнения подробностей.Обратиться в поддержку можно
-        <a href="/Home/Index#message">здесь</a>. Также можете подать заявку на разблокировку со своего аккаунта. Для этого щёлкнете <a href="/Manage#statistics">здесь</a>. Затем перейдите в раздел 'Моя статистика'.
+        @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo1
+        <a href="/Home/Index#message">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ActionLink</a>. @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo2 <a href="/Manage#statistics">@AlutechShopDiploma.Resources.Views.GoodItem.CartItem.ActionLink</a>. @AlutechShopDiploma.Resources.Views.GoodItem.CartItem.BlockInfo3.
     </div>
             }
         }

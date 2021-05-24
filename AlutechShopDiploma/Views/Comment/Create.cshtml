@@ -10,9 +10,9 @@
 <body>
     <div class="container1">
         <form action="/Comment/Create" method="post">
-            <label>Ваш комментарий</label>
-            @Html.TextAreaFor(model => model.CommentText, new { @placeholder = "Комментарий", @style = "height: 170px" })
-            <input type="submit" class="" value="Добавить комментарий">
+            <label>@AlutechShopDiploma.Resources.Views.Comment.Create.Label</label>
+            @Html.TextAreaFor(model => model.CommentText, new { @placeholder = @AlutechShopDiploma.Resources.Views.Comment.Create.Placeholder, @style = "height: 170px" })
+            <input type="submit" class="" value="@AlutechShopDiploma.Resources.Views.Comment.Create.BtnValue">
         </form>
         <p>
 
