@@ -39,12 +39,12 @@ namespace AlutechShopDiploma.Controllers
             return View(goods);
         }
 
-        [Authorize(Roles = "admin")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+            IEnumerable<Discount> discounts = applicationDbContext.Discounts.Where(x => x.DiscountID !=0);
 
-            return View();
+            return View(discounts);
         }
 
         public ActionResult Contact()

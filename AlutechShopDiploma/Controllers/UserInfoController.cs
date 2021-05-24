@@ -96,9 +96,9 @@ namespace AlutechShopDiploma.Controllers
 
 
             var chart = new SimpleChart.Chart(width: 1100, height: 1000)
-              .AddTitle("Покупки товаров")
+              .AddTitle("Покупки товаров/Goods purchases")
               .AddSeries(
-                     name: "Количество товаров",
+                     name: "Количество товаров/Goods ammount",
                      chartType: "Column",
                      xValue: goodsName,
                      yValues: goodsAmmounts)
@@ -129,21 +129,21 @@ namespace AlutechShopDiploma.Controllers
             }
 
             var chart = new SimpleChart.Chart(width: 1100, height: 1000)
-              .AddTitle("Движение средств по бонуснуму балансу")
+              .AddTitle("Движение средств по бонуснуму балансу/The movement of funds on the bonus balance")
               .AddSeries(
-                     name: "Списания баланса",
+                     name: "Списания баланса/Balance write-offs",
                      chartType: "Line",
                      xValue: datetime,
                      yValues: spendsArray)
               .AddLegend()
               .AddSeries(
-                     name: "Пополнения баланса",
+                     name: "Пополнения баланса/Balance replenishment",
                      chartType: "Line",
                      xValue: datetime,
                      yValues: adsArray)
               .AddLegend()
               .AddSeries(
-                     name: "Баланс",
+                     name: "Баланс/Balance",
                      chartType: "Line",
                      xValue: datetime,
                      yValues: bonusAmmountsArray)
@@ -171,9 +171,9 @@ namespace AlutechShopDiploma.Controllers
             int[] ammounts = comments.Values.ToArray();
 
             var chart = new SimpleChart.Chart(width: 1100, height: 1000)
-              .AddTitle("Отзывы")
+              .AddTitle("Отзывы/Reviews")
               .AddSeries(
-                     name: "Количество отзывов",
+                     name: "Количество отзывов/Ammount od reviews",
                      chartType: "Column",
                      xValue: goodsNames,
                      yValues: ammounts)

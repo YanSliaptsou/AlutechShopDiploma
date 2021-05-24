@@ -1,4 +1,5 @@
-﻿using AlutechShopDiploma.Models.Abstract;
+﻿using AlutechShopDiploma.Models;
+using AlutechShopDiploma.Models.Abstract;
 using AlutechShopDiploma.Models.Entities;
 using AlutechShopDiploma.Models.Enums;
 using AlutechShopDiploma.Models.ViewModels;
@@ -18,6 +19,7 @@ namespace AlutechShopDiploma.Controllers
         public IGoodRepository repository;
         public int pageSize = 3;
         SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+        ApplicationDbContext applicationDbContext = new ApplicationDbContext();
 
         public GoodController(IGoodRepository repo)
         {
@@ -65,6 +67,7 @@ namespace AlutechShopDiploma.Controllers
             if (category != null && subcategory != null)
             {
                 string tbid = sqlWorker.SelectDataFromDB("SELECT GoodTableID from GoodsTables Where CategoryID = (SELECT CategoryID FROM Categories Where Description = '" + category + "') and TableName = '" + subcategory + "'");
+
                 if (tbid != null)
                 {
                     tblID = Convert.ToInt32(tbid);
