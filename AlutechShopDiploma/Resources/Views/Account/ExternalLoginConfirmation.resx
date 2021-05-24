@@ -117,23 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Age" xml:space="preserve">
-    <value>Возраст</value>
+  <data name="CaptionH3" xml:space="preserve">
+    <value>Связывание вашей учетной записи</value>
   </data>
-  <data name="Caption" xml:space="preserve">
-    <value>Создание новой учетной записи</value>
+  <data name="CaptionH4" xml:space="preserve">
+    <value>Форма связывания</value>
   </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Подтвердить пароль</value>
+  <data name="CaptionP" xml:space="preserve">
+    <value>Вы успешно прошли проверку подлинности с помощью</value>
+  </data>
+  <data name="CaptionP2" xml:space="preserve">
+    <value>Введите имя пользователя на этом сайте ниже и нажмите кнопку "Зарегистрировать", чтобы завершить вход.</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Электронная почта</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="RegBtn" xml:space="preserve">
-    <value>Зарегистрировать</value>
   </data>
   <data name="ViewBagTitle" xml:space="preserve">
     <value>Регистрация</value>

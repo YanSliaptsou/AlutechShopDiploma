@@ -117,25 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Age" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
   <data name="Caption" xml:space="preserve">
-    <value>Создание новой учетной записи</value>
-  </data>
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Подтвердить пароль</value>
+    <value>Use local account</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Электронная почта</value>
+    <value>E-mail</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Forgot password</value>
+  </data>
+  <data name="MakeEntrance" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
+    <value>Password</value>
   </data>
-  <data name="RegBtn" xml:space="preserve">
-    <value>Зарегистрировать</value>
+  <data name="RegNewUser" xml:space="preserve">
+    <value>New user registration</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
   </data>
   <data name="ViewBagTitle" xml:space="preserve">
-    <value>Регистрация</value>
+    <value>Login</value>
   </data>
 </root>

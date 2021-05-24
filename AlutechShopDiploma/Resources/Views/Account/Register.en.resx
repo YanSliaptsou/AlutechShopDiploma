@@ -120,16 +120,22 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="Caption" xml:space="preserve">
+    <value>New account creation</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>Confirm password</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email-adress</value>
+    <value>E-mail</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="RegBtn" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="ViewBagTitle" xml:space="preserve">
+    <value>Registration</value>
   </data>
 </root>

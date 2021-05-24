@@ -4,15 +4,14 @@
 <head>
     <link href="~/Content/css/authorization_form.css" rel="stylesheet"/>
 </head>
-<h4>Используйте для входа другую службу.</h4>
+<h4>@AlutechShopDiploma.Resources.Views.Account._ExternalLoginsListPartial.Caption</h4>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
         <div>
             <p>
-                Внешние службы проверки подлинности не настроены. В <a href="https://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
-                приведены сведения о настройке входа через внешние службы для этого приложения ASP.NET.
+                @AlutechShopDiploma.Resources.Views.Account._ExternalLoginsListPartial.ExternalServices
             </p>
         </div>
     }
@@ -23,7 +22,7 @@
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders)
                     {
-                        <button type="submit" class="google btn" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Войти с помощью учетной записи @p.Caption"><i class="fa fa-google fa-fw"></i> Использовать Google+</button>
+                        <button type="submit" class="google btn" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="@AlutechShopDiploma.Resources.Views.Account._ExternalLoginsListPartial.EnterWithHelp @p.Caption"><i class="fa fa-google fa-fw"></i> Использовать Google+</button>
                     }
                 </p>
             </div>

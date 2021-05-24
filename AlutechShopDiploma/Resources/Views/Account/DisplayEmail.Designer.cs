@@ -22,14 +22,14 @@ namespace AlutechShopDiploma.Resources.Views.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Register {
+    public class DisplayEmail {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Register() {
+        internal DisplayEmail() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.Register", typeof(Register).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.DisplayEmail", typeof(DisplayEmail).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,61 +61,16 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Возраст.
+        ///   Ищет локализованную строку, похожую на На указанный электронный адрес отправлены дальнейшие инструкции по завершению регистрации.
         /// </summary>
-        public static string Age {
+        public static string Message {
             get {
-                return ResourceManager.GetString("Age", resourceCulture);
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Создание новой учетной записи.
-        /// </summary>
-        public static string Caption {
-            get {
-                return ResourceManager.GetString("Caption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Подтвердить пароль.
-        /// </summary>
-        public static string ConfirmPassword {
-            get {
-                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Электронная почта.
-        /// </summary>
-        public static string Email {
-            get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Пароль.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Зарегистрировать.
-        /// </summary>
-        public static string RegBtn {
-            get {
-                return ResourceManager.GetString("RegBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Регистрация.
+        ///   Ищет локализованную строку, похожую на Завершение регистрации.
         /// </summary>
         public static string ViewBagTitle {
             get {

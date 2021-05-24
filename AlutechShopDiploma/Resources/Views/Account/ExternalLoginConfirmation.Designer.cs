@@ -22,14 +22,14 @@ namespace AlutechShopDiploma.Resources.Views.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Register {
+    public class ExternalLoginConfirmation {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Register() {
+        internal ExternalLoginConfirmation() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.Register", typeof(Register).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.ExternalLoginConfirmation", typeof(ExternalLoginConfirmation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,38 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Возраст.
+        ///   Ищет локализованную строку, похожую на Связывание вашей учетной записи.
         /// </summary>
-        public static string Age {
+        public static string CaptionH3 {
             get {
-                return ResourceManager.GetString("Age", resourceCulture);
+                return ResourceManager.GetString("CaptionH3", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Создание новой учетной записи.
+        ///   Ищет локализованную строку, похожую на Форма связывания.
         /// </summary>
-        public static string Caption {
+        public static string CaptionH4 {
             get {
-                return ResourceManager.GetString("Caption", resourceCulture);
+                return ResourceManager.GetString("CaptionH4", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Подтвердить пароль.
+        ///   Ищет локализованную строку, похожую на Вы успешно прошли проверку подлинности с помощью.
         /// </summary>
-        public static string ConfirmPassword {
+        public static string CaptionP {
             get {
-                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+                return ResourceManager.GetString("CaptionP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите имя пользователя на этом сайте ниже и нажмите кнопку &quot;Зарегистрировать&quot;, чтобы завершить вход..
+        /// </summary>
+        public static string CaptionP2 {
+            get {
+                return ResourceManager.GetString("CaptionP2", resourceCulture);
             }
         }
         
@@ -93,24 +102,6 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Пароль.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Зарегистрировать.
-        /// </summary>
-        public static string RegBtn {
-            get {
-                return ResourceManager.GetString("RegBtn", resourceCulture);
             }
         }
         

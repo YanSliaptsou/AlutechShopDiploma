@@ -1,7 +1,7 @@
 ﻿@using AlutechShopDiploma.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Выполнить вход";
+    ViewBag.Title = AlutechShopDiploma.Resources.Views.Account.Login.ViewBagTitle;
 }
 <head>
     <link href="~/Content/css/authorization_form.css" rel="stylesheet" />
@@ -14,18 +14,18 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Используйте для входа локальную учетную запись.</h4>
+                <h4>@AlutechShopDiploma.Resources.Views.Account.Login.Caption</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <label class="col-md-2 control-label">@AlutechShopDiploma.Resources.Views.Account.Login.Email</label>
                     <div class="col-md-10">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <label class="col-md-2 control-label">@AlutechShopDiploma.Resources.Views.Account.Login.Password</label>
                     <div class="col-md-10">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -35,22 +35,22 @@
                     <div class="col-md-offset-2 col-md-10" style="margin-left: 4%">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe, new { @style = "margin-left: 1%;" })
-                            @Html.LabelFor(m => m.RememberMe, new { @style = "font-weight: 700;" })
+                            <label style="font-weight: 700">@AlutechShopDiploma.Resources.Views.Account.Login.RememberMe</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Выполнить вход" class="btn btn-default" />
+                        <input type="submit" value="@AlutechShopDiploma.Resources.Views.Account.Login.MakeEntrance" class="btn btn-default" />
                     </div>
                 </div>
                 <div class="bottom-container" style="width: 137%;">
                     <div class="row">
                         <div class="col">
-                            <a href="/Account/Register" style="color:white" class="btn">Регистрация нового пользователя</a>
+                            <a href="/Account/Register" style="color:white" class="btn">@AlutechShopDiploma.Resources.Views.Account.Login.RegNewUser</a>
                         </div>
                         <div class="col">
-                            <a href="/Account/ForgotPassword" style="color:white" class="btn">Забыли пароль?</a>
+                            <a href="/Account/ForgotPassword" style="color:white" class="btn">@AlutechShopDiploma.Resources.Views.Account.Login.ForgetPassword?</a>
                         </div>
                     </div>
                 </div>

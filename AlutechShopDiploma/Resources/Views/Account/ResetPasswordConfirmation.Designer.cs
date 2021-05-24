@@ -22,14 +22,14 @@ namespace AlutechShopDiploma.Resources.Views.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Register {
+    public class ResetPasswordConfirmation {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Register() {
+        internal ResetPasswordConfirmation() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.Register", typeof(Register).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account.ResetPasswordConfirmation", typeof(ResetPasswordConfirmation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,16 +61,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Возраст.
-        /// </summary>
-        public static string Age {
-            get {
-                return ResourceManager.GetString("Age", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Создание новой учетной записи.
+        ///   Ищет локализованную строку, похожую на Ваш пароль сброшен..
         /// </summary>
         public static string Caption {
             get {
@@ -79,47 +70,20 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Подтвердить пароль.
+        ///   Ищет локализованную строку, похожую на Щелкните здесь для входа.
         /// </summary>
-        public static string ConfirmPassword {
+        public static string Link {
             get {
-                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+                return ResourceManager.GetString("Link", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Электронная почта.
+        ///   Ищет локализованную строку, похожую на Подтверждение сброса пароля.
         /// </summary>
-        public static string Email {
+        public static string ViewBag_Title {
             get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Пароль.
-        /// </summary>
-        public static string Password {
-            get {
-                return ResourceManager.GetString("Password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Зарегистрировать.
-        /// </summary>
-        public static string RegBtn {
-            get {
-                return ResourceManager.GetString("RegBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Регистрация.
-        /// </summary>
-        public static string ViewBagTitle {
-            get {
-                return ResourceManager.GetString("ViewBagTitle", resourceCulture);
+                return ResourceManager.GetString("ViewBag.Title", resourceCulture);
             }
         }
     }
