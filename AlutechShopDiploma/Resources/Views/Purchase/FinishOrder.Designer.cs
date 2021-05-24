@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AlutechShopDiploma.Resources.Views.Manage {
+namespace AlutechShopDiploma.Resources.Views.Purchase {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Index {
+    public class FinishOrder {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Index() {
+        internal FinishOrder() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Manage.Index", typeof(Index).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Purchase.FinishOrder", typeof(FinishOrder).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,56 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мой бонусный баланс.
+        ///   Ищет локализованную строку, похожую на Адрес доставки.
         /// </summary>
-        public static string BonusBalance {
+        public static string AdressLabel {
             get {
-                return ResourceManager.GetString("BonusBalance", resourceCulture);
+                return ResourceManager.GetString("AdressLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Графики.
+        ///   Ищет локализованную строку, похожую на Оформить заказ.
         /// </summary>
-        public static string Graphics {
+        public static string BtnValue {
             get {
-                return ResourceManager.GetString("Graphics", resourceCulture);
+                return ResourceManager.GetString("BtnValue", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои оценки.
+        ///   Ищет локализованную строку, похожую на Комментарий к заказу.
         /// </summary>
-        public static string Marks {
+        public static string CommentLabel {
             get {
-                return ResourceManager.GetString("Marks", resourceCulture);
+                return ResourceManager.GetString("CommentLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои сообщения.
+        ///   Ищет локализованную строку, похожую на Электронная почта.
         /// </summary>
-        public static string Messages {
+        public static string EmailLabel {
             get {
-                return ResourceManager.GetString("Messages", resourceCulture);
+                return ResourceManager.GetString("EmailLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои покупки.
+        ///   Ищет локализованную строку, похожую на Ваше имя.
         /// </summary>
-        public static string Purchases {
+        public static string NameLabel {
             get {
-                return ResourceManager.GetString("Purchases", resourceCulture);
+                return ResourceManager.GetString("NameLabel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои отзывы.
+        ///   Ищет локализованную строку, похожую на Номер телефона.
         /// </summary>
-        public static string Reviews {
+        public static string PhoneLabel {
             get {
-                return ResourceManager.GetString("Reviews", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Моя статистика.
-        /// </summary>
-        public static string Statistics {
-            get {
-                return ResourceManager.GetString("Statistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Управление.
-        /// </summary>
-        public static string Viewbag {
-            get {
-                return ResourceManager.GetString("Viewbag", resourceCulture);
+                return ResourceManager.GetString("PhoneLabel", resourceCulture);
             }
         }
     }

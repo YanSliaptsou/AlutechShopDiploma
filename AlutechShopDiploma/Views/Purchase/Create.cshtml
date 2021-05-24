@@ -16,9 +16,9 @@
 <body>
     <form action="/Purchase/Create" method="post">
         <div class="quantity-block" style="display:inline-block">
-            <h4 style="display:inline-block">Количество единиц: </h4>
+            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.Create.Label </h4>
             @Html.EditorFor(model => model.Ammount, new { htmlAttributes = new { @class = "quantity-num", @type = "number", @value = 1 } })
-            <h4 style="display:inline-block">шт.</h4>
+            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.Create.Prts</h4>
             <button type="button" class="quantity-arrow-minus" style="display:inline-block"> - </button>
             <button type="button" class="quantity-arrow-plus" style="display:inline-block"> + </button>
         </div>
@@ -28,14 +28,14 @@
         </p>
 
         <div style="margin-left: 48px;">
-            <h4 style="display:inline-block">Общая сумма: </h4>
+            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.Create.TotalSumLabel</h4>
             <input class="testClass quantity-num" disabled="disabled" />
-            <h4 style="display:inline-block">руб. </h4>
+            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.Create.Currency </h4>
         </div>
         <p>
 
         </p>
-        <input style="margin-left: 110px;" type="submit" value="Добавить в корзину"/>
+        <input style="margin-left: 110px;" type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.Create.BtnValue"/>
     </form>
     
 

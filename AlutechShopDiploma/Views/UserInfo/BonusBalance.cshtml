@@ -20,7 +20,7 @@
 
     </p>
     <div class="label label-info" style="margin-left: 40%;font-size: 140%;">
-        Ваш бонусный счёт @Model.userBalance р.
+        @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.BonusAmmountLabel @Model.userBalance @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency
     </div>
     <p>
 
@@ -32,14 +32,14 @@
 
     </p>
     <table class="table_info">
-        <caption style="margin-top: 3%;">Движение средств по бонусному счёту</caption>
+        <caption style="margin-top: 3%;">@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MoneyMovement</caption>
         <tr>
             <th><center>ID</center></th>
-            <th><center>Товары в заказе</center></th>
-            <th><center>Итоговая сумма</center></th>
-            <th><center>Начислен бонус</center></th>
-            <th><center>Списан бонус</center></th>
-            <th><center>Дата и время</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.GoodsInOrdersLabel</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalSum</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.AddBonusLabel</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.SpendBonus</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
         </tr>
 
         @foreach (var item in Model.orders)
@@ -55,11 +55,11 @@
                             <table>
                                 <tr>
                                     <th><center>ID</center></th>
-                                    <th><center>Изображение товара</center></th>
-                                    <th><center>Название</center></th>
-                                    <th><center>Цена за 1 шт.</center></th>
-                                    <th><center>Количество</center></th>
-                                    <th><center>Общая стоимость</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Price</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Ammount</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalPrice</center></th>
                                 </tr>
 
                                 @foreach (var orderItem in orderItems)
@@ -90,8 +90,8 @@
                     OrderWorker orderWorker = new OrderWorker();
                     double userBonus = orderWorker.CountUserBonus(item);
                     double discountAmmount = Math.Round(orderWorker.CountOrderPrice(item) - orderWorker.GetOrderPrice(item), 2);
-                    <td><center style="color: green; font-weight: bold;"> + @userBonus р.</center></td>
-                    <td><center style="color: red; font-weight: bold;"> - @discountAmmount р.</center></td>
+                    <td><center style="color: green; font-weight: bold;"> + @userBonus @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
+                    <td><center style="color: red; font-weight: bold;"> - @discountAmmount @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
                 }
                 <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
             </tr>

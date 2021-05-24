@@ -9,14 +9,14 @@
 
 @{
     <table class="table_info">
-        <caption>Мои оценки</caption>
+        <caption>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MyMarks</caption>
         <tr>
             <th><center>ID</center></th>
-            <th><center>Изображение товара</center></th>
-            <th><center>Название товара</center></th>
-            <th><center>Оценка</center></th>
-            <th><center>Изменить оценку</center></th>
-            <th><center>Удалить оценку</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Mark</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.EditMark</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DeleteMark</center></th>
         </tr>
 
         @foreach (var item in Model)
@@ -33,18 +33,18 @@
                     <center>
                     @using (Html.BeginForm("Edit", "Mark", new { markID = item.MarkID }))
                     {
-                        <p>Изменить на:</p>
+                        <p>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.ChangeTo</p>
                         @Html.Editor("userMark", new { htmlAttributes = new { @class = "", @type = "number", @value = "1", @min = "1", @max = "10" } })
                         <p>
 
                         </p>
-                        <input class="btn btn-warning" type="submit" value="Изменить" />
+                        <input class="btn btn-warning" type="submit" value="@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Edit" />
                     }
                     </center>
                 </td>
                 <td>
                     <form action="/Mark/Delete?markID=@item.MarkID" method="post">
-                        <input class="btn btn-success" type="submit" value="Удалить "/>
+                        <input class="btn btn-success" type="submit" value="@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Delete "/>
                     </form>
                 </td>
             </tr>

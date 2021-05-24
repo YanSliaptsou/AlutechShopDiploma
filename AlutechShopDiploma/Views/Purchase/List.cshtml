@@ -72,24 +72,24 @@
     @{
         if (itemsInOrder > 0)
         {
-            <h1>Ваша корзина</h1>
+            <h1>@AlutechShopDiploma.Resources.Views.Purchase.List.BasketLabel</h1>
             <p>
 
             </p>
             <div class="tab" style="height: 272px;">
-                <button class="tablinks active" onclick="openCity(event, 'London')">Ваши покупки</button>
-                <button class="tablinks" onclick="openCity(event, 'Paris')">Ваш бонусный счёт</button>
-                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Сумма покупок и % отчисления на бонусный счёт</button>
-                <button class="tablinks" onclick="openCity(event, 'Minsk')">Сделать заказ</button>
+                <button class="tablinks active" onclick="openCity(event, 'London')">@AlutechShopDiploma.Resources.Views.Purchase.List.YourPurchasesLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Paris')">@AlutechShopDiploma.Resources.Views.Purchase.List.YourBonusAmountLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Tokyo')">@AlutechShopDiploma.Resources.Views.Purchase.List.OrdersSumLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Minsk')">@AlutechShopDiploma.Resources.Views.Purchase.List.CreateOrderLabel</button>
             </div>
             <div id="London" style="display:flex; height: 70%; border:1px solid" class="tabcontent">
                 <table style="margin-top: 1%;margin-bottom: 1%;">
                     <tr>
-                        <th colspan="2">Покупка</th>
-                        <th>Цена</th>
-                        <th>Количество</th>
-                        <th>Итого</th>
-                        <th>Действие</th>
+                        <th colspan="2">@AlutechShopDiploma.Resources.Views.Purchase.List.Purchase</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Price</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Amount</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Total</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Action</th>
                     </tr>
                     <tr>
                         <th style="background:transparent"></th>
@@ -104,21 +104,21 @@
                                 <td>
                                     @{
                                         int _ammount = Convert.ToInt32(orderItemsPricesAmmounts[i]);
-                                        <p>У вас в корзине: @_ammount шт.</p>
+                                                                        <p>@AlutechShopDiploma.Resources.Views.Purchase.List.InBasletLabel @_ammount @AlutechShopDiploma.Resources.Views.Purchase.List.ItemsLabel</p>
                                     }
                                     @using (Html.BeginForm("Edit", "Purchase", new { orderItemID = orderItemsIds[i] }))
                                     {
-                                        <p>Изменить на:</p>
+                                        <p>@AlutechShopDiploma.Resources.Views.Purchase.List.ChangeLabel</p>
                                         @Html.EditorFor(model => model.goodAmmount, new { htmlAttributes = new { @class = "", @type = "number", @value = "_ammount", @min = "1" } })
-                                        <h4 style="display:inline-block">шт.</h4>
-                                        <input type="submit" value="Изменить" />
+                                        <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.List.ItemsLabel</h4>
+                                        <input type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.List.ChangeBtnLabel" />
                                     }
                                 </td>
-                                <td>@orderItemsPricesPerOrderItems[i] р.</td>
+                                <td>@orderItemsPricesPerOrderItems[i] @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</td>
                                 <td>
                                     @using (Html.BeginForm("Delete", "Purchase", new { orderItemID = orderItemsIds[i] }))
                                     {
-                                        <button class="btn btn-danger">Удалить</button>
+                                    <button class="btn btn-danger">@AlutechShopDiploma.Resources.Views.Purchase.List.DeleteBtnLabel</button>
                                     }
                                 </td>
                             </tr>
@@ -131,7 +131,7 @@
             <div id="Paris" style=" border: 1px solid; height: 70%" class="tabcontent">
                 <div class="product-item well" style="margin-top: 2%;">
                     <div class="product-item row">
-                        <strong class="label label-primary" style="/*! font-weight: 749; */ margin-left: 30%; font-size: 150%;">Ваш бонусный счёт: @userBalance руб.</strong>
+                        <strong class="label label-primary" style="margin-left: 30%; font-size: 150%;">@AlutechShopDiploma.Resources.Views.Purchase.List.YourBonusAmountLabel @userBalance @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</strong>
                     </div>
                 </div>
 
@@ -139,24 +139,24 @@
                     <div class="product-item row">
                         @using (Html.BeginForm("SpendBonuses", "Purchase", FormMethod.Post, new { @style = "margin-left: 36%;" }))
                         {
-                            <p>Использовать бонусы</p>
+                            <p>@AlutechShopDiploma.Resources.Views.Purchase.List.UseBonusLabel</p>
                             @Html.EditorFor(model => model.userBalance, new { htmlAttributes = new { @class = "", @type = "number", @value = "_ammount", @min = "0.01", @step = "0.01" } })
-                            <h4 style="display:inline-block">р.</h4>
-                            <input class="btn-success" type="submit" value="Использовать" />
+                            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</h4>
+                            <input class="btn-success" type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.List.UseBonusLabel" />
                         }
                     </div>
                 </div>
                 <div class="product-item well">
                     <div class="product-item row">
                         <div class="alert alert-warning">
-                            Внимание! Списание с бонусного счёта осуществляйте только после полного редактирования заказа. В случае, если вы спишете средства с бонусного счёта, а затем начнёте редактировать заказ, денежные средства с бонусного счёта учтены не будут.
+                            @AlutechShopDiploma.Resources.Views.Purchase.List.AlertLabel
                         </div>
                     </div>
                 </div>
 
                 <div class="product-item well">
                     <div class="product-item row">
-                        <h2 class="label label-info" style="margin-left:27%;font-size: 150%;">Зачисления на бонусный счёт</h2>
+                        <h2 class="label label-info" style="margin-left:27%;font-size: 150%;">@AlutechShopDiploma.Resources.Views.Purchase.List.BonusesTableLabel</h2>
                         <p>
 
                         </p>
@@ -169,15 +169,15 @@
 
                         <table style="margin-left: 23%; margin-top: 3%;">
                             <tr>
-                                <th>Сумма покупки, руб.</th>
-                                <th>Зачисление на бонусный счёт, %</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.PurchaseTableLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.SumBonusesTableLabel</th>
                             </tr>
                             <tr>
                                 <th style="background:transparent"></th>
                             </tr>
 
                             <tr>
-                                <td>До 1000</td>
+                                <td>< 1000</td>
                                 <td>0.5</td>
                             </tr>
                             <tr>
@@ -245,7 +245,7 @@
                                 <td>9</td>
                             </tr>
                             <tr>
-                                <td>100000 и более</td>
+                                <td>>= 100000</td>
                                 <td>10</td>
                             </tr>
                         </table>
@@ -258,48 +258,48 @@
                     <div class="product-item row" style="/*! margin-top: -11px; */ margin-bottom: -2%; margin-left: 0%; margin-top: -1%;">
                         <table style="display:inline-block; margin-left: 40px;">
                             <tr>
-                                <th>Операция</th>
-                                <th>Стоимость</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.OperationLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.CostLabel</th>
                             </tr>
                             <tr>
                                 <th style="background:transparent"></th>
                             </tr>
 
                             <tr>
-                                <td><h4>Общая сумма покупки</h4></td>
-                                <td><a style="color:blue;"><u>@totalPrice руб.</u></a></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.TotalSumOrder</h4></td>
+                                <td><a style="color:blue;"><u>@totalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
                             </tr>
                             <tr>
-                                <td><h4>Списание с бон. счёта </h4></td>
-                                <td><a style="color:green;"><u>@discount руб.</u></a></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.SpendsOrderLabel </h4></td>
+                                <td><a style="color:green;"><u>@discount @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
                             </tr>
                             <tr>
-                                <td><h4>К оплате</h4></td>
-                                <td><a style="color:red;"><u>@finalPrice руб.</u></a></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.ToPayLabel</h4></td>
+                                <td><a style="color:red;"><u>@finalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
                             </tr>
 
                         </table>
 
                         <table style="display:inline-block; margin-right:5px;">
                             <tr>
-                                <th>Операция</th>
-                                <th>Стоимость</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.OperationLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.CostLabel</th>
                             </tr>
                             <tr>
                                 <th style="background:transparent"></th>
                             </tr>
 
                             <tr>
-                                <td><h4>Общая сумма покупки</h4></td>
-                                <td><a style="color:blue;"><u>@finalPrice руб.</u></a></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.TotalSumOrder</h4></td>
+                                <td><a style="color:blue;"><u>@finalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
                             </tr>
                             <tr>
-                                <td><h4>Начисление на бон. счёт </h4></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.AddOrderLabel </h4></td>
                                 <td><a style="color:green;"><u>@bonusPercentage %</u></a></td>
                             </tr>
                             <tr>
-                                <td><h4>Сумма начисления</h4></td>
-                                <td><a style="color:blue;"><u>@bonusAdded руб.</u></a></td>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.SumBonusLabel</h4></td>
+                                <td><a style="color:blue;"><u>@bonusAdded @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
                             </tr>
 
                         </table>
@@ -311,7 +311,7 @@
                 <div class="product-item well" style="margin-top:3%">
                     <div class="product-item row">
                         <div class="alert alert-warning">
-                            Внимание! После заполнения данной формы вы оформите заказ, который нельзя будет уже отредактировать.
+                            @AlutechShopDiploma.Resources.Views.Purchase.List.AttentionLabel
                         </div>
                     </div>
                 </div>
@@ -329,7 +329,7 @@
         }
         else
         {
-            <h1>Ваша корзина пуста.</h1>
+            <h1>@AlutechShopDiploma.Resources.Views.Purchase.List.EmptyBasket</h1>
         }
     }
 </body>

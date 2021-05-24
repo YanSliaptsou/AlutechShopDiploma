@@ -19,9 +19,9 @@
 <body>
     <div class="container1" style="height: 160px;">
         <form action="/Mark/Create" method="post">
-            <label>Ваша оценка</label>
+            <label>@AlutechShopDiploma.Resources.Views.Mark.Create.Label</label>
             @Html.DropDownListFor(model => model.UserMark, marks, new { @class = "form-control" })
-            <input type="submit" class="" value="Оценить">
+            <input type="submit" class="" value="@AlutechShopDiploma.Resources.Views.Mark.Create.BtnValue">
         </form>
         <p>
         </p>

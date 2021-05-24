@@ -117,28 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BonusBalance" xml:space="preserve">
-    <value>My bonus balance</value>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
   </data>
-  <data name="Graphics" xml:space="preserve">
-    <value>Charts</value>
+  <data name="AddBonusLabel" xml:space="preserve">
+    <value>Bonus accrued</value>
   </data>
-  <data name="Marks" xml:space="preserve">
-    <value>My marks</value>
+  <data name="Ammount" xml:space="preserve">
+    <value>Ammount</value>
   </data>
-  <data name="Messages" xml:space="preserve">
-    <value>My messages</value>
+  <data name="BonusAmmountLabel" xml:space="preserve">
+    <value>Your bonus account</value>
   </data>
-  <data name="Purchases" xml:space="preserve">
-    <value>My purchases</value>
+  <data name="ChangeTo" xml:space="preserve">
+    <value>Change to:</value>
   </data>
-  <data name="Reviews" xml:space="preserve">
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>r.</value>
+  </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Date Time</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteMarks" xml:space="preserve">
+    <value>Delete mark</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditMark" xml:space="preserve">
+    <value>Edit mark</value>
+  </data>
+  <data name="GoodsInOrdersLabel" xml:space="preserve">
+    <value>Goods in order</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Good image</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Mark</value>
+  </data>
+  <data name="MessageText" xml:space="preserve">
+    <value>Message Text</value>
+  </data>
+  <data name="MessageTopic" xml:space="preserve">
+    <value>Message Topic</value>
+  </data>
+  <data name="MoneyMovement" xml:space="preserve">
+    <value>Bonus ammount movement</value>
+  </data>
+  <data name="MyCommentsInfo" xml:space="preserve">
     <value>My reviews</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>My stats</value>
+  <data name="MyMarks" xml:space="preserve">
+    <value>My marks</value>
   </data>
-  <data name="Viewbag" xml:space="preserve">
-    <value>Management</value>
+  <data name="MyMessages" xml:space="preserve">
+    <value>My Messages</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Good name</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Payed" xml:space="preserve">
+    <value>Payed</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price per 1 pc.</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="SpendBonus" xml:space="preserve">
+    <value>Bonus spent</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Total Sum</value>
+  </data>
+  <data name="TotalSum" xml:space="preserve">
+    <value>Total Sum</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

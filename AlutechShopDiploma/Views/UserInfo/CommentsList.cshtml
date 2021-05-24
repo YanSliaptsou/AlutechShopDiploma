@@ -9,14 +9,14 @@
 
 @{
     <table class="table_info">
-        <caption>Мои отзывы</caption>
+        <caption>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MyCommentsInfo</caption>
         <tr>
             <th><center>ID</center></th>
-            <th><center>Изображение товара</center></th>
-            <th><center>Название товара</center></th>
-            <th><center>Отзыв</center></th>
-            <th><center>Дата и время</center></th>
-            <th><center>Удалить отзыв</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Review</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Actions</center></th>
         </tr>
 
         @foreach (var item in Model)
@@ -32,7 +32,7 @@
                 <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
                 <td>
                     <form action="/Comment/Delete?commentID=@item.CommentID" method="post">
-                        <input class="btn btn-success" type="submit" value="Удалить " />
+                        <input class="btn btn-success" type="submit" value="@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Delete " />
                     </form>
                 </td>
             </tr>

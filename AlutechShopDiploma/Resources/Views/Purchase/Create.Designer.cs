@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AlutechShopDiploma.Resources.Views.Manage {
+namespace AlutechShopDiploma.Resources.Views.Purchase {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Index {
+    public class Create {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Index() {
+        internal Create() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Manage.Index", typeof(Index).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Purchase.Create", typeof(Create).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,47 @@ namespace AlutechShopDiploma.Resources.Views.Manage {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мой бонусный баланс.
+        ///   Ищет локализованную строку, похожую на Добавить в корзину.
         /// </summary>
-        public static string BonusBalance {
+        public static string BtnValue {
             get {
-                return ResourceManager.GetString("BonusBalance", resourceCulture);
+                return ResourceManager.GetString("BtnValue", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Графики.
+        ///   Ищет локализованную строку, похожую на р..
         /// </summary>
-        public static string Graphics {
+        public static string Currency {
             get {
-                return ResourceManager.GetString("Graphics", resourceCulture);
+                return ResourceManager.GetString("Currency", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои оценки.
+        ///   Ищет локализованную строку, похожую на Количество единиц:.
         /// </summary>
-        public static string Marks {
+        public static string Label {
             get {
-                return ResourceManager.GetString("Marks", resourceCulture);
+                return ResourceManager.GetString("Label", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои сообщения.
+        ///   Ищет локализованную строку, похожую на шт..
         /// </summary>
-        public static string Messages {
+        public static string Prts {
             get {
-                return ResourceManager.GetString("Messages", resourceCulture);
+                return ResourceManager.GetString("Prts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои покупки.
+        ///   Ищет локализованную строку, похожую на Общая сумма:.
         /// </summary>
-        public static string Purchases {
+        public static string TotalSumLabel {
             get {
-                return ResourceManager.GetString("Purchases", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Мои отзывы.
-        /// </summary>
-        public static string Reviews {
-            get {
-                return ResourceManager.GetString("Reviews", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Моя статистика.
-        /// </summary>
-        public static string Statistics {
-            get {
-                return ResourceManager.GetString("Statistics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Управление.
-        /// </summary>
-        public static string Viewbag {
-            get {
-                return ResourceManager.GetString("Viewbag", resourceCulture);
+                return ResourceManager.GetString("TotalSumLabel", resourceCulture);
             }
         }
     }

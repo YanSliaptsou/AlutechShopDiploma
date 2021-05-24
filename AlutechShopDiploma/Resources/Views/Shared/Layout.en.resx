@@ -117,28 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BonusBalance" xml:space="preserve">
-    <value>My bonus balance</value>
+  <data name="Automation" xml:space="preserve">
+    <value>Gate automation</value>
   </data>
-  <data name="Graphics" xml:space="preserve">
-    <value>Charts</value>
+  <data name="Automation1" xml:space="preserve">
+    <value>Comunello Accessories</value>
   </data>
-  <data name="Marks" xml:space="preserve">
-    <value>My marks</value>
+  <data name="Automation2" xml:space="preserve">
+    <value>Comunello Actuators</value>
   </data>
-  <data name="Messages" xml:space="preserve">
-    <value>My messages</value>
+  <data name="Automation3" xml:space="preserve">
+    <value>Garage door operators/n/n/n/n</value>
   </data>
-  <data name="Purchases" xml:space="preserve">
-    <value>My purchases</value>
+  <data name="Automation4" xml:space="preserve">
+    <value>Sliding gate operators</value>
   </data>
-  <data name="Reviews" xml:space="preserve">
-    <value>My reviews</value>
+  <data name="Automation5" xml:space="preserve">
+    <value>Barriers Alutech</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>My stats</value>
+  <data name="Basket" xml:space="preserve">
+    <value>Basket</value>
   </data>
-  <data name="Viewbag" xml:space="preserve">
-    <value>Management</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Switch language</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>r.</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EntryGates" xml:space="preserve">
+    <value>Entrance gate </value>
+  </data>
+  <data name="EntryGates1" xml:space="preserve">
+    <value>Additional equipment/n/n/n/n/n</value>
+  </data>
+  <data name="EntryGates2" xml:space="preserve">
+    <value>Steel bar profiles</value>
+  </data>
+  <data name="EntryGates3" xml:space="preserve">
+    <value>Steel components</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="NewsAndActions" xml:space="preserve">
+    <value>News and actions</value>
+  </data>
+  <data name="Pieces" xml:space="preserve">
+    <value>pc.</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Production</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="SectionalGates" xml:space="preserve">
+    <value>Sectional doors</value>
+  </data>
+  <data name="SectionalGates1" xml:space="preserve">
+    <value>Inserts and seals/n/n/n/n/n/n/n</value>
+  </data>
+  <data name="SectionalGates2" xml:space="preserve">
+    <value>Bushings, bolts</value>
+  </data>
+  <data name="SectionalGates3" xml:space="preserve">
+    <value>Brackets</value>
+  </data>
+  <data name="SectionalGates4" xml:space="preserve">
+    <value>Couplings</value>
+  </data>
+  <data name="SectionalGates5" xml:space="preserve">
+    <value>Hinges</value>
+  </data>
+  <data name="SectionalGates6" xml:space="preserve">
+    <value>Rollers and distance rings</value>
   </data>
 </root>

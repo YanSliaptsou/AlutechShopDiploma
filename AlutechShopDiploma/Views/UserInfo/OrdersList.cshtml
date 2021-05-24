@@ -10,14 +10,14 @@
 
 @{
     <table class="table_info">
-        <caption>Мои покупки</caption>
+        <caption>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MyOrders</caption>
         <tr>
             <th><center>ID</center></th>
-            <th><center>Товары в заказе</center></th>
-            <th><center>Итоговая сумма</center></th>
-            <th><center>Завершён</center></th>
-            <th><center>Оплачен</center></th>
-            <th><center>Дата и время</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.GoodsInOrdersLabel</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalSum</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Completed</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Payed</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
         </tr>
 
         @foreach (var item in Model)
@@ -32,11 +32,11 @@
                         <table>
                                 <tr>
                                     <th><center>ID</center></th>
-                                    <th><center>Изображение товара</center></th>
-                                    <th><center>Название</center></th>
-                                    <th><center>Цена за 1 шт.</center></th>
-                                    <th><center>Количество</center></th>
-                                    <th><center>Общая стоимость</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Price</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Ammount</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalPrice</center></th>
                                 </tr>
 
                         @foreach(var orderItem in orderItems)
@@ -52,9 +52,9 @@
                                     <td><center>@orderItem.OrderItemID</center></td>
                                     <td><center><img style="width:30%" src="@Url.Content(imageUrl)" /></center></td>
                                     <td><center><a href="~/GoodItem/CartItem?goodId=@orderItem.GoodID">@name</a></center></td>
-                                    <td><center>@price р.</center></td>
+                                    <td><center>@price @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
                                     <td><center>@orderItem.Ammount</center></td>
-                                    <td><center>@itemPrice р.</center></td>
+                                    <td><center>@itemPrice @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
                                 </tr>
                             
                         }
@@ -62,25 +62,25 @@
                     }
                 </center>
                 </td>
-                <td>@item.TotalSum р.</td>
+                <td>@item.TotalSum @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</td>
                 @{
                     if (item.IsFinished)
                     {
-                        <td><center>Да</center></td>
+                        <td><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Yes</center></td>
                     }
                     else
                     {
-                        <td><center>Нет</center></td>
+                        <td><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.No</center></td>
                     }
                 }
                 @{
                     if (item.IsOrdered)
                     {
-                        <td><center>Да</center></td>
+                        <td><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Yes</center></td>
                     }
                     else
                     {
-                        <td><center>Нет</center></td>
+                        <td><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.No</center></td>
                     }
                 }
                 <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>

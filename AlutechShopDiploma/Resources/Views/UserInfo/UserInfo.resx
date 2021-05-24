@@ -117,28 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BonusBalance" xml:space="preserve">
-    <value>My bonus balance</value>
+  <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
   </data>
-  <data name="Graphics" xml:space="preserve">
-    <value>Charts</value>
+  <data name="AddBonusLabel" xml:space="preserve">
+    <value>Начислен бонус</value>
   </data>
-  <data name="Marks" xml:space="preserve">
-    <value>My marks</value>
+  <data name="Ammount" xml:space="preserve">
+    <value>Количество</value>
   </data>
-  <data name="Messages" xml:space="preserve">
-    <value>My messages</value>
+  <data name="BonusAmmountLabel" xml:space="preserve">
+    <value>Ваш бонусный счёт</value>
   </data>
-  <data name="Purchases" xml:space="preserve">
-    <value>My purchases</value>
+  <data name="ChangeTo" xml:space="preserve">
+    <value>Изменить на:</value>
   </data>
-  <data name="Reviews" xml:space="preserve">
-    <value>My reviews</value>
+  <data name="Completed" xml:space="preserve">
+    <value>Завершён</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>My stats</value>
+  <data name="Currency" xml:space="preserve">
+    <value>р.</value>
   </data>
-  <data name="Viewbag" xml:space="preserve">
-    <value>Management</value>
+  <data name="DateTime" xml:space="preserve">
+    <value>Дата и время</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DeleteMark" xml:space="preserve">
+    <value>Удалить оценку</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="EditMark" xml:space="preserve">
+    <value>Изменить оценку</value>
+  </data>
+  <data name="GoodsInOrdersLabel" xml:space="preserve">
+    <value>Товары в заказе</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Изображение товара</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="MessageText" xml:space="preserve">
+    <value>Текст сообщения</value>
+  </data>
+  <data name="MessageTopic" xml:space="preserve">
+    <value>Тема сообщения</value>
+  </data>
+  <data name="MoneyMovement" xml:space="preserve">
+    <value>Движение средств по бонусному счёту</value>
+  </data>
+  <data name="MyCommentsInfo" xml:space="preserve">
+    <value>Мои отзывы</value>
+  </data>
+  <data name="MyMarks" xml:space="preserve">
+    <value>Мои оценки</value>
+  </data>
+  <data name="MyMessages" xml:space="preserve">
+    <value>Мои сообщения</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>Мои покупки</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Название товара</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Payed" xml:space="preserve">
+    <value>Оплачен</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена за 1 шт.</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Отзыв</value>
+  </data>
+  <data name="SpendBonus" xml:space="preserve">
+    <value>Списан бонус</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Общая стоимость</value>
+  </data>
+  <data name="TotalSum" xml:space="preserve">
+    <value>Итоговая сумма</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
   </data>
 </root>

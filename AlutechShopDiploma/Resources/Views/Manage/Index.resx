@@ -138,4 +138,7 @@
   <data name="Statistics" xml:space="preserve">
     <value>Моя статистика</value>
   </data>
+  <data name="Viewbag" xml:space="preserve">
+    <value>Управление</value>
+  </data>
 </root>

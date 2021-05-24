@@ -61,7 +61,7 @@
                                 {
                                     string imageUrl = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers Where GoodID = " + element.GoodID);
                                 <div class="column">
-                                    <img style="width:200px;height:200px; " class="demo cursor" src="@Url.Content(imageUrl)" onclick="currentSlide(@count)" alt="@element.Name @element.Price руб" />
+                                    <img style="width:200px;height:200px; " class="demo cursor" src="@Url.Content(imageUrl)" onclick="currentSlide(@count)" alt="@element.Name @element.Price r." />
 
                                 </div>
                                 }

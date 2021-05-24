@@ -23,7 +23,7 @@
              {
                  discount = Convert.ToDouble(discountLabel);
                  <div class="sale-block">
-                     <h3>@discountLabel %<span>скидка</span></h3>
+                     <h3>@discountLabel %<span>@AlutechShopDiploma.Resources.Views.Shared.GoodSummary.Discount</span></h3>
                  </div>
 
 
@@ -39,17 +39,17 @@
              {
                  GoodWorker goodWorker = new GoodWorker(Model.GoodID);
                  double newPrice = goodWorker.CalculateGoodPrice();
-                 <span class="price"><strike>@Model.Price р.</strike></span>
-                 <span class="price">@newPrice р.</span>
+                 <span class="price"><strike>@Model.Price @AlutechShopDiploma.Resources.Views.Shared.GoodSummary.Currency</strike></span>
+                 <span class="price">@newPrice @AlutechShopDiploma.Resources.Views.Shared.GoodSummary.Currency</span>
              }
              else
              {
-                 <span class="price">@Model.Price р.</span>
+                <span class="price">@Model.Price @AlutechShopDiploma.Resources.Views.Shared.GoodSummary.Currency</span>
              }
          }
          <img style="width: 257px; height: 244px; margin-left: 224px; " src="@Url.Content(imageUrl)" />
          <p></p>
-         <a href="/GoodItem/CartItem?goodId=@Model.GoodID" class="button">Подробнее</a>
+         <a href="/GoodItem/CartItem?goodId=@Model.GoodID" class="button">@AlutechShopDiploma.Resources.Views.Shared.GoodSummary.LearnMore</a>
          <span id="eye" style="margin-right: 35px;"></span>
          <span style="float: right;margin-right: -35px;margin-top: 16px;">@Model.Views</span>
          <img style="float: left; margin-right: 4px; margin-top: 16px; height:40px; width:40px" src="~/Content/rating.jpg" />
@@ -60,9 +60,9 @@
 
              if (goodAmmount == 0)
              {
-         <div class="label label-warning" style="font-size: 15px;margin-left: -5%;">
-             Товара нет в наличии
-         </div>
+                  <div class="label label-warning" style="font-size: 15px;margin-left: -5%;">
+                      @AlutechShopDiploma.Resources.Views.Shared.GoodSummary.NoGoodLabel
+                  </div>
                  }
              }
      </div>

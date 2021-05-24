@@ -117,28 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BonusBalance" xml:space="preserve">
-    <value>My bonus balance</value>
+  <data name="Automation" xml:space="preserve">
+    <value>Автоматика для ворот</value>
   </data>
-  <data name="Graphics" xml:space="preserve">
-    <value>Charts</value>
+  <data name="Automation1" xml:space="preserve">
+    <value>Comunello Аксесуары</value>
   </data>
-  <data name="Marks" xml:space="preserve">
-    <value>My marks</value>
+  <data name="Automation2" xml:space="preserve">
+    <value>Comunello Приводы</value>
   </data>
-  <data name="Messages" xml:space="preserve">
-    <value>My messages</value>
+  <data name="Automation3" xml:space="preserve">
+    <value>Приводы для гаражных ворот</value>
   </data>
-  <data name="Purchases" xml:space="preserve">
-    <value>My purchases</value>
+  <data name="Automation4" xml:space="preserve">
+    <value>Приводы для откатных ворот</value>
   </data>
-  <data name="Reviews" xml:space="preserve">
-    <value>My reviews</value>
+  <data name="Automation5" xml:space="preserve">
+    <value>Шлагбаумы Alutech</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>My stats</value>
+  <data name="Basket" xml:space="preserve">
+    <value>Корзина</value>
   </data>
-  <data name="Viewbag" xml:space="preserve">
-    <value>Management</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Смена языка</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>р.</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="EntryGates" xml:space="preserve">
+    <value>Въездные ворота (комплектация)</value>
+  </data>
+  <data name="EntryGates1" xml:space="preserve">
+    <value>Дополнительн. комплектация</value>
+  </data>
+  <data name="EntryGates2" xml:space="preserve">
+    <value>Профили шины стальные</value>
+  </data>
+  <data name="EntryGates3" xml:space="preserve">
+    <value>Комплектующие стальные</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="NewsAndActions" xml:space="preserve">
+    <value>Новости и акции</value>
+  </data>
+  <data name="Pieces" xml:space="preserve">
+    <value>шт.</value>
+  </data>
+  <data name="Production" xml:space="preserve">
+    <value>Продукция</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="SectionalGates" xml:space="preserve">
+    <value>Секционные ворота (комплектация)</value>
+  </data>
+  <data name="SectionalGates1" xml:space="preserve">
+    <value>Вставки и уплотнения</value>
+  </data>
+  <data name="SectionalGates2" xml:space="preserve">
+    <value>Втулки, ригеля</value>
+  </data>
+  <data name="SectionalGates3" xml:space="preserve">
+    <value>Кронштейны</value>
+  </data>
+  <data name="SectionalGates4" xml:space="preserve">
+    <value>Муфты</value>
+  </data>
+  <data name="SectionalGates5" xml:space="preserve">
+    <value>Петли</value>
+  </data>
+  <data name="SectionalGates6" xml:space="preserve">
+    <value>Ролики и дистанцион. кольца</value>
   </data>
 </root>

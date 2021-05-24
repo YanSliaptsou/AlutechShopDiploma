@@ -14,29 +14,29 @@
 <body>
     @{using (Html.BeginForm("FinishOrder", "Purchase", FormMethod.Post, new { @style = "margin-left: 15%;" }))
         {
-        <label><i class="fa fa-user-circle-o"></i> Ваше имя: </label>
-        @Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { @type = "text", id = "fname", name = "firstname", placeholder = "Ваше имя", style = "margin-left: 11%;" } })
+        <label><i class="fa fa-user-circle-o"></i> @AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.NameLabel </label>
+        @Html.EditorFor(model => model.ContactName, new { htmlAttributes = new { @type = "text", id = "fname", name = "firstname", placeholder = AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.NameLabel, style = "margin-left: 11%;" } })
         <p>
 
         </p>
-        <label><i class="fa fa-phone"></i> Номер телефона: </label>
-        @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @type = "text", id = "phone", name = "phone", placeholder = "Ваш номер телефона", style = "margin-left: 11%;" } })
+        <label><i class="fa fa-phone"></i> @AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.PhoneLabel </label>
+        @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @type = "text", id = "phone", name = "phone", placeholder = AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.PhoneLabel, style = "margin-left: 11%;" } })
         <p>
 
         </p>
-        <label><i class="fa fa-envelope"></i> Электронная почта: </label>
-        @Html.EditorFor(model => model.ContactMail, new { htmlAttributes = new { @type = "text", id = "mail", name = "email", placeholder = "Ваша почта", style = "margin-left: 11%;" } })
+        <label><i class="fa fa-envelope"></i> @AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.EmailLabel </label>
+        @Html.EditorFor(model => model.ContactMail, new { htmlAttributes = new { @type = "text", id = "mail", name = "email", placeholder = AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.EmailLabel, style = "margin-left: 11%;" } })
         <p>
 
         </p>
-        <label><i class="fa fa-address-book"></i> Адрес доставки:</label>
-        @Html.EditorFor(model => model.DeliveryAdress, new { htmlAttributes = new { @type = "text", id = "adress", name = "delivery_adress", placeholder = "Ваш адрес доставки", style = "margin-left: 11%;" } })
+        <label><i class="fa fa-address-book"></i> @AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.AdressLabel </label>
+        @Html.EditorFor(model => model.DeliveryAdress, new { htmlAttributes = new { @type = "text", id = "adress", name = "delivery_adress", placeholder = AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.AdressLabel, style = "margin-left: 11%;" } })
         <p>
 
         </p>
-        <label><i class="fa fa-file-text"></i> Комментарий к заказу:</label>
-        @Html.TextAreaFor(model => model.UserMessage, new { @type = "text", id = "adress", name = "delivery_adress", placeholder = "Ваш комментарий", @style = "margin-left: 11%;" })
-        <input style="margin-left:31%" type="submit" value="Оформить заказ"/>
+        <label><i class="fa fa-file-text"></i> @AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.CommentLabel </label>
+        @Html.TextAreaFor(model => model.UserMessage, new { @type = "text", id = "adress", name = "delivery_adress", placeholder = AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.CommentLabel, @style = "margin-left: 11%;" })
+        <input style="margin-left:31%" type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.FinishOrder.BtnValue"/>
             }
         }
 </body>

@@ -117,28 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BonusBalance" xml:space="preserve">
-    <value>My bonus balance</value>
+  <data name="Action" xml:space="preserve">
+    <value>Действие</value>
   </data>
-  <data name="Graphics" xml:space="preserve">
-    <value>Charts</value>
+  <data name="AddOrderLabel" xml:space="preserve">
+    <value>Начисление на бон. счёт</value>
   </data>
-  <data name="Marks" xml:space="preserve">
-    <value>My marks</value>
+  <data name="AlertLabel" xml:space="preserve">
+    <value>Внимание! Списание с бонусного счёта осуществляйте только после полного редактирования заказа. В случае, если вы спишете средства с бонусного счёта, а затем начнёте редактировать заказ, денежные средства с бонусного счёта учтены не будут.</value>
   </data>
-  <data name="Messages" xml:space="preserve">
-    <value>My messages</value>
+  <data name="Amount" xml:space="preserve">
+    <value>Количество</value>
   </data>
-  <data name="Purchases" xml:space="preserve">
-    <value>My purchases</value>
+  <data name="AttentionLabel" xml:space="preserve">
+    <value>Внимание! После заполнения данной формы вы оформите заказ, который нельзя будет уже отредактировать.</value>
   </data>
-  <data name="Reviews" xml:space="preserve">
-    <value>My reviews</value>
+  <data name="BasketLabel" xml:space="preserve">
+    <value>Ваша корзина</value>
   </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>My stats</value>
+  <data name="BonusesTableLabel" xml:space="preserve">
+    <value>Зачисления на бонусный счёт</value>
   </data>
-  <data name="Viewbag" xml:space="preserve">
-    <value>Management</value>
+  <data name="ChangeBtnLabel" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="ChangeLabel" xml:space="preserve">
+    <value>Изменить на:</value>
+  </data>
+  <data name="CostLabel" xml:space="preserve">
+    <value>Стоимость</value>
+  </data>
+  <data name="CreateOrderLabel" xml:space="preserve">
+    <value>Сделать заказ</value>
+  </data>
+  <data name="CurrencyLabel" xml:space="preserve">
+    <value>р.</value>
+  </data>
+  <data name="DeleteBtnLabel" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="EmptyBasket" xml:space="preserve">
+    <value>Ваша корзина пуста.</value>
+  </data>
+  <data name="InBasletLabel" xml:space="preserve">
+    <value>У вас в корзине:</value>
+  </data>
+  <data name="ItemsLabel" xml:space="preserve">
+    <value>шт.</value>
+  </data>
+  <data name="OperationLabel" xml:space="preserve">
+    <value>Операция</value>
+  </data>
+  <data name="OrdersSumLabel" xml:space="preserve">
+    <value>Сумма покупок и % отчисления на бонусный счёт</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="Purchase" xml:space="preserve">
+    <value>Покупка</value>
+  </data>
+  <data name="PurchaseTableLabel" xml:space="preserve">
+    <value>Сумма покупки, руб.</value>
+  </data>
+  <data name="SpendsOrderLabel" xml:space="preserve">
+    <value>Списание с бон. счёта</value>
+  </data>
+  <data name="SumBonusesTableLabel" xml:space="preserve">
+    <value>Зачисление на бонусный счёт, %</value>
+  </data>
+  <data name="SumBonusLabel" xml:space="preserve">
+    <value>Сумма начисления</value>
+  </data>
+  <data name="ToPayLabel" xml:space="preserve">
+    <value>К оплате</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Итого</value>
+  </data>
+  <data name="TotalSumOrder" xml:space="preserve">
+    <value>Общая сумма покупки</value>
+  </data>
+  <data name="UseBonusLabel" xml:space="preserve">
+    <value>Использовать бонусы</value>
+  </data>
+  <data name="YourBonusAmountLabel" xml:space="preserve">
+    <value>Ваш бонусный счёт</value>
+  </data>
+  <data name="YourPurchasesLabel" xml:space="preserve">
+    <value>Ваши покупки</value>
   </data>
 </root>
