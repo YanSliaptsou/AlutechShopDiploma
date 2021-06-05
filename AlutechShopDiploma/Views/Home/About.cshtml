@@ -8,14 +8,14 @@
 
 <h1></h1>
 <div class="tab" style="width:105%">
-    <button class="tablinks" onclick="openCity(event, 'Actions')">Акционные товары на @DateTime.Now.Date.Day.@DateTime.Now.Date.Month.@DateTime.Now.Date.Year</button>
-    <button class="tablinks" onclick="openCity(event, 'Articles')">Правила интернет-магазина</button>
-    <button class="tablinks" onclick="openCity(event, 'Videomaterials')">Видеоматериалы</button>
-    <button class="tablinks" onclick="openCity(event, 'About')">О компании</button>
+    <button class="tablinks" onclick="openCity(event, 'Actions')">@AlutechShopDiploma.Resources.Views.Home.About.TabName1 @DateTime.Now.Date.Day.@DateTime.Now.Date.Month.@DateTime.Now.Date.Year</button>
+    <button class="tablinks" onclick="openCity(event, 'Articles')">@AlutechShopDiploma.Resources.Views.Home.About.TabName2</button>
+    <button class="tablinks" onclick="openCity(event, 'Videomaterials')">@AlutechShopDiploma.Resources.Views.Home.About.TabName3</button>
+    <button class="tablinks" onclick="openCity(event, 'About')">@AlutechShopDiploma.Resources.Views.Home.About.TabName4</button>
 </div>
 
 <div id="Actions" class="tabcontent" style="width:105%">
-    <h1><center>Специальные предложения</center></h1>
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.TabName1Caption</center></h1>
     @foreach (var discount in Model)
     {
         AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
@@ -25,7 +25,7 @@
 </div>
 
 <div id="Videomaterials" class="tabcontent" style="width:105%">
-    <h1><center>Видеоролики о компании</center></h1>
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.TabName2Caption</center></h1>
     <p><center class="label label-info" style="margin-left: 35%; font-size: 13px;">ALUTECH - Group of companies | English Version</center></p>
     <iframe style="margin-left:25%" width="560" height="315" src="https://www.youtube.com/embed/KJ8vRGJNZfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <p><center class="label label-info" style="margin-left: 39%; font-size: 13px;">ALUTECH - Презентационное видео</center></p>
@@ -34,53 +34,53 @@
 
 <div id="Articles" class="tabcontent" style="width:105%">
     <div class="product-item well">
-        <h2 style="color:red"><ul>Правила покупки товаров</ul></h2>
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRulesCaption</ul></h2>
         <ul>
-            <li>Покупать можно любой товар неограниченное количество раз.</li>
-            <li>Покупать можно только то максимальное количество товара, которое имеется на складе. Мы ведём работу на данный момент над реализацией предзаказов в нашем магазине.</li>
-            <li>Минимальное количество товаров для покупки - 1.</li>
-            <li>Средства на бонусный счёт зачисляются только после подтверждения администратором оплаты заказа.</li>
-            <li>Сумма к зачислению на бонусный зависит от стоимости вашего заказа (посмотреть можно при оформлении заказа в разделе 'Бонусный счёт').</li>
-            <li style="font-weight:bold">Перед списанием средств с бонусного счёта убедитесь, что ваш заказ принял окончательную форму. При списании средств с бонусного счёта и последующем редактировании заказа средсва с бонусного счёта пропадут.</li>
-            <li>При оформлении заказа обязательными полями являются контактное имя, номер телефона и электронная почта.</li>
-            <li>После оформления заказа и отправки его нам, вы не сможете его редактировать, но сможете его отменить, отправив ИД заказа нам через контактную форму на главной странице для отмены. ИД вашего заказа можно узнать в своём личном кабинете в разделе 'Мои заказы'</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules4</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules5</li>
+            <li style="font-weight:bold">@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules6</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules7</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules8</li>
         </ul>
     </div>
     <h1></h1>
     <div class="product-item well">
-        <h2 style="color:red"><ul>Правила написания отзывов</ul></h2>
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRulesCaption</ul></h2>
         <ul>
-            <li>Отзывы можно писать неограниченное количество раз на любой товар.</li>
-            <li>В отзывах запрещается: нецензурная лексика, спам, любого вида оскорбления, любого вида рознь.</li>
-            <li>За невыполнение правил - блокировка.</li>
-            <li>Заблокированный пользователь не может писать отзывы.</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules4</li>
         </ul>
     </div>
     <h1></h1>
     <div class="product-item well">
-        <h2 style="color:red"><ul>Правила оценки товаров</ul></h2>
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.MarksRulesCaption</ul></h2>
         <ul>
-            <li>Каждый товар оценивается по шкале от 1 до 10</li>
-            <li>Каждый товар может быть оценён одним пользователь только 1 раз.</li>
-            <li>Свою оценку можно удалить и оценить товар заново.</li>
-            <li>Заблокированный пользователь не может оценивать товары.</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules4</li>
         </ul>
     </div>
     <h1></h1>
     <div class="product-item well">
-        <h2 style="color:red"><ul>Правила отправки сообщений для администрации</ul></h2>
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRulesCaption</ul></h2>
         <ul>
-            <li>При отправке сообщения необходимо в обязательном порядке указать своё имя, почту, телефон и текст сообщения.</li>
-            <li>Обращаем внимание! Ответ на ваше сообщение придёт именно на ту почту, которую вы указывали в форме при отправке сообшений.</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRules2</li>
         </ul>
     </div>
     <h1></h1>
     <div class="product-item well">
-        <h2 style="color:red"><ul>Правила подачи заявки на разблокировку аккаунта</ul></h2>
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblockLabel</ul></h2>
         <ul>
-            <li>Для подачи заяки перейдите в личный кабинет в раздел 'Статистика' и кликните по ссылке 'Подать заяку на разблокировку'</li>
-            <li>Подать заявку на разблокировку можно также и через контактную форму на главной странице, указав в теме сообщения 'Разблокировка аккаунта' и свою почту</li>
-            <li>Рассмотрение заявки занимает некоторое время. Если заявка будет рассмотрена в положительную сторону, вам придёт на почту, которую вы указали при регистрации, сообщение об успешной разблокировке, если в отрицательную, то на вашу почту придёт сообщение о причине.</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock3</li>
         </ul>
     </div>
 
@@ -89,33 +89,33 @@
 </div>
 
 <div id="About" class="tabcontent" style="width:105%">
-    <h1><center>О Группе компаний «АЛЮТЕХ»</center></h1>
-    <p>ГК «АЛЮТЕХ» — крупный производственно-сбытовой холдинг с 22-летней историей. Один из лидеров рынка роллетных систем и секционных ворот в Западной и Восточной Европе, ведущий производитель алюминиевых профильных систем на территории СНГ.</p>
-    <h2>Крупнейшие заводы холдинга находятся в Минске:</h2>
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.InfoLabel</center></h1>
+    <p>@AlutechShopDiploma.Resources.Views.Home.About.Info1</p>
+    <h2>@AlutechShopDiploma.Resources.Views.Home.About.Info2</h2>
     <ul>
-        <li><a href="#BC">Алютех воротные системы</a></li>
-        <li><a href="#Inc">Алютех Икорпорейтед</a></li>
-        <li><a href="#Techno">Алюмин Техно</a></li>
+        <li><a href="#BC">@AlutechShopDiploma.Resources.Views.Home.About.Info3</a></li>
+        <li><a href="#Inc">@AlutechShopDiploma.Resources.Views.Home.About.Info4</a></li>
+        <li><a href="#Techno">@AlutechShopDiploma.Resources.Views.Home.About.Info5</a></li>
     </ul>
-    <h2 style="font-weight:bold"><center><a name="BC"><u>Алютех воротные системы</u></a></center></h2>
+    <h2 style="font-weight:bold"><center><a name="BC"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info6</u></a></center></h2>
     <p>
-        Основное направление деятельности — производство секционных ворот. Предприятие способно выпускать около 670 изделий в сутки.
-        Здесь также изготавливаются сэндвич-панели, комплектующие и продукция из алюминиевых сплавов методом литья под давлением.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info7
+        @AlutechShopDiploma.Resources.Views.Home.About.Info8
     </p>
     <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/AlutechBC.jpg" />
 
-    <h2 style="font-weight:bold"><center><a name="Inc"><u>Алютех Икорпорейтед</u></a></center></h2>
+    <h2 style="font-weight:bold"><center><a name="Inc"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info9</u></a></center></h2>
     <p>
         <center>
-            Внушительные производственные мощности позволяют выпускать профили, комплектующие и системы управления для роллет.
+            @AlutechShopDiploma.Resources.Views.Home.About.Info10
         </center>
     </p>
     <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/Inc.jpg" />
 
-    <h2 style="font-weight:bold"><center><a name="Techno"><u>Алюмин Техно</u></a></center></h2>
+    <h2 style="font-weight:bold"><center><a name="Techno"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info11</u></a></center></h2>
     <p>
         <center>
-            Инновационное производство по изготовлению, порошковой окраске и анодированию алюминиевых профилей, ставшее самым крупным в СНГ.
+            @AlutechShopDiploma.Resources.Views.Home.About.Info12
         </center>
     </p>
     <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/AluminTechno.jpg" />
@@ -123,31 +123,31 @@
 
     </p>
     <p>
-        Старейшим направлением деятельности ГК «АЛЮТЕХ» является выпуск роллет. Они изготавливаются из энергоэффективных пенозаполненных или сверхпрочных экструдированных профилей. Для защиты дома от насекомых, тополиного пуха и пыли предусмотрены роллеты со встроенной антимоскитной сеткой.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info13
     </p>
 
     <p>
-        Кроме того, в ассортименте холдинга представлены роллетные ворота, которые устанавливаются в гаражах и паркингах, а также роллетные решетки для бутиков и торговых центров. Для объектов с повышенными требованиями к безопасности «АЛЮТЕХ» предлагает роллеты с классом взломостойкости P5.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info14
     </p>
 
     <p>
-        Повышенным спросом пользуются секционные ворота. Среди моделей для установки в частных гаражах можно найти бюджетные и премиальные серии. Промышленные ворота также представлены в разных ценовых категориях. Они подходят для установки на СТО, сельскохозяйственных предприятиях и т.д. Для автосалонов и объектов в стиле hi-tech отлично подойдут панорамные ворота.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info15
     </p>
 
     <p>
-        ГК «АЛЮТЕХ» предлагает различные изделия въездной группы. Среди них откатные и распашные ворота, калитки и секции ограждения. Собственное производство гарантирует высокое качество данных изделий. Сочетаемость продукции с экстерьером любого объекта обеспечивается за счет широкого выбора вариантов заполнения. В их числе — сэндвич-панели, алюминиевые профили, роллетные профили и комбинации этих материалов.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info16
     </p>
 
     <p>
-        Для обеспечения комфортного и безопасного управления защитными системами «АЛЮТЕХ» предлагает собственную линейку концептуальной автоматики для роллет, секционных и въездных ворот, а также автоматические шлагбаумы с высокой интенсивностью работы для регулирования проезда на частную территорию.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info17
     </p>
 
     <p>
-        Для повышения эффективности работы складских и логистических центров налажен выпуск современного перегрузочного оборудования.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info18
     </p>
 
     <p>
-        Для реализации интерьерных и архитектурных проектов холдинг предлагает алюминиевые профильные системы.
+        @AlutechShopDiploma.Resources.Views.Home.About.Info19
     </p>
 </div>
 

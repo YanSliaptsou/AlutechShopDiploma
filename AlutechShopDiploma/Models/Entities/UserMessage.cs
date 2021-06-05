@@ -20,6 +20,7 @@ namespace AlutechShopDiploma.Models.Entities
         public int UserMessageID { get => userMessageID; set => userMessageID = value; }
         public string UserId { get => userId; set => userId = value; }
         public string MessageTopic { get => messageTopic; set => messageTopic = value; }
+        [Required(ErrorMessage = "Введите текст сообщения/Emter message text")]
         public string MessageText { get => messageText; set => messageText = value; }
         [Required(ErrorMessage = "Введите имя/Enter name")]
         public string ContactName { get => contactName; set => contactName = value; }

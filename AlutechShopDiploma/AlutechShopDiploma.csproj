@@ -211,9 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminCategoriesController.cs" />
     <Compile Include="Controllers\AdministationController.cs" />
-    <Compile Include="Controllers\AdminSubcategoriesController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GoodController.cs" />
     <Compile Include="Controllers\GoodItemController.cs" />
@@ -385,6 +383,10 @@
     <Compile Include="Migrations\202105231910181_Check.Designer.cs">
       <DependentUpon>202105231910181_Check.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105280803199_Final version.cs" />
+    <Compile Include="Migrations\202105280803199_Final version.Designer.cs">
+      <DependentUpon>202105280803199_Final version.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
@@ -395,7 +397,6 @@
     <Compile Include="Models\Abstract\IOrderItemRepository.cs" />
     <Compile Include="Models\Abstract\IOrderRepository.cs" />
     <Compile Include="Models\Abstract\IShippingDetailRepository.cs" />
-    <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
     <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -410,7 +411,6 @@
     <Compile Include="Models\Concrete\EFOrderItemRepository.cs" />
     <Compile Include="Models\Concrete\EFOrderRepository.cs" />
     <Compile Include="Models\Concrete\EFShippingDetailRepository.cs" />
-    <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
     <Compile Include="Models\Entities\Mark.cs" />
@@ -572,6 +572,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>List.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\Home\About.en.Designer.cs">
+      <DependentUpon>About.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Home\About.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>About.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Views\Home\Index.en.Designer.cs">
       <DependentUpon>Index.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -715,7 +725,6 @@
     <Compile Include="Models\Entities\Goods\Category 3\Loop.cs" />
     <Compile Include="Models\Entities\Goods\Category 3\RollerAndRing.cs" />
     <Compile Include="Models\Entities\ImageContainer.cs" />
-    <Compile Include="Models\Entities\Subcategory.cs" />
     <Compile Include="Models\Entities\UserMessage.cs" />
     <Compile Include="Models\Entities\Warehouse.cs" />
     <Compile Include="Models\Enums\SortState.cs" />
@@ -776,7 +785,9 @@
     <Content Include="Content\Товары Alutech\ae19881ba1fce417051483345c810ae6.jpg" />
     <Content Include="Content\Товары Alutech\Alutech.jpg" />
     <Content Include="Content\Товары Alutech\b2b912089704c22b5743b69753d93323.png" />
+    <Content Include="Content\Товары Alutech\russia_640.png" />
     <Content Include="Content\Товары Alutech\shop_preview.jpg" />
+    <Content Include="Content\Товары Alutech\united_kingdom_640.png" />
     <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\DART SLIM Фотоэлементы.jpg" />
     <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\Светодиодная лампа SWIFT.jpg" />
     <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Приводы ГВ\Rampart 600 - высота 2.7м2 площадь до 8.4м2.jpg" />
@@ -1036,6 +1047,9 @@
     <EmbeddedResource Include="Migrations\202105231910181_Check.resx">
       <DependentUpon>202105231910181_Check.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105280803199_Final version.resx">
+      <DependentUpon>202105280803199_Final version.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\ConfirmEmail.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ConfirmEmail.en.Designer.cs</LastGenOutput>
@@ -1163,6 +1177,14 @@
     <EmbeddedResource Include="Resources\Views\Good\List.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>List.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\About.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\About.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Home\Index.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -27,7 +27,6 @@ namespace AlutechShopDiploma.Controllers
             Good good = context.Goods
                 .FirstOrDefault(b => b.GoodID == goodId);
             good.Views += 1;
-            //good.Rating = 0;
 
             goodID = good.GoodID;
 
