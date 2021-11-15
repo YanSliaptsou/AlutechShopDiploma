@@ -1,7 +1,178 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Discount>
+@using AlutechShopDiploma.Models.Entities
+<head>
+    <link href="~/Content/css/characteristics_table.css" rel="stylesheet" />
+    <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
+    <link href="~/Content/css/comparison_table.css" rel="stylesheet" />
+</head>
 
-<p>Use this area to provide additional information.</p>
+<h1></h1>
+<div class="tab" style="width:105%">
+    <button class="tablinks" onclick="openCity(event, 'Actions')">@AlutechShopDiploma.Resources.Views.Home.About.TabName1 @DateTime.Now.Date.Day.@DateTime.Now.Date.Month.@DateTime.Now.Date.Year</button>
+    <button class="tablinks" onclick="openCity(event, 'Articles')">@AlutechShopDiploma.Resources.Views.Home.About.TabName2</button>
+    <button class="tablinks" onclick="openCity(event, 'Videomaterials')">@AlutechShopDiploma.Resources.Views.Home.About.TabName3</button>
+    <button class="tablinks" onclick="openCity(event, 'About')">@AlutechShopDiploma.Resources.Views.Home.About.TabName4</button>
+</div>
+
+<div id="Actions" class="tabcontent" style="width:105%">
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.TabName1Caption</center></h1>
+    @foreach (var discount in Model)
+    {
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+        Good good = context.Goods.FirstOrDefault(x => x.GoodID == discount.GoodID);
+        @Html.Partial("_GoodSummary", good)
+    }
+</div>
+
+<div id="Videomaterials" class="tabcontent" style="width:105%">
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.TabName2Caption</center></h1>
+    <p><center class="label label-info" style="margin-left: 35%; font-size: 13px;">ALUTECH - Group of companies | English Version</center></p>
+    <iframe style="margin-left:25%" width="560" height="315" src="https://www.youtube.com/embed/KJ8vRGJNZfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p><center class="label label-info" style="margin-left: 39%; font-size: 13px;">ALUTECH - Презентационное видео</center></p>
+    <iframe style="margin-left:25%" width="560" height="315" src="https://www.youtube.com/embed/yoJGlB7wdwg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div id="Articles" class="tabcontent" style="width:105%">
+    <div class="product-item well">
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRulesCaption</ul></h2>
+        <ul>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules4</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules5</li>
+            <li style="font-weight:bold">@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules6</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules7</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.PurchasesRules8</li>
+        </ul>
+    </div>
+    <h1></h1>
+    <div class="product-item well">
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRulesCaption</ul></h2>
+        <ul>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.ReviewsRules4</li>
+        </ul>
+    </div>
+    <h1></h1>
+    <div class="product-item well">
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.MarksRulesCaption</ul></h2>
+        <ul>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules3</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MarksRules4</li>
+        </ul>
+    </div>
+    <h1></h1>
+    <div class="product-item well">
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRulesCaption</ul></h2>
+        <ul>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRules1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.MessagesRules2</li>
+        </ul>
+    </div>
+    <h1></h1>
+    <div class="product-item well">
+        <h2 style="color:red"><ul>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblockLabel</ul></h2>
+        <ul>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock1</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock2</li>
+            <li>@AlutechShopDiploma.Resources.Views.Home.About.AskToUnblock3</li>
+        </ul>
+    </div>
+
+
+
+</div>
+
+<div id="About" class="tabcontent" style="width:105%">
+    <h1><center>@AlutechShopDiploma.Resources.Views.Home.About.InfoLabel</center></h1>
+    <p>@AlutechShopDiploma.Resources.Views.Home.About.Info1</p>
+    <h2>@AlutechShopDiploma.Resources.Views.Home.About.Info2</h2>
+    <ul>
+        <li><a href="#BC">@AlutechShopDiploma.Resources.Views.Home.About.Info3</a></li>
+        <li><a href="#Inc">@AlutechShopDiploma.Resources.Views.Home.About.Info4</a></li>
+        <li><a href="#Techno">@AlutechShopDiploma.Resources.Views.Home.About.Info5</a></li>
+    </ul>
+    <h2 style="font-weight:bold"><center><a name="BC"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info6</u></a></center></h2>
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info7
+        @AlutechShopDiploma.Resources.Views.Home.About.Info8
+    </p>
+    <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/AlutechBC.jpg" />
+
+    <h2 style="font-weight:bold"><center><a name="Inc"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info9</u></a></center></h2>
+    <p>
+        <center>
+            @AlutechShopDiploma.Resources.Views.Home.About.Info10
+        </center>
+    </p>
+    <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/Inc.jpg" />
+
+    <h2 style="font-weight:bold"><center><a name="Techno"><u>@AlutechShopDiploma.Resources.Views.Home.About.Info11</u></a></center></h2>
+    <p>
+        <center>
+            @AlutechShopDiploma.Resources.Views.Home.About.Info12
+        </center>
+    </p>
+    <img style="margin-left: 11%;" height="60%" width="70%" src="~/Content/Товары Alutech/AluminTechno.jpg" />
+    <p>
+
+    </p>
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info13
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info14
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info15
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info16
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info17
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info18
+    </p>
+
+    <p>
+        @AlutechShopDiploma.Resources.Views.Home.About.Info19
+    </p>
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<style>
+   
+</style>

@@ -1,0 +1,12 @@
+﻿<body>
+    <h1></h1>
+    @if (ViewData["success"] != null)
+    {
+        <div class="alert alert-success">@ViewData["success"]</div>
+    }
+    @if (ViewData["mistake"] != null)
+    {
+        <div class="alert alert-danger">@ViewData["mistake"]</div>
+    }
+</body>
+

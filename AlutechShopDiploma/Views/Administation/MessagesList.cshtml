@@ -1,0 +1,127 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.UserMessage>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+
+    @{
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<AlutechShopDiploma.Models.ApplicationUser> users = context.Users.OrderBy(x => x.UserName).ToList();
+
+        List<string> usernames = new List<string>();
+        List<string> usermesIds = new List<string>();
+
+        foreach (var user in users)
+        {
+            usernames.Add(user.UserName);
+        }
+
+        foreach (var message in Model)
+        {
+            usermesIds.Add(message.UserMessageID.ToString());
+        }
+
+        SelectList usernamesitems = new SelectList(usernames);
+        SelectList userMesIds = new SelectList(usermesIds);
+    }
+
+    @{
+        <h1><center>Управление сообщениями от пользователей</center></h1>
+        <h3><center>Найти сообщение от пользователя</center></h3>
+        using (Html.BeginForm("MessagesList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                @Html.Label("Найти сообщение по ID")
+            </div>
+            <div style="display:inline-block">
+                @Html.DropDownList("messageId", userMesIds, new { @class = "form-control", @style = "margin-left: 551%;" })
+            </div>
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 565%;" />
+            </div>
+
+        }
+        <h1>
+        </h1>
+        using (Html.BeginForm("MessagesList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                @Html.Label("Найти сообщение по имени пользователя")
+            </div>
+            <div style="display:inline-block">
+                @Html.DropDownList("username", usernamesitems, new { @class = "form-control", @style = "margin-left: 35%;" })
+            </div>
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 130%;" />
+            </div>
+        }
+        <h1>
+        </h1>
+        using (Html.BeginForm("MessagesList", "Administation", new { @style = "dispaly:inline-block" }))
+        {
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-danger" value="Показать всех пользователей" style="margin-left: 105%;" />
+            </div>
+        }
+    }
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+
+    <table class="table_info">
+        <caption>Сообщения от пользователей</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Имя пользователя</center></th>
+            <th><center>Тема сообщения</center></th>
+            <th><center>Текст сообщения</center></th>
+            <th><center>Имя</center></th>
+            <th><center>Телефон</center></th>
+            <th><center>E-mail</center></th>
+            <th><center>Дата и время</center></th>
+        </tr>
+        @{ 
+            foreach(var message in Model)
+            {
+                <tr>
+                    <td><center>@message.UserMessageID</center></td>
+                    <td><center>@context.Users.Find(message.UserId).UserName</center></td>
+                    <td><center>@message.MessageTopic</center></td>
+                    <td><center>@message.MessageText</center></td>
+                    <td><center>@message.ContactName</center></td>
+                    <td><center>@message.ContactPhone</center></td>
+                    <td><center>@message.ContactMail</center></td>
+                    <td><center>@message.DateTime.Day.@message.DateTime.Month.@message.DateTime.Year  @message.DateTime.Hour:@message.DateTime.Minute:@message.DateTime.Second</center></td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>

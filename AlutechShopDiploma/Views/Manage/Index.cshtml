@@ -1,87 +1,87 @@
 ﻿@model AlutechShopDiploma.Models.IndexViewModel
 @{
-    ViewBag.Title = "Управление";
+    ViewBag.Title = AlutechShopDiploma.Resources.Views.Manage.Index.Viewbag;
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Изменение параметров учетной записи</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Пароль:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Смена пароля", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Создать", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>Внешние имена входа:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Управление", "ManageLogins") ]
-        </dd>
-        @*
-            Номера телефонов можно использовать в качестве второго проверочного фактора для системы двухфакторной проверки подлинности.
-             
-             В <a href="https://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
-                можно узнать, как для этого приложения ASP.NET настроить двухфакторную проверку подлинности с использованием SMS.
-             
-             Настроив двухфакторную проверку подлинности, раскомментируйте следующий блок
-        *@
-        @*  
-            <dt>Номер телефона:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Удалить" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
-        <dt>Двухфакторная проверка подлинности:</dt>
-        <dd>
-            <p>
-                Поставщики двухфакторной проверки подлинности не настроены. В <a href="https://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
-                можно узнать, как настроить двухфакторную проверку подлинности для этого приложения ASP.NET.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Включено
-                        <input type="submit" value="Отключить" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Отключено
-                        <input type="submit" value="Включить" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
+<head>
+    <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
+</head>
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["message"]
+    </div>
+}
+@if (TempData["mistake"] != null)
+{
+    <div class="alert alert-danger" style="margin-left: 45px;">
+        @TempData["mistake"]
+    </div>
+}
+@if (TempData["succsess"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["succsess"]
+    </div>
+}
+<div class="tab" style="width:105%">
+    <button class="tablinks" onclick="openCity(event, 'Messages')"><i class="fa fa-envelope"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Messages</button>
+    <button class="tablinks" onclick="openCity(event, 'Marks')"><i class="fa fa-mortar-board"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Marks</button>
+    <button class="tablinks" onclick="openCity(event, 'Comments')"><i class="fa fa-comment"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Reviews</button>
+    <button class="tablinks" onclick="openCity(event, 'Purchases')"><i class="fa fa-shopping-basket"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Purchases</button>
+    <button class="tablinks" onclick="openCity(event, 'Balance')"><i class="fa fa-rub"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.BonusBalance</button>
+    <button class="tablinks" onclick="openCity(event, 'Statistics')"><i class="fa fa-pencil"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Statistics</button>
+    <button class="tablinks" onclick="openCity(event, 'Graphics')"><i class="fa fa-line-chart"></i> @AlutechShopDiploma.Resources.Views.Manage.Index.Graphics</button>
 </div>
+<div id="Messages" class="tabcontent" style="width:105%">
+    @Html.Action("MessagesList", "UserInfo")
+</div>
+<div id="Marks" class="tabcontent" style="width:105%">
+    @Html.Action("MarksList", "UserInfo")
+</div>
+
+<div id="Comments" class="tabcontent" style="width:105%">
+    @Html.Action("CommentsList", "UserInfo")
+</div>
+
+<div id="Purchases" class="tabcontent" style="width:105%">
+    @Html.Action("OrdersList", "UserInfo")
+</div>
+
+<div id="Balance" class="tabcontent" style="width:105%">
+    @Html.Action("BonusBalance", "UserInfo")
+</div>
+
+<div id="Statistics" class="tabcontent" style="width:105%">
+    @Html.Action("Statistics","UserInfo")
+</div>
+
+<div id="Graphics" class="tabcontent" style="width:105%">
+    @Html.Action("Graphics", "UserInfo")
+</div>
+
+
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>

@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Caption" xml:space="preserve">
+    <value>Используйте для входа другую службу</value>
+  </data>
+  <data name="EnterWithHelp" xml:space="preserve">
+    <value>Войти с помощью учетной записи</value>
+  </data>
   <data name="ExternalServices" xml:space="preserve">
-    <value>Внешние службы проверки подлинности не настроены. В &lt;a href="https://go.microsoft.com/fwlink/?LinkId=403804"&gt;этой статье приведены сведения о настройке входа через внешние службы для этого приложения ASP.NET.</value>
+    <value>Внешние службы проверки подлинности не настроены.</value>
   </data>
 </root>

@@ -1,4 +1,6 @@
 ﻿using AlutechShopDiploma.Models;
+using AlutechShopDiploma.Models.Abstract;
+using AlutechShopDiploma.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -14,24 +16,35 @@ namespace AlutechShopDiploma.Controllers
     [RequireHttps]
     public class HomeController : Controller
     {
+        public IGoodRepository repository;
+        public int pageSize = 3;
+        
+
+        public HomeController(IGoodRepository repo)
+        {
+            repository = repo;
+        }
+
         [Authorize]
         public ActionResult Index()
         {
-            IList<string> roles = new List<string> { "Роль не определена" };
+            /*IList<string> roles = new List<string> { "Роль не определена" };
             ApplicationUserManager userManager = HttpContext.GetOwinContext()
                                                     .GetUserManager<ApplicationUserManager>();
             ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
             if (user != null)
-                roles = userManager.GetRoles(user.Id);
-            return View(roles);
+                roles = userManager.GetRoles(user.Id);*/
+            IEnumerable<Good> goods = repository.Goods;
+
+            return View(goods);
         }
 
-        [Authorize(Roles = "admin")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+            IEnumerable<Discount> discounts = applicationDbContext.Discounts.Where(x => x.DiscountID !=0);
 
-            return View();
+            return View(discounts);
         }
 
         public ActionResult Contact()

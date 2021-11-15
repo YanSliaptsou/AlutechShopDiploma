@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Comment>
+@using AlutechShopDiploma.SQL
+
+@{ 
+    int goodID = AlutechShopDiploma.Controllers.GoodItemController.goodID;
+
+    SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+    List<string> comments = sqlWorker.SelectDataFromDBMult("SELECT CommentID FROM Comments WHERE GoodID = " + goodID);
+}
+
+<head>
+    <link href="~/Content/css/commnets_block.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="comments">
+      <h3 class="title-comments">@AlutechShopDiploma.Resources.Views.Comment.List.CommentLabel (@comments.Count)</h3>
+  @{ 
+      foreach(var comment in Model)
+      {
+          string username = sqlWorker.SelectDataFromDB("SELECT UserName from AspNetUsers WHERE Id = '" + comment.UserID +"'");
+          if (goodID == Convert.ToInt32(sqlWorker.SelectDataFromDB("SELECT GoodID FROM Comments Where CommentID = " + comment.CommentID)))
+          {
+              <ul class="media-list">
+                  <!-- Комментарий (уровень 1) -->
+                  <li class="media">
+                      <div class="media-left">
+                          <a href="#">
+                              <img class="media-object img-rounded" src="@Url.Content("~/Content/preview/avatar.png")" style="height: 25px;width: 25px;margin-left: 0%;margin-top: 0%;" alt="">
+                          </a>
+                      </div>
+                      <div class="media-body" style="margin-top: -3%;margin-left: 1%;">
+                          <div class="media-heading">
+                              <div class="author">@username</div>
+                              <div class="metadata">
+                                  <span class="date">@comment.DateTime.Day.@comment.DateTime.Month.@comment.DateTime.Year  @comment.DateTime.Hour:@comment.DateTime.Minute:@comment.DateTime.Second</span>
+                              </div>
+                          </div>
+                          <div class="media-text text-justify">@comment.CommentText</div>
+                          @{ 
+                              if (username == HttpContext.Current.User.Identity.Name)
+                              {
+                          <div class="footer-comment">
+                              <span class="comment-reply">
+                                  @Html.ActionLink(AlutechShopDiploma.Resources.Views.Comment.List.ActionLink, "Delete", "Comment", new { commentID = comment.CommentID }, null)
+                              </span>
+                          </div>
+                                  }
+                              }
+                      </div>
+                  </li>
+
+                  <p>
+
+                  </p>
+
+              </ul>
+          }
+  }  
+  }
+</div>
+</body>

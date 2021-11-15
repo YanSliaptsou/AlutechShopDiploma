@@ -1,0 +1,41 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+
+@model IEnumerable<Comment>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+
+@{
+    <table class="table_info">
+        <caption>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MyCommentsInfo</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Review</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Actions</center></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            GoodWorker goodWorker = new GoodWorker(item.GoodID);
+            string imageUrl = goodWorker.GetGoodImage();
+            string name = goodWorker.GetGoodName();
+            <tr>
+                <td><center>@item.CommentID</center></td>
+                <td><center><img style="width:40%" src="@Url.Content(imageUrl)" /></center></td>
+                <td><center><a href="~/GoodItem/CartItem?goodId=@item.GoodID">@name</a></center></td>
+                <td><center>@item.CommentText</center></td>
+                <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+                <td>
+                    <form action="/Comment/Delete?commentID=@item.CommentID" method="post">
+                        <input class="btn btn-success" type="submit" value="@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Delete " />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

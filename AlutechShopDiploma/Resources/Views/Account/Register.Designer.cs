@@ -70,6 +70,15 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Создание новой учетной записи.
+        /// </summary>
+        public static string Caption {
+            get {
+                return ResourceManager.GetString("Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Подтвердить пароль.
         /// </summary>
         public static string ConfirmPassword {
@@ -102,6 +111,15 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         public static string RegBtn {
             get {
                 return ResourceManager.GetString("RegBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Регистрация.
+        /// </summary>
+        public static string ViewBagTitle {
+            get {
+                return ResourceManager.GetString("ViewBagTitle", resourceCulture);
             }
         }
     }

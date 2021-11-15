@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Администрирование";
+}
+
+<h2><center>@ViewBag.Title</center></h2>
+
+<head>
+    <link href="~/Content/css/tabstyles.css" rel="stylesheet" />
+</head>
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["message"]
+    </div>
+}
+@if (TempData["mistake"] != null)
+{
+    <div class="alert alert-danger" style="margin-left: 45px;">
+        @TempData["mistake"]
+    </div>
+}
+@if (TempData["succsess"] != null)
+{
+    <div class="alert alert-success" style="margin-left: 45px;">
+        @TempData["succsess"]
+    </div>
+}
+
+<div class="product-item well" style="margin-top: 2%;">              
+    <div class="product-item row">
+        <center>
+            @using (Html.BeginForm("UsersList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление пользователями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("CommentsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление комментариями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("MessagesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление сообщениями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("CategoriesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление категориями товаров" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("DiscountsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление скидками" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("ImagesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление изображениями" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("WarehousesList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление складами" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("GoodsList", "Administation"))
+            {
+                <input type="submit" class="btn btn-success" value="Управление товарами" />
+            }
+            <h1>
+            </h1>
+            @using (Html.BeginForm("Statistics", "Administation"))
+            {
+                <input type="submit" class="btn btn-info" value="Статистика" />
+            }
+        </center>
+    </div>
+</div>
+
+
+
+
+

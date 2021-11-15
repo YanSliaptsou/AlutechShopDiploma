@@ -1,0 +1,421 @@
+﻿@model AlutechShopDiploma.Models.ViewModels.PurchaseViewModel
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Enums
+
+<head>
+    <link href="~/Content/css/vertical_tabs.css" rel="stylesheet"/>
+</head>
+
+@{ 
+    OrderWorker orderWorker = new OrderWorker();
+    int orderItemsCount = 0;
+    double totalPrice = 0;
+    double finalPrice = 0;
+    double discount = 0;
+    double bonusAdded = 0;
+    double bonusPercentage = 0;
+    int itemsInOrder = 0;
+    List<string> orderItemsIds = new List<string>();
+    List<string> orderItemsNames = new List<string>();
+    List<string> orderItemsImages = new List<string>();
+    List<string> orderItemsPricesPerGoodItems = new List<string>();
+    List<string> orderItemsPricesAmmounts = new List<string>();
+    List<string> orderItemsPricesPerOrderItems = new List<string>();
+    double userBalance = 0;
+
+    if (Request.IsAuthenticated && orderWorker.DefineOrderID() != 0)
+    {
+        orderItemsCount = orderWorker.DefineOrderItemsCountInOrder();
+        totalPrice = Math.Round(orderWorker.CountOrderPrice(), 2);
+        finalPrice = Math.Round(orderWorker.GetOrderPrice(), 2);
+        discount = Math.Round(totalPrice - finalPrice, 2);
+        bonusPercentage = orderWorker.GetBonusPercentage();
+
+        bonusAdded = Math.Round(finalPrice * bonusPercentage / 100, 2);
+        orderItemsIds = orderWorker.GetOrderDetails(OrderDetail.Id);
+        orderItemsNames = orderWorker.GetOrderDetails(OrderDetail.Name);
+        orderItemsImages = orderWorker.GetOrderDetails(OrderDetail.Image);
+        orderItemsPricesPerGoodItems = orderWorker.GetOrderDetails(OrderDetail.PricePerGoodItem);
+        orderItemsPricesAmmounts = orderWorker.GetOrderDetails(OrderDetail.AmountOfItems);
+        orderItemsPricesPerOrderItems = orderWorker.GetOrderDetails(OrderDetail.PricePerOrderItem);
+
+        UsersWorker usersWorker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+
+        userBalance = Math.Round(usersWorker.GetUserBalance(), 2);
+
+        itemsInOrder = orderWorker.DefineOrderItemsCountInOrder();
+    }
+}
+
+<body>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+    <p>
+
+    </p>
+    @{
+        if (itemsInOrder > 0)
+        {
+            <h1>@AlutechShopDiploma.Resources.Views.Purchase.List.BasketLabel</h1>
+            <p>
+
+            </p>
+            <div class="tab" style="height: 272px;">
+                <button class="tablinks active" onclick="openCity(event, 'London')">@AlutechShopDiploma.Resources.Views.Purchase.List.YourPurchasesLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Paris')">@AlutechShopDiploma.Resources.Views.Purchase.List.YourBonusAmountLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Tokyo')">@AlutechShopDiploma.Resources.Views.Purchase.List.OrdersSumLabel</button>
+                <button class="tablinks" onclick="openCity(event, 'Minsk')">@AlutechShopDiploma.Resources.Views.Purchase.List.CreateOrderLabel</button>
+            </div>
+            <div id="London" style="display:flex; height: 70%; border:1px solid" class="tabcontent">
+                <table style="margin-top: 1%;margin-bottom: 1%;">
+                    <tr>
+                        <th colspan="2">@AlutechShopDiploma.Resources.Views.Purchase.List.Purchase</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Price</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Amount</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Total</th>
+                        <th>@AlutechShopDiploma.Resources.Views.Purchase.List.Action</th>
+                    </tr>
+                    <tr>
+                        <th style="background:transparent"></th>
+                    </tr>
+                    @{
+                        for (int i = 0; i < orderItemsCount; i++)
+                        {
+                            <tr>
+                                <td><img style="width:60px;height:70px;" src="@Url.Content(orderItemsImages[i])" /></td>
+                                <td>@orderItemsNames[i]</td>
+                                <td>@orderItemsPricesPerGoodItems[i] р.</td>
+                                <td>
+                                    @{
+                                        int _ammount = Convert.ToInt32(orderItemsPricesAmmounts[i]);
+                                                                        <p>@AlutechShopDiploma.Resources.Views.Purchase.List.InBasletLabel @_ammount @AlutechShopDiploma.Resources.Views.Purchase.List.ItemsLabel</p>
+                                    }
+                                    @using (Html.BeginForm("Edit", "Purchase", new { orderItemID = orderItemsIds[i] }))
+                                    {
+                                        <p>@AlutechShopDiploma.Resources.Views.Purchase.List.ChangeLabel</p>
+                                        @Html.EditorFor(model => model.goodAmmount, new { htmlAttributes = new { @class = "", @type = "number", @value = "_ammount", @min = "1" } })
+                                        <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.List.ItemsLabel</h4>
+                                        <input type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.List.ChangeBtnLabel" />
+                                    }
+                                </td>
+                                <td>@orderItemsPricesPerOrderItems[i] @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Purchase", new { orderItemID = orderItemsIds[i] }))
+                                    {
+                                    <button class="btn btn-danger">@AlutechShopDiploma.Resources.Views.Purchase.List.DeleteBtnLabel</button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+
+            <div id="Paris" style=" border: 1px solid; height: 70%" class="tabcontent">
+                <div class="product-item well" style="margin-top: 2%;">
+                    <div class="product-item row">
+                        <strong class="label label-primary" style="margin-left: 30%; font-size: 150%;">@AlutechShopDiploma.Resources.Views.Purchase.List.YourBonusAmountLabel @userBalance @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</strong>
+                    </div>
+                </div>
+
+                <div class="product-item well">
+                    <div class="product-item row">
+                        @using (Html.BeginForm("SpendBonuses", "Purchase", FormMethod.Post, new { @style = "margin-left: 36%;" }))
+                        {
+                            <p>@AlutechShopDiploma.Resources.Views.Purchase.List.UseBonusLabel</p>
+                            @Html.EditorFor(model => model.userBalance, new { htmlAttributes = new { @class = "", @type = "number", @value = "_ammount", @min = "0.01", @step = "0.01" } })
+                            <h4 style="display:inline-block">@AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</h4>
+                            <input class="btn-success" type="submit" value="@AlutechShopDiploma.Resources.Views.Purchase.List.UseBonusLabel" />
+                        }
+                    </div>
+                </div>
+                <div class="product-item well">
+                    <div class="product-item row">
+                        <div class="alert alert-warning">
+                            @AlutechShopDiploma.Resources.Views.Purchase.List.AlertLabel
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item well">
+                    <div class="product-item row">
+                        <h2 class="label label-info" style="margin-left:27%;font-size: 150%;">@AlutechShopDiploma.Resources.Views.Purchase.List.BonusesTableLabel</h2>
+                        <p>
+
+                        </p>
+                        <p>
+
+                        </p>
+                        <p>
+
+                        </p>
+
+                        <table style="margin-left: 23%; margin-top: 3%;">
+                            <tr>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.PurchaseTableLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.SumBonusesTableLabel</th>
+                            </tr>
+                            <tr>
+                                <th style="background:transparent"></th>
+                            </tr>
+
+                            <tr>
+                                <td>< 1000</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>1000-2499</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>2500-4999</td>
+                                <td>1.5</td>
+                            </tr>
+                            <tr>
+                                <td>5000-7499</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>7500-9999</td>
+                                <td>2.5</td>
+                            </tr>
+                            <tr>
+                                <td>10000-12499</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>12500-14999</td>
+                                <td>3.5</td>
+                            </tr>
+                            <tr>
+                                <td>15000-17499</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>17500-19999</td>
+                                <td>4.5</td>
+                            </tr>
+                            <tr>
+                                <td>20000-24999</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>25000-29999</td>
+                                <td>5.5</td>
+                            </tr>
+                            <tr>
+                                <td>30000-34999</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>35000-39999</td>
+                                <td>6.5</td>
+                            </tr>
+                            <tr>
+                                <td>40000-44999</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>45000-49999</td>
+                                <td>7.5</td>
+                            </tr>
+                            <tr>
+                                <td>50000-74999</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <td>75000-99999</td>
+                                <td>9</td>
+                            </tr>
+                            <tr>
+                                <td>>= 100000</td>
+                                <td>10</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Tokyo" style=" border: 1px solid" ; class="tabcontent">
+                <div class="product-item well" style="/*! margin-top: -11px; */ margin-bottom: -2%; margin-left: 0%; margin-top: 2%;">
+                    <div class="product-item row" style="/*! margin-top: -11px; */ margin-bottom: -2%; margin-left: 0%; margin-top: -1%;">
+                        <table style="display:inline-block; margin-left: 40px;">
+                            <tr>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.OperationLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.CostLabel</th>
+                            </tr>
+                            <tr>
+                                <th style="background:transparent"></th>
+                            </tr>
+
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.TotalSumOrder</h4></td>
+                                <td><a style="color:blue;"><u>@totalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
+                            </tr>
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.SpendsOrderLabel </h4></td>
+                                <td><a style="color:green;"><u>@discount @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
+                            </tr>
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.ToPayLabel</h4></td>
+                                <td><a style="color:red;"><u>@finalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
+                            </tr>
+
+                        </table>
+
+                        <table style="display:inline-block; margin-right:5px;">
+                            <tr>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.OperationLabel</th>
+                                <th>@AlutechShopDiploma.Resources.Views.Purchase.List.CostLabel</th>
+                            </tr>
+                            <tr>
+                                <th style="background:transparent"></th>
+                            </tr>
+
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.TotalSumOrder</h4></td>
+                                <td><a style="color:blue;"><u>@finalPrice @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
+                            </tr>
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.AddOrderLabel </h4></td>
+                                <td><a style="color:green;"><u>@bonusPercentage %</u></a></td>
+                            </tr>
+                            <tr>
+                                <td><h4>@AlutechShopDiploma.Resources.Views.Purchase.List.SumBonusLabel</h4></td>
+                                <td><a style="color:blue;"><u>@bonusAdded @AlutechShopDiploma.Resources.Views.Purchase.List.CurrencyLabel</u></a></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div id="Minsk" style=" border: 1px solid;height: 70%" class="tabcontent">
+                <div class="product-item well" style="margin-top:3%">
+                    <div class="product-item row">
+                        <div class="alert alert-warning">
+                            @AlutechShopDiploma.Resources.Views.Purchase.List.AttentionLabel
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item well" style="margin-top:3%">
+                    <div class="product-item row">
+                        @Html.Action("FinishOrder", "Purchase")
+                    </div>
+                </div>
+            </div>
+
+
+            <p style="margin-left: 57px;margin-top: 25%;">
+
+            </p>
+        }
+        else
+        {
+            <h1>@AlutechShopDiploma.Resources.Views.Purchase.List.EmptyBasket</h1>
+        }
+    }
+</body>
+<style>
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+
+    th {
+        padding: 10px 20px;
+        background: #56433D;
+        color: #F9C941;
+        border-right: 2px solid;
+        font-size: 0.9em;
+    }
+
+        th:first-child {
+            text-align: left;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+    td {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+        border-top: 2px solid #56433D;
+        border-bottom: 2px solid #56433D;
+        border-right: 2px solid #56433D;
+    }
+
+        td:first-child {
+            border-left: 2px solid #56433D;
+            border-right: none;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+    .btn {
+        color: #fff; /* цвет текста */
+        text-decoration: none; /* убирать подчёркивание у ссылок */
+        user-select: none; /* убирать выделение текста */
+        background: rgb(212,75,56); /* фон кнопки */
+        padding: .7em 1.5em; /* отступ от текста */
+        outline: none; /* убирать контур в Mozilla */
+    }
+
+    btn:hover {
+        background: rgb(232,95,76);
+    }
+    /* при наведении курсора мышки */
+    btn:active {
+        background: rgb(152,15,0);
+    }
+    /* при нажатии */
+</style>
+
+
+<script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        document.getElementById("London").style.display = "active";
+        evt.currentTarget.className += " active";
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    } 
+</script>

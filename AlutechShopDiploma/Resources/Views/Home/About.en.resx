@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AskToUnblock1" xml:space="preserve">
+    <value>To submit an application, go to your personal account in the 'Statistics' section and click on the 'Submit an application for unlocking' link.</value>
+  </data>
+  <data name="AskToUnblock2" xml:space="preserve">
+    <value>You can also apply for unblocking through the contact form on the main page, indicating in the subject line 'Account unblocking' and your mail.</value>
+  </data>
+  <data name="AskToUnblock3" xml:space="preserve">
+    <value>Consideration of the application takes some time. If the application is considered positively, you will receive a message on successful unlocking to the mail you specified during registration, if negative, you will receive a message about the reason.</value>
+  </data>
+  <data name="AskToUnblockLabel" xml:space="preserve">
+    <value>Account Unblocking Application Rules</value>
+  </data>
+  <data name="Info1" xml:space="preserve">
+    <value>ALUTECH Group of Companies is a large production and sales holding with a 22-year history. One of the market leaders for roller shutter systems and sectional doors in Western and Eastern Europe, a leading manufacturer of aluminum profile systems in the CIS.</value>
+  </data>
+  <data name="Info10" xml:space="preserve">
+    <value>The impressive production capacity allows the production of profiles, components and control systems for roller shutters.</value>
+  </data>
+  <data name="Info11" xml:space="preserve">
+    <value>Alumin Techno</value>
+  </data>
+  <data name="Info12" xml:space="preserve">
+    <value>An innovative production, powder coating and anodizing of aluminum profiles, which has become the largest in the CIS.</value>
+  </data>
+  <data name="Info13" xml:space="preserve">
+    <value>The oldest line of activity of the ALUTECH Group of Companies is the production of roller shutters. They are made from energy efficient foam filled or heavy duty extruded profiles. To protect the house from insects, poplar fluff and dust, roller shutters with a built-in mosquito net are provided.</value>
+  </data>
+  <data name="Info14" xml:space="preserve">
+    <value>In addition, the holding's assortment includes roller shutters that are installed in garages and parking lots, as well as roller shutters for boutiques and shopping centers. For facilities with increased security requirements, ALUTECH offers roller shutters with P5 burglar resistance class.</value>
+  </data>
+  <data name="Info15" xml:space="preserve">
+    <value>Sectional doors are in high demand. Among the models for installation in private garages, you can find budget and premium series. Industrial doors are also presented in different price categories. They are suitable for installation in service stations, agricultural enterprises, etc. Panoramic gates are perfect for car dealerships and hi-tech objects.</value>
+  </data>
+  <data name="Info16" xml:space="preserve">
+    <value>ALUTECH Group of Companies offers various products of the entry group. Among them are sliding and swing gates, wickets and fencing sections. Our own production guarantees the high quality of these products. The compatibility of products with the exterior of any object is ensured through a wide selection of filling options. Among them are sandwich panels, aluminum profiles, roller shutter profiles and combinations of these materials.</value>
+  </data>
+  <data name="Info17" xml:space="preserve">
+    <value>To ensure comfortable and safe control of security systems, ALUTECH offers its own line of conceptual automatics for roller shutters, sectional and entrance gates, as well as automatic barriers with high intensity of work to regulate the passage to private territory.</value>
+  </data>
+  <data name="Info18" xml:space="preserve">
+    <value>To improve the efficiency of the warehouse and logistics centers, the production of modern handling equipment has been launched.</value>
+  </data>
+  <data name="Info19" xml:space="preserve">
+    <value>For the implementation of interior and architectural projects, the holding offers aluminum profile systems.</value>
+  </data>
+  <data name="Info2" xml:space="preserve">
+    <value>The largest plants of the holding are located in Minsk:</value>
+  </data>
+  <data name="Info3" xml:space="preserve">
+    <value>Alutech door systems</value>
+  </data>
+  <data name="Info4" xml:space="preserve">
+    <value>Alutech Incorporated</value>
+  </data>
+  <data name="Info5" xml:space="preserve">
+    <value>Alumin Techno</value>
+  </data>
+  <data name="Info6" xml:space="preserve">
+    <value>Alutech door systems</value>
+  </data>
+  <data name="Info7" xml:space="preserve">
+    <value>The main activity is the production of sectional doors. The enterprise is capable of producing about 670 items per day.</value>
+  </data>
+  <data name="Info8" xml:space="preserve">
+    <value>It also manufactures sandwich panels, components and products from aluminum alloys by injection molding.</value>
+  </data>
+  <data name="Info9" xml:space="preserve">
+    <value>Alutech Incorporated</value>
+  </data>
+  <data name="InfoLabel" xml:space="preserve">
+    <value>About the ALUTECH Group of Companies</value>
+  </data>
+  <data name="MarksRules1" xml:space="preserve">
+    <value>Each product is rated on a scale from 1 to 10.</value>
+  </data>
+  <data name="MarksRules2" xml:space="preserve">
+    <value>Each product can be rated by one user only 1 time.</value>
+  </data>
+  <data name="MarksRules3" xml:space="preserve">
+    <value>You can delete your rating and re-rate the item.</value>
+  </data>
+  <data name="MarksRules4" xml:space="preserve">
+    <value>A blocked user cannot rate products.</value>
+  </data>
+  <data name="MarksRulesCaption" xml:space="preserve">
+    <value>Product valuation rules</value>
+  </data>
+  <data name="MessagesRules1" xml:space="preserve">
+    <value>When sending a message, it is mandatory to indicate your name, mail, phone number and message text.</value>
+  </data>
+  <data name="MessagesRules2" xml:space="preserve">
+    <value>Pay attention! The answer to your message will come exactly to the mail that you indicated in the form when sending messages.</value>
+  </data>
+  <data name="MessagesRulesCaption" xml:space="preserve">
+    <value>Rules for sending messages to the administration</value>
+  </data>
+  <data name="PurchasesRules1" xml:space="preserve">
+    <value>You can buy any product an unlimited number of times.</value>
+  </data>
+  <data name="PurchasesRules2" xml:space="preserve">
+    <value>You can buy only the maximum quantity of goods that is in stock. We are currently working on the implementation of pre-orders in our store.</value>
+  </data>
+  <data name="PurchasesRules3" xml:space="preserve">
+    <value>The minimum number of items to purchase is 1.</value>
+  </data>
+  <data name="PurchasesRules4" xml:space="preserve">
+    <value>Funds are credited to the bonus account only after the administrator confirms the payment for the order.</value>
+  </data>
+  <data name="PurchasesRules5" xml:space="preserve">
+    <value>The amount to be credited to the bonus depends on the value of your order (you can see it when placing an order in the section 'Bonus account').</value>
+  </data>
+  <data name="PurchasesRules6" xml:space="preserve">
+    <value>Before debiting funds from your bonus account, make sure that your order has taken the final form. When funds are debited from the bonus account and the subsequent editing of the order, the funds from the bonus account will disappear.</value>
+  </data>
+  <data name="PurchasesRules7" xml:space="preserve">
+    <value>When placing an order, the required fields are contact name, phone number and email.</value>
+  </data>
+  <data name="PurchasesRules8" xml:space="preserve">
+    <value>After placing an order and sending it to us, you will not be able to edit it, but you can cancel it by sending your order ID to us through the contact form on the main page for cancellation. The ID of your order can be found in your personal account in the 'My orders' section.</value>
+  </data>
+  <data name="PurchasesRulesCaption" xml:space="preserve">
+    <value>Rules for the purchase of goods</value>
+  </data>
+  <data name="ReviewsRules1" xml:space="preserve">
+    <value>Reviews can be written an unlimited number of times for any product.</value>
+  </data>
+  <data name="ReviewsRules2" xml:space="preserve">
+    <value>It is prohibited in reviews: obscene language, spam, any kind of insult, any kind of discord.</value>
+  </data>
+  <data name="ReviewsRules3" xml:space="preserve">
+    <value>For violation of the rules - blocking.</value>
+  </data>
+  <data name="ReviewsRules4" xml:space="preserve">
+    <value>A blocked user cannot write reviews.</value>
+  </data>
+  <data name="ReviewsRulesCaption" xml:space="preserve">
+    <value>Rules for writing reviews</value>
+  </data>
+  <data name="TabName1" xml:space="preserve">
+    <value>Promotional goods on</value>
+  </data>
+  <data name="TabName1Caption" xml:space="preserve">
+    <value>Special offers</value>
+  </data>
+  <data name="TabName2" xml:space="preserve">
+    <value>Online store rules</value>
+  </data>
+  <data name="TabName2Caption" xml:space="preserve">
+    <value>Company Videos</value>
+  </data>
+  <data name="TabName3" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="TabName4" xml:space="preserve">
+    <value>About company</value>
+  </data>
+</root>

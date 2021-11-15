@@ -1,0 +1,21 @@
+﻿@model AlutechShopDiploma.Models.Entities.Comment
+
+
+<head>
+    <link href="~/Content/css/contactForm.css" rel="stylesheet" />
+    <link href="~/Content/css/comment_field.css" rel="stylesheet"/>
+</head>
+
+
+<body>
+    <div class="container1">
+        <form action="/Comment/Create" method="post">
+            <label>@AlutechShopDiploma.Resources.Views.Comment.Create.Label</label>
+            @Html.TextAreaFor(model => model.CommentText, new { @placeholder = @AlutechShopDiploma.Resources.Views.Comment.Create.Placeholder, @style = "height: 170px" })
+            <input type="submit" class="" value="@AlutechShopDiploma.Resources.Views.Comment.Create.BtnValue">
+        </form>
+        <p>
+
+        </p>
+    </div>
+</body>

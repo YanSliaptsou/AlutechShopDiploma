@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AskToUnblock1" xml:space="preserve">
+    <value>Для подачи заяки перейдите в личный кабинет в раздел 'Статистика' и кликните по ссылке 'Подать заяку на разблокировку'.</value>
+  </data>
+  <data name="AskToUnblock2" xml:space="preserve">
+    <value>Подать заявку на разблокировку можно также и через контактную форму на главной странице, указав в теме сообщения 'Разблокировка аккаунта' и свою почту.</value>
+  </data>
+  <data name="AskToUnblock3" xml:space="preserve">
+    <value>Рассмотрение заявки занимает некоторое время. Если заявка будет рассмотрена в положительную сторону, вам придёт на почту, которую вы указали при регистрации, сообщение об успешной разблокировке, если в отрицательную, то на вашу почту придёт сообщение о причине.</value>
+  </data>
+  <data name="AskToUnblockLabel" xml:space="preserve">
+    <value>Правила подачи заявки на разблокировку аккаунта</value>
+  </data>
+  <data name="Info1" xml:space="preserve">
+    <value>ГК «АЛЮТЕХ» — крупный производственно-сбытовой холдинг с 22-летней историей. Один из лидеров рынка роллетных систем и секционных ворот в Западной и Восточной Европе, ведущий производитель алюминиевых профильных систем на территории СНГ.</value>
+  </data>
+  <data name="Info10" xml:space="preserve">
+    <value>Внушительные производственные мощности позволяют выпускать профили, комплектующие и системы управления для роллет.</value>
+  </data>
+  <data name="Info11" xml:space="preserve">
+    <value>Алюмин Техно</value>
+  </data>
+  <data name="Info12" xml:space="preserve">
+    <value>Инновационное производство по изготовлению, порошковой окраске и анодированию алюминиевых профилей, ставшее самым крупным в СНГ.</value>
+  </data>
+  <data name="Info13" xml:space="preserve">
+    <value>Старейшим направлением деятельности ГК «АЛЮТЕХ» является выпуск роллет. Они изготавливаются из энергоэффективных пенозаполненных или сверхпрочных экструдированных профилей. Для защиты дома от насекомых, тополиного пуха и пыли предусмотрены роллеты со встроенной антимоскитной сеткой.</value>
+  </data>
+  <data name="Info14" xml:space="preserve">
+    <value>Кроме того, в ассортименте холдинга представлены роллетные ворота, которые устанавливаются в гаражах и паркингах, а также роллетные решетки для бутиков и торговых центров. Для объектов с повышенными требованиями к безопасности «АЛЮТЕХ» предлагает роллеты с классом взломостойкости P5.</value>
+  </data>
+  <data name="Info15" xml:space="preserve">
+    <value>Повышенным спросом пользуются секционные ворота. Среди моделей для установки в частных гаражах можно найти бюджетные и премиальные серии. Промышленные ворота также представлены в разных ценовых категориях. Они подходят для установки на СТО, сельскохозяйственных предприятиях и т.д. Для автосалонов и объектов в стиле hi-tech отлично подойдут панорамные ворота.</value>
+  </data>
+  <data name="Info16" xml:space="preserve">
+    <value>ГК «АЛЮТЕХ» предлагает различные изделия въездной группы. Среди них откатные и распашные ворота, калитки и секции ограждения. Собственное производство гарантирует высокое качество данных изделий. Сочетаемость продукции с экстерьером любого объекта обеспечивается за счет широкого выбора вариантов заполнения. В их числе — сэндвич-панели, алюминиевые профили, роллетные профили и комбинации этих материалов.</value>
+  </data>
+  <data name="Info17" xml:space="preserve">
+    <value>Для обеспечения комфортного и безопасного управления защитными системами «АЛЮТЕХ» предлагает собственную линейку концептуальной автоматики для роллет, секционных и въездных ворот, а также автоматические шлагбаумы с высокой интенсивностью работы для регулирования проезда на частную территорию.</value>
+  </data>
+  <data name="Info18" xml:space="preserve">
+    <value>Для повышения эффективности работы складских и логистических центров налажен выпуск современного перегрузочного оборудования.</value>
+  </data>
+  <data name="Info19" xml:space="preserve">
+    <value>Для реализации интерьерных и архитектурных проектов холдинг предлагает алюминиевые профильные системы.</value>
+  </data>
+  <data name="Info2" xml:space="preserve">
+    <value>Крупнейшие заводы холдинга находятся в Минске:</value>
+  </data>
+  <data name="Info3" xml:space="preserve">
+    <value>Алютех воротные системы</value>
+  </data>
+  <data name="Info4" xml:space="preserve">
+    <value>Алютех Икорпорейтед</value>
+  </data>
+  <data name="Info5" xml:space="preserve">
+    <value>Алюмин Техно</value>
+  </data>
+  <data name="Info6" xml:space="preserve">
+    <value>Алютех воротные системы</value>
+  </data>
+  <data name="Info7" xml:space="preserve">
+    <value>Основное направление деятельности — производство секционных ворот. Предприятие способно выпускать около 670 изделий в сутки.</value>
+  </data>
+  <data name="Info8" xml:space="preserve">
+    <value>Здесь также изготавливаются сэндвич-панели, комплектующие и продукция из алюминиевых сплавов методом литья под давлением.</value>
+  </data>
+  <data name="Info9" xml:space="preserve">
+    <value>Алютех Икорпорейтед</value>
+  </data>
+  <data name="InfoLabel" xml:space="preserve">
+    <value>О Группе компаний «АЛЮТЕХ»</value>
+  </data>
+  <data name="MarksRules1" xml:space="preserve">
+    <value>Каждый товар оценивается по шкале от 1 до 10.</value>
+  </data>
+  <data name="MarksRules2" xml:space="preserve">
+    <value>Каждый товар может быть оценён одним пользователь только 1 раз.</value>
+  </data>
+  <data name="MarksRules3" xml:space="preserve">
+    <value>Свою оценку можно удалить и оценить товар заново.</value>
+  </data>
+  <data name="MarksRules4" xml:space="preserve">
+    <value>Заблокированный пользователь не может оценивать товары.</value>
+  </data>
+  <data name="MarksRulesCaption" xml:space="preserve">
+    <value>Правила оценки товаров</value>
+  </data>
+  <data name="MessagesRules1" xml:space="preserve">
+    <value>При отправке сообщения необходимо в обязательном порядке указать своё имя, почту, телефон и текст сообщения.</value>
+  </data>
+  <data name="MessagesRules2" xml:space="preserve">
+    <value>Обращаем внимание! Ответ на ваше сообщение придёт именно на ту почту, которую вы указывали в форме при отправке сообшений.</value>
+  </data>
+  <data name="MessagesRulesCaption" xml:space="preserve">
+    <value>Правила отправки сообщений для администрации</value>
+  </data>
+  <data name="PurchasesRules1" xml:space="preserve">
+    <value>Покупать можно любой товар неограниченное количество раз.</value>
+  </data>
+  <data name="PurchasesRules2" xml:space="preserve">
+    <value>Покупать можно только то максимальное количество товара, которое имеется на складе. Мы ведём работу на данный момент над реализацией предзаказов в нашем магазине.</value>
+  </data>
+  <data name="PurchasesRules3" xml:space="preserve">
+    <value>Минимальное количество товаров для покупки - 1.</value>
+  </data>
+  <data name="PurchasesRules4" xml:space="preserve">
+    <value>Средства на бонусный счёт зачисляются только после подтверждения администратором оплаты заказа.</value>
+  </data>
+  <data name="PurchasesRules5" xml:space="preserve">
+    <value>Сумма к зачислению на бонусный зависит от стоимости вашего заказа (посмотреть можно при оформлении заказа в разделе 'Бонусный счёт').</value>
+  </data>
+  <data name="PurchasesRules6" xml:space="preserve">
+    <value>Перед списанием средств с бонусного счёта убедитесь, что ваш заказ принял окончательную форму. При списании средств с бонусного счёта и последующем редактировании заказа средсва с бонусного счёта пропадут.</value>
+  </data>
+  <data name="PurchasesRules7" xml:space="preserve">
+    <value>При оформлении заказа обязательными полями являются контактное имя, номер телефона и электронная почта.</value>
+  </data>
+  <data name="PurchasesRules8" xml:space="preserve">
+    <value>После оформления заказа и отправки его нам, вы не сможете его редактировать, но сможете его отменить, отправив ИД заказа нам через контактную форму на главной странице для отмены. ИД вашего заказа можно узнать в своём личном кабинете в разделе 'Мои заказы'.</value>
+  </data>
+  <data name="PurchasesRulesCaption" xml:space="preserve">
+    <value>Правила покупки товаров</value>
+  </data>
+  <data name="ReviewsRules1" xml:space="preserve">
+    <value>Отзывы можно писать неограниченное количество раз на любой товар.</value>
+  </data>
+  <data name="ReviewsRules2" xml:space="preserve">
+    <value>В отзывах запрещается: нецензурная лексика, спам, любого вида оскорбления, любого вида рознь.</value>
+  </data>
+  <data name="ReviewsRules3" xml:space="preserve">
+    <value>За невыполнение правил - блокировка.</value>
+  </data>
+  <data name="ReviewsRules4" xml:space="preserve">
+    <value>Заблокированный пользователь не может писать отзывы.</value>
+  </data>
+  <data name="ReviewsRulesCaption" xml:space="preserve">
+    <value>Правила написания отзывов</value>
+  </data>
+  <data name="TabName1" xml:space="preserve">
+    <value>Акционные товары на</value>
+  </data>
+  <data name="TabName1Caption" xml:space="preserve">
+    <value>Специальные предложения</value>
+  </data>
+  <data name="TabName2" xml:space="preserve">
+    <value>Правила интернет-магазина</value>
+  </data>
+  <data name="TabName2Caption" xml:space="preserve">
+    <value>Видеоролики о компании</value>
+  </data>
+  <data name="TabName3" xml:space="preserve">
+    <value>Видеоматериалы</value>
+  </data>
+  <data name="TabName4" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+</root>

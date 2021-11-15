@@ -1,0 +1,119 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+@model IEnumerable<Good>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+    @{
+        List<string> ids = new List<string>();
+        List<string> names = new List<string>();
+
+        foreach (var good in Model)
+        {
+            ids.Add(good.GoodID.ToString());
+            names.Add(good.Name);
+        }
+
+        SelectList idsItems = new SelectList(ids);
+        SelectList namesItems = new SelectList(names);
+    }
+    <h1><center>Управление товарами</center></h1>
+    <h3><center>Найти товар</center></h3>
+
+    @using (Html.BeginForm("GoodsList", "Administation"))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти товар по ID")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("goodId", idsItems, new { @class = "form-control", @style = "margin-left: 800%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 824%;" />
+        </div>
+    }
+    <h1></h1>
+    @using (Html.BeginForm("GoodsList", "Administation"))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти товар по имени")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("goodName", namesItems, new { @class = "form-control", @style = "margin-left: 102%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 454%;" />
+        </div>
+    }
+    <h1></h1>
+    @using (Html.BeginForm("GoodsList", "Administation"))
+    {
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-danger" value="Показать все товары" style="margin-left: 133%;" />
+        </div>
+    }
+    <h1></h1>
+
+    <table class="table_info">
+        <caption>Товары</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Изображение</center></th>
+            <th><center>Название</center></th>
+            <th><center>Описание</center></th>
+            <th><center>Категория</center></th>
+            <th><center>Цена</center></th>
+            <th><center>Количество просмотров</center></th>
+            <th><center>Рейтинг</center></th>
+            <th><center>Действия</center></th>
+        </tr>
+        @{ 
+            foreach(var good in Model)
+            {
+                <tr>
+                    <td><center>@good.GoodID</center></td>
+                    @{
+                        GoodWorker goodWorker = new GoodWorker(good.GoodID);
+                        <td><center><img style="width:40%" src="@Url.Content(goodWorker.GetGoodImage())" /></center></td>
+                        <td><center>@good.Name</center></td>
+                        <td><center>@good.Description</center></td>
+                        <td><center>@goodWorker.GetGoodCategory()</center></td>
+                    }
+                    <td><center>@good.Price р.</center></td>
+                    <td><center>@good.Views шт.</center></td>
+                    <td><center>@good.Rating / 10</center></td>
+                    <td><center>
+                        @using(Html.BeginForm("EditGood","Administation",FormMethod.Get))
+                        {
+                            @Html.Hidden("goodId", good.GoodID);
+                            <input type="submit" class="btn btn-success" value="Изменить"/>
+                        }
+                        </center></td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+

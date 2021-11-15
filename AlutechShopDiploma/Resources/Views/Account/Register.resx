@@ -120,6 +120,9 @@
   <data name="Age" xml:space="preserve">
     <value>Возраст</value>
   </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Создание новой учетной записи</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Подтвердить пароль</value>
   </data>
@@ -131,5 +134,8 @@
   </data>
   <data name="RegBtn" xml:space="preserve">
     <value>Зарегистрировать</value>
+  </data>
+  <data name="ViewBagTitle" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
 </root>

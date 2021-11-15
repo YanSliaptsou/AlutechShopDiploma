@@ -1,0 +1,100 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models
+
+
+@model AlutechShopDiploma.Models.ViewModels.UserBalanceViewModel
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+
+<body>
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+    <div class="label label-info" style="margin-left: 40%;font-size: 140%;">
+        @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.BonusAmmountLabel @Model.userBalance @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency
+    </div>
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+    <p>
+
+    </p>
+    <table class="table_info">
+        <caption style="margin-top: 3%;">@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MoneyMovement</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.GoodsInOrdersLabel</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalSum</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.AddBonusLabel</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.SpendBonus</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
+        </tr>
+
+        @foreach (var item in Model.orders)
+        {
+            <tr>
+                <td><center>@item.OrderID</center></td>
+                <td>
+                    <center>
+                        @{
+                            ApplicationDbContext context = new ApplicationDbContext();
+                            IEnumerable<OrderItem> orderItems = context.OrderItems.Where(x => x.OrderID == item.OrderID);
+
+                            <table>
+                                <tr>
+                                    <th><center>ID</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Image</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Name</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Price</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Ammount</center></th>
+                                    <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.TotalPrice</center></th>
+                                </tr>
+
+                                @foreach (var orderItem in orderItems)
+                                {
+                                    GoodWorker goodWorker = new GoodWorker(orderItem.GoodID);
+                                    string imageUrl = goodWorker.GetGoodImage();
+                                    string name = goodWorker.GetGoodName();
+                                    double price = goodWorker.GetGoodCost();
+                                    double itemPrice = price * orderItem.Ammount;
+
+
+                                    <tr>
+                                        <td><center>@orderItem.OrderItemID</center></td>
+                                        <td><center><img style="width:30%" src="@Url.Content(imageUrl)" /></center></td>
+                                        <td><center><a href="~/GoodItem/CartItem?goodId=@orderItem.GoodID">@name</a></center></td>
+                                        <td><center>@price</center></td>
+                                        <td><center>@orderItem.Ammount</center></td>
+                                        <td><center>@itemPrice</center></td>
+                                    </tr>
+
+                                }
+                            </table>
+                        }
+                    </center>
+                </td>
+                <td>@item.TotalSum р.</td>
+                @{
+                    OrderWorker orderWorker = new OrderWorker();
+                    double userBonus = orderWorker.CountUserBonus(item);
+                    double discountAmmount = Math.Round(orderWorker.CountOrderPrice(item) - orderWorker.GetOrderPrice(item), 2);
+                    <td><center style="color: green; font-weight: bold;"> + @userBonus @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
+                    <td><center style="color: red; font-weight: bold;"> - @discountAmmount @AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.Currency</center></td>
+                }
+                <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+            </tr>
+        }
+    </table>
+</body>

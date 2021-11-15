@@ -1,0 +1,28 @@
+﻿@using AlutechShopDiploma.Models.Entities
+
+@model IEnumerable<UserMessage>
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet"/>
+</head>
+@{ 
+    <table class="table_info">
+        <caption>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MyMessages</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MessageTopic</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.MessageText</center></th>
+            <th><center>@AlutechShopDiploma.Resources.Views.UserInfo.UserInfo.DateTime</center></th>
+        </tr>
+
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td><center>@item.UserMessageID</center></td>
+            <td><center>@item.MessageTopic</center></td>
+            <td><center>@item.MessageText</center></td>
+            <td><center>@item.DateTime.Day.@item.DateTime.Month.@item.DateTime.Year  @item.DateTime.Hour:@item.DateTime.Minute:@item.DateTime.Second</center></td>
+        </tr>
+        }
+    </table>
+}

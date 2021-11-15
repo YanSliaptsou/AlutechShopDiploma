@@ -1,0 +1,28 @@
+﻿@using AlutechShopDiploma.Models.ViewModels
+@model GoodViewModel
+
+@using AlutechShopDiploma.HtmlHelpers
+
+@{
+    ViewBag.Title = "Goods";
+}
+
+<h1><center>@AlutechShopDiploma.Resources.Views.Good.List.Caption</center></h1>
+<h1></h1>
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<div>
+    @Html.Action("Sort", "GoodsSort")
+    <p>  </p>
+</div>
+<div>
+
+    @foreach (var good in Model.Goods)
+    {
+        @Html.Partial("_GoodSummary", good)
+    }
+</div>
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory, subcategory = Model.CurrentSubcategory, sortState = Model.SortState }))
+</div>

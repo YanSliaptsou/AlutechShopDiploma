@@ -22,7 +22,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class _ExternalLoginsListPartial {
+    public class _ExternalLoginsListPartial {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlutechShopDiploma.Resources.Views.Account._ExternalLoginsListPartial", typeof(_ExternalLoginsListPartial).Assembly);
@@ -51,7 +51,7 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,27 @@ namespace AlutechShopDiploma.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Внешние службы проверки подлинности не настроены. В &lt;a href=&quot;https://go.microsoft.com/fwlink/?LinkId=403804&quot;&gt;этой статье приведены сведения о настройке входа через внешние службы для этого приложения ASP.NET..
+        ///   Ищет локализованную строку, похожую на Используйте для входа другую службу.
         /// </summary>
-        internal static string ExternalServices {
+        public static string Caption {
+            get {
+                return ResourceManager.GetString("Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Войти с помощью учетной записи.
+        /// </summary>
+        public static string EnterWithHelp {
+            get {
+                return ResourceManager.GetString("EnterWithHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Внешние службы проверки подлинности не настроены..
+        /// </summary>
+        public static string ExternalServices {
             get {
                 return ResourceManager.GetString("ExternalServices", resourceCulture);
             }

@@ -1,10 +1,16 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNet.Identity
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Enums
+<!DOCTYPE html>
 <html>
 <head>
     <meta ="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" / rel="stylesheet">
+    <link href="~/Content/css/menu.css" / rel="stylesheet">
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -16,49 +22,138 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
+@{ 
+    OrderWorker orderWorker = new OrderWorker();
+    int orderItemsCount = 0;
+    double totalPrice = 0;
+
+    List<string> orderItemsIds = new List<string>();
+    List<string> orderItemsNames = new List<string>();
+    List<string> orderItemsImages = new List<string>();
+    List<string> orderItemsPricesPerGoodItems = new List<string>();
+    List<string> orderItemsPricesAmmounts = new List<string>();
+    List<string> orderItemsPricesPerOrderItems = new List<string>();
+
+    if (Request.IsAuthenticated && orderWorker.DefineOrderID() != 0)
+    {
+        orderItemsCount = orderWorker.DefineOrderItemsCountInOrder();
+        totalPrice = orderWorker.GetOrderPrice();
+
+        orderItemsIds = orderWorker.GetOrderDetails(OrderDetail.Id);
+        orderItemsNames = orderWorker.GetOrderDetails(OrderDetail.Name);
+        orderItemsImages = orderWorker.GetOrderDetails(OrderDetail.Image);
+        orderItemsPricesPerGoodItems = orderWorker.GetOrderDetails(OrderDetail.PricePerGoodItem);
+        orderItemsPricesAmmounts = orderWorker.GetOrderDetails(OrderDetail.AmountOfItems);
+        orderItemsPricesPerOrderItems = orderWorker.GetOrderDetails(OrderDetail.PricePerOrderItem);
+    }
+}
 
 <body>
-    <style>
-        .language-selection {
-            margin-top: 5%;
-            margin-left: 420%;
-        }
-
-    </style>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+    <img src="~/Content/preview/shop_preview.jpg" style="height: 24%;width: 100%;margin-top: -4%;"/>
+    <header style="z-index: 2;position: sticky;">
+        <nav class="dws-menu" style="margin-top: -3.31%;">
+            <ul>
+                <li><a href="/Home/Index"><i class="fa fa-home"></i>@AlutechShopDiploma.Resources.Views.Shared.Layout.Home</a></li>
+                @if (Request.IsAuthenticated)
+                {
                     <li>
-                        
+                        <a href="/Good/List"><i class="fa fa-shopping-cart"></i>@AlutechShopDiploma.Resources.Views.Shared.Layout.Production</a>
+                        <ul>
+                            <li>
+                                <a href="/Good/List?category=GatesAutomation">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=ComunelloAccessories">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation1</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=ComunelloDriveUnits ">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation2</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=GarageGateOperatorAnMotors ">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation3</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=RecoilingGateOperatorAnMotors ">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation4</a></li>
+                                    <li><a href="/Good/List?category=GatesAutomation&subcategory=AlutechBarriers ">@AlutechShopDiploma.Resources.Views.Shared.Layout.Automation5</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Good/List?category=EntranceGates">@AlutechShopDiploma.Resources.Views.Shared.Layout.EntryGates</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=AdditionalComplectations">@AlutechShopDiploma.Resources.Views.Shared.Layout.EntryGates1</a></li>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=BusProfiles">@AlutechShopDiploma.Resources.Views.Shared.Layout.EntryGates2</a></li>
+                                    <li><a href="/Good/List?category=EntranceGates&subcategory=RollerAndSteelComplects">@AlutechShopDiploma.Resources.Views.Shared.Layout.EntryGates3</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Good/List?category=SectionalGates">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates</a>
+                                <ul>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=InsertAndSeals ">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates1</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=RollerAndRings ">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates2</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Brackets">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates3</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Clutches">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates4</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=Loops">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates5</a></li>
+                                    <li><a href="/Good/List?category=SectionalGates&subcategory=RollerAndRings ">@AlutechShopDiploma.Resources.Views.Shared.Layout.SectionalGates6</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
+                }
+                <li><a href="/Home/About"><i class="fa fa-th-list"></i>@AlutechShopDiploma.Resources.Views.Shared.Layout.NewsAndActions</a></li>
+                <li>
+                    <a href="#"><i class="fa fa-language"></i>@AlutechShopDiploma.Resources.Views.Shared.Layout.ChangeLanguage</a>
+                    <ul>
+                        <li><a href="/Locales/Index/?languageAbbreviation=en"><img style="width:60px;height:55px" src="~/Content/Товары Alutech/united_kingdom_640.png"/>English</a></li>
+                        <li><a href="/Locales/Index/?languageAbbreviation=ru"><img style="width:60px;height:55px" src="~/Content/Товары Alutech/russia_640.png"/>Русский</a></li>
+                    </ul>
+                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li>
+                        <a href="/Purchase/List"><i class="fa fa-shopping-basket"></i>@AlutechShopDiploma.Resources.Views.Shared.Layout.Basket (@orderItemsCount @AlutechShopDiploma.Resources.Views.Shared.Layout.Pieces) @totalPrice @AlutechShopDiploma.Resources.Views.Shared.Layout.Currency</a>
+                        <ul>
+                            
+                            @{ 
+                                for(int i = 0; i < orderItemsCount; i++)
+                                {
+                                    <li style="right: 200px; width:800px;"><a> <img style="width:60px;height:70px;" src="@Url.Content(orderItemsImages[i])" /> &nbsp @orderItemsNames[i] &nbsp &nbsp @orderItemsPricesPerGoodItems[i] Р. x @orderItemsPricesAmmounts[i] шт. = @orderItemsPricesPerOrderItems[i] Р. @Html.ActionLink(@AlutechShopDiploma.Resources.Views.Shared.Layout.Delete, "Delete","Purchase",new { orderItemID = orderItemsIds[i] },new {@style = "color:red;width: 80px;margin-top: -45px;margin-left: 720px;border: solid;" })</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">@AlutechShopDiploma.Resources.Views.Shared.Layout.Logout</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink(AlutechShopDiploma.Resources.Views.Shared.Layout.Registration, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink(AlutechShopDiploma.Resources.Views.Shared.Layout.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            <li>
+
+                            </li>
+                        </ul>
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+        </nav>
+    </header>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Alutech Shop</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
+
 </body>
 </html>

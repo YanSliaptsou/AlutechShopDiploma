@@ -1,0 +1,149 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models
+
+@model AlutechShopDiploma.Models.IndexViewModel
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+
+@{
+    UsersWorker usersWorker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+
+}
+<body>
+    <a name="statistics">
+
+    </a>
+    @{
+        <table class="table_info">
+            <caption>Моя статистика/My statistics</caption>
+            <tr>
+                <th><center>Показатель/Indicator</center></th>
+                <th><center>Значение/Value</center></th>
+            </tr>
+
+            <tr>
+                <th colspan="2"><center>Общая информация/General information</center></th>
+            </tr>
+            <tr>
+                <td><center>Имя пользователя/Username</center></td>
+                <td><center>@HttpContext.Current.User.Identity.Name</center></td>
+            </tr>
+            <tr>
+                @if (Model.HasPassword)
+                {
+                    <td><center>Пароль/Password</center></td>
+                    <td><center>@Html.ActionLink("Смена пароля", "ChangePassword", "Manage")</center></td>
+                }
+                else
+                {
+                    <td><center>Пароль/Password</center></td>
+                    <td><center>@Html.ActionLink("Создать", "SetPassword", "Manage")</center></td>
+                }
+            </tr>
+            <tr>
+                <td><center>Бонусный баланс/Bonus balance, р.(r.)</center></td>
+                <td><center>@usersWorker.GetUserBalance()</center></td>
+            </tr>
+            <tr>
+                <td><center>Статус аккаунта/Account Status</center></td>
+                @{
+                    if (usersWorker.GetUserStatus())
+                    {
+                        <td><center>Заблокирован. Подать заявку на разблокировку можно <a href="/UserMessage/AskToUnban">здесь</a></center></td>
+                        <td><center>Blocked. You can apply for unlocking <a href="/UserMessage/AskToUnban">here</a></center></td>
+                    }
+                    else
+                    {
+                        <td><center>Не заблокирован/Not blocked</center></td>
+                    }
+                }
+            </tr>
+            <tr>
+                <td><center>Роль</center></td>
+                @{
+                    UsersWorker worker = new UsersWorker(HttpContext.Current.User.Identity.Name);
+                    if (worker.GetUserRole() == "admin")
+                    {
+                        <td><center>@worker.GetUserRole() <a href="/Administation/Index">Администрирование</a></center></td>
+                    }
+                    else
+                    {
+                        <td><center>@worker.GetUserRole()</center></td>
+                    }
+                }
+
+            </tr>
+            <tr>
+                <th colspan="2"><center>Активность на сайте/Website activity</center></th>
+            </tr>
+            <tr>
+                <td><center>Отправлено сообщений/Messages sent, шт(pc)</center></td>
+                <td><center>@usersWorker.GetMessagesAmmount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Написано отзывов/Reviews written, шт(pc)</center></td>
+                <td><center>@usersWorker.GetCommentsCount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Оценено товаров/Marked goods, шт(pc)</center></td>
+                <td><center>@usersWorker.GetMarksAmmount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Средняя оценка/Average mark</center></td>
+                <td><center>@usersWorker.GetAvgMark() </center></td>
+            </tr>
+
+            <tr>
+                <th colspan="2"><center>Информация о покупках/Purchases info</center></th>
+            </tr>
+
+            <tr>
+                <td><center>Количество заказов всего/Amount of orders, шт(pc)</center></td>
+                <td><center>@usersWorker.GetOrdersCount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Количество оплаченных заказов/Amount of paid orders, шт(pc)</center></td>
+                <td><center>@usersWorker.GetOrderedOrdersCount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Количество неоплаченных заказов/Amount of non paid orders, шт(pc)</center></td>
+                <td><center>@usersWorker.GetNotOrderedOrdersCount() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Куплено всего товаров/Goods buyed, шт(pc)</center></td>
+                <td><center>@usersWorker.GetTotalGoodsAmmountInAllOrders() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Куплено всего уникальных товаров/Enique goods buyed, шт(pc)</center></td>
+                <td><center>@usersWorker.GetTotalUniqueGoodsAmmountInAllOrders() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Потраченная сумма на все заказы/Amount spent on all orders, р(r)</center></td>
+                <td><center style="color: blue;font-weight: bold;">@usersWorker.GetTotalOrdersSum() </center></td>
+            </tr>
+
+            <tr>
+                <td><center>Всего начислено бонусов/Total bonuses accrued, р(r)</center></td>
+                <td><center style="color: green;font-weight: bold;">@usersWorker.GetTotalBonusesAdded() </center></td>
+            </tr>
+            <tr>
+                <td><center>Всего потрачено бонусов/Total bonuses spent, р(r)</center></td>
+                <td><center style="color: red;font-weight: bold;">@usersWorker.GetTotalBonusesSpent() </center></td>
+            </tr>
+
+        </table>
+    }
+</body>
+
+

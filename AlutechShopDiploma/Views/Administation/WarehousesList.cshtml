@@ -1,0 +1,114 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Warehouse>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+    @{
+        AlutechShopDiploma.Models.ApplicationDbContext context = new AlutechShopDiploma.Models.ApplicationDbContext();
+
+        IEnumerable<Good> goods = context.Goods.OrderBy(x => x.Name).ToList();
+
+        List<string> goodsNames = new List<string>();
+
+        foreach (var good in goods)
+        {
+            goodsNames.Add(good.Name);
+        }
+
+        SelectList goodsNamesitems = new SelectList(goodsNames);
+    }
+
+    <h1><center>Управление складами</center></h1>
+    <h3><center>Найти склад</center></h3>
+
+    <h1>
+    </h1>
+    @using (Html.BeginForm("WarehousesList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            @Html.Label("Найти склад по названию товара")
+        </div>
+        <div style="display:inline-block">
+            @Html.DropDownList("goodName", goodsNamesitems, new { @class = "form-control", @style = "margin-left: 35%;" })
+        </div>
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-success" value="Найти" style="margin-left: 158%;" />
+        </div>
+    }
+    <h1>
+    </h1>
+    @using (Html.BeginForm("WarehousesList", "Administation", new { @style = "dispaly:inline-block" }))
+    {
+        <div style="display:inline-block">
+            <input type="submit" class="btn btn-danger" value="Показать все склады" style="margin-left: 133%;" />
+        </div>
+    }
+    <center>
+        <form action="/Administation/CreateWarehouse">
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-info" value="Создать склад" style="margin-left: 6%;" />
+
+            </div>
+        </form>
+    </center>
+    <h1></h1>
+    <table class="table_info">
+        <caption>Склады</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Изображение товара</center></th>
+            <th><center>Название товара</center></th>
+            <th><center>Количество на складе</center></th>
+        </tr>
+        @{
+            foreach (var warehouse in Model)
+            {
+                <tr>
+                    <td><center>@warehouse.WarehouseID</center></td>
+                    @{
+                        GoodWorker goodWorker = new GoodWorker(warehouse.GoodID);
+                        <td><center><img style="width:40%" src="@Url.Content(goodWorker.GetGoodImage())" /></center></td>
+                        <td><center>@goodWorker.GetGoodName()</center></td>
+                    }
+                    <td>
+                        <center>
+                            @warehouse.GoodAmmount шт.
+                            <h1></h1>
+                            @using (Html.BeginForm("EditWarehouse", "Administation", FormMethod.Post))
+                            {
+                                @Html.Hidden("WarehouseID", warehouse.WarehouseID)
+                                @Html.Editor("GoodAmmount", new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                <h1></h1>
+                                <input class="btn btn-success" type="submit" value="Редактировать количество" />
+                            }
+                        </center>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>

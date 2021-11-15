@@ -156,7 +156,7 @@ namespace AlutechShopDiploma.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Age = model.Age, isBanned = false, bonusAmmount = 0, purchasesAmmount = 0  };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, isBanned = false, bonusAmmount = 0};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -174,9 +174,9 @@ namespace AlutechShopDiploma.Controllers
                        protocol: Request.Url.Scheme);
 
                     await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты",
-                       "Для завершения регистрации перейдите по ссылке:: <a href=\""
-                                                       + callbackUrl + "\">завершить регистрацию</a>");
+                       "Для завершения регистрации перейдите по ссылке:: <a href=\""+ callbackUrl + "\">завершить регистрацию</a>");
 
+                                                       
                     await UserManager.AddToRoleAsync(user.Id, "user");
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

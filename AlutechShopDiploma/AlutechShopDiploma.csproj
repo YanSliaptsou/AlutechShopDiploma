@@ -46,17 +46,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    <Reference Include="Microsoft.Data.SqlClient, Version=2.0.20168.4, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.2.1.2\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    <Reference Include="Microsoft.Identity.Client, Version=4.21.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.21.1\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.8.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.8.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.8.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.8.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.8.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.8.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Web.DynamicData" />
@@ -65,6 +90,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -114,6 +140,9 @@
     </Reference>
     <Reference Include="Twilio, Version=5.57.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Twilio.5.57.0\lib\net451\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -178,15 +207,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministationController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\GoodController.cs" />
+    <Compile Include="Controllers\GoodItemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\GoodsSortController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Controllers\UserMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PagingHelper.cs" />
     <Compile Include="Migrations\202103300916408_InitialCreate.cs" />
     <Compile Include="Migrations\202103300916408_InitialCreate.Designer.cs">
       <DependentUpon>202103300916408_InitialCreate.cs</DependentUpon>
@@ -223,36 +263,478 @@
     <Compile Include="Migrations\202104080930343_New_Good_Marks.Designer.cs">
       <DependentUpon>202104080930343_New_Good_Marks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104091159122_Changes FK.cs" />
+    <Compile Include="Migrations\202104091159122_Changes FK.Designer.cs">
+      <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120823344_New_migration.cs" />
+    <Compile Include="Migrations\202104120823344_New_migration.Designer.cs">
+      <DependentUpon>202104120823344_New_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120826113_New_migration_1.cs" />
+    <Compile Include="Migrations\202104120826113_New_migration_1.Designer.cs">
+      <DependentUpon>202104120826113_New_migration_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120838260_New_migration_2.cs" />
+    <Compile Include="Migrations\202104120838260_New_migration_2.Designer.cs">
+      <DependentUpon>202104120838260_New_migration_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120843107_New_migration_3.cs" />
+    <Compile Include="Migrations\202104120843107_New_migration_3.Designer.cs">
+      <DependentUpon>202104120843107_New_migration_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120854374_New_migration_4.cs" />
+    <Compile Include="Migrations\202104120854374_New_migration_4.Designer.cs">
+      <DependentUpon>202104120854374_New_migration_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120916009_New_migration_5.cs" />
+    <Compile Include="Migrations\202104120916009_New_migration_5.Designer.cs">
+      <DependentUpon>202104120916009_New_migration_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120918372_New_migration_6.cs" />
+    <Compile Include="Migrations\202104120918372_New_migration_6.Designer.cs">
+      <DependentUpon>202104120918372_New_migration_6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104120924421_New_migration_7.cs" />
+    <Compile Include="Migrations\202104120924421_New_migration_7.Designer.cs">
+      <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121030485_New_migration_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121030485_New_migration_Good_Tables.Designer.cs">
+      <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121107415_New_migration_New4_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121107415_New_migration_New4_Good_Tables.Designer.cs">
+      <DependentUpon>202104121107415_New_migration_New4_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121143580_New_migration_New2_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121143580_New_migration_New2_Good_Tables.Designer.cs">
+      <DependentUpon>202104121143580_New_migration_New2_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.cs" />
+    <Compile Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.Designer.cs">
+      <DependentUpon>202104121259584_New_migration_A_lot_of_New_Good_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131349378_Material_for_brackets.cs" />
+    <Compile Include="Migrations\202104131349378_Material_for_brackets.Designer.cs">
+      <DependentUpon>202104131349378_Material_for_brackets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131356556_Weight_for_rollers.cs" />
+    <Compile Include="Migrations\202104131356556_Weight_for_rollers.Designer.cs">
+      <DependentUpon>202104131356556_Weight_for_rollers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104131854227_Discount_table.cs" />
+    <Compile Include="Migrations\202104131854227_Discount_table.Designer.cs">
+      <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104261101533_New_fields_of_user_message.cs" />
+    <Compile Include="Migrations\202104261101533_New_fields_of_user_message.Designer.cs">
+      <DependentUpon>202104261101533_New_fields_of_user_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104261358410_New_fields_of_user_message_datefield.cs" />
+    <Compile Include="Migrations\202104261358410_New_fields_of_user_message_datefield.Designer.cs">
+      <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105030941351_New_fields_marks.cs" />
+    <Compile Include="Migrations\202105030941351_New_fields_marks.Designer.cs">
+      <DependentUpon>202105030941351_New_fields_marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031205325_New_name_marks.cs" />
+    <Compile Include="Migrations\202105031205325_New_name_marks.Designer.cs">
+      <DependentUpon>202105031205325_New_name_marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031222109_New_name_marks1.cs" />
+    <Compile Include="Migrations\202105031222109_New_name_marks1.Designer.cs">
+      <DependentUpon>202105031222109_New_name_marks1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031310570_Marks.cs" />
+    <Compile Include="Migrations\202105031310570_Marks.Designer.cs">
+      <DependentUpon>202105031310570_Marks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061504077_Orders.cs" />
+    <Compile Include="Migrations\202105061504077_Orders.Designer.cs">
+      <DependentUpon>202105061504077_Orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061506306_Orders2.cs" />
+    <Compile Include="Migrations\202105061506306_Orders2.Designer.cs">
+      <DependentUpon>202105061506306_Orders2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105061616350_New_orders.cs" />
+    <Compile Include="Migrations\202105061616350_New_orders.Designer.cs">
+      <DependentUpon>202105061616350_New_orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105071041102_SessionID.cs" />
+    <Compile Include="Migrations\202105071041102_SessionID.Designer.cs">
+      <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105152030048_UserBalance.cs" />
+    <Compile Include="Migrations\202105152030048_UserBalance.Designer.cs">
+      <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105171028577_Shipping_details.cs" />
+    <Compile Include="Migrations\202105171028577_Shipping_details.Designer.cs">
+      <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105212038275_Properties_delete.cs" />
+    <Compile Include="Migrations\202105212038275_Properties_delete.Designer.cs">
+      <DependentUpon>202105212038275_Properties_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105231910181_Check.cs" />
+    <Compile Include="Migrations\202105231910181_Check.Designer.cs">
+      <DependentUpon>202105231910181_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105280803199_Final version.cs" />
+    <Compile Include="Migrations\202105280803199_Final version.Designer.cs">
+      <DependentUpon>202105280803199_Final version.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICategoryRepository.cs" />
     <Compile Include="Models\Abstract\ICommentRepository.cs" />
+    <Compile Include="Models\Abstract\IDiscountRepository.cs" />
     <Compile Include="Models\Abstract\IGoodRepository.cs" />
-    <Compile Include="Models\Abstract\ISubcategoryRepository.cs" />
+    <Compile Include="Models\Abstract\IImageContainerRepositiry.cs" />
+    <Compile Include="Models\Abstract\IMarkRepository.cs" />
+    <Compile Include="Models\Abstract\IOrderItemRepository.cs" />
+    <Compile Include="Models\Abstract\IOrderRepository.cs" />
+    <Compile Include="Models\Abstract\IShippingDetailRepository.cs" />
+    <Compile Include="Models\Abstract\IUserMessageRepository.cs" />
     <Compile Include="Models\Abstract\IWarehouseRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ApplicationManager.cs" />
     <Compile Include="Models\Concrete\EFCategoryRepository.cs" />
     <Compile Include="Models\Concrete\EFCommentRepository.cs" />
+    <Compile Include="Models\Concrete\EFDiscountRepository.cs" />
     <Compile Include="Models\Concrete\EFGoodRepository.cs" />
-    <Compile Include="Models\Concrete\EFSubcategoryRepository.cs" />
+    <Compile Include="Models\Concrete\EFImageContainerRepositiry.cs" />
+    <Compile Include="Models\Concrete\EFMarkRepository.cs" />
+    <Compile Include="Models\Concrete\EFOrderItemRepository.cs" />
+    <Compile Include="Models\Concrete\EFOrderRepository.cs" />
+    <Compile Include="Models\Concrete\EFShippingDetailRepository.cs" />
+    <Compile Include="Models\Concrete\EFUserMessageRepository.cs" />
     <Compile Include="Models\Concrete\EFWarehouseRepository.cs" />
-    <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\Comment.cs" />
-    <Compile Include="Models\Entities\Good.cs" />
-    <Compile Include="Models\Entities\GoodsMarks.cs" />
-    <Compile Include="Models\Entities\Subcategory.cs" />
-    <Compile Include="Models\Entities\Warehouse.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Views\Account\Register.Designer.cs">
-      <DependentUpon>Register.resx</DependentUpon>
+    <Compile Include="Models\Entities\Mark.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\ShippingDetail.cs" />
+    <Compile Include="Models\Entities\OrderItem.cs" />
+    <Compile Include="Models\Enums\OrderDetail.cs" />
+    <Compile Include="Models\ViewModels\UsersListViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurchaseItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserBalanceViewModel.cs" />
+    <Compile Include="Resources\Views\Account\ConfirmEmail.en.Designer.cs">
+      <DependentUpon>ConfirmEmail.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Resources\Views\Account\ConfirmEmail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfirmEmail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\DisplayEmail.en.Designer.cs">
+      <DependentUpon>DisplayEmail.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\DisplayEmail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DisplayEmail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ExternalLoginConfirmation.en.Designer.cs">
+      <DependentUpon>ExternalLoginConfirmation.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ExternalLoginConfirmation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExternalLoginConfirmation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ExternalLoginFailure.en.Designer.cs">
+      <DependentUpon>ExternalLoginFailure.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ExternalLoginFailure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExternalLoginFailure.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ForgotPassword.en.Designer.cs">
+      <DependentUpon>ForgotPassword.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ForgotPassword.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForgotPassword.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ForgotPasswordConfirmation.en.Designer.cs">
+      <DependentUpon>ForgotPasswordConfirmation.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ForgotPasswordConfirmation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForgotPasswordConfirmation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\Login.en.Designer.cs">
+      <DependentUpon>Login.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Views\Account\Register.en.Designer.cs">
       <DependentUpon>Register.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ResetPassword.en.Designer.cs">
+      <DependentUpon>ResetPassword.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ResetPassword.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResetPassword.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ResetPasswordConfirmation.en.Designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Account\ResetPasswordConfirmation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResetPasswordConfirmation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Account\_ExternalLoginsListPartial.en.Designer.cs">
+      <DependentUpon>_ExternalLoginsListPartial.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Comment\Create.en.Designer.cs">
+      <DependentUpon>Create.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Comment\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Comment\List.en.Designer.cs">
+      <DependentUpon>List.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Comment\List.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\GoodItem\CartItem.en.Designer.cs">
+      <DependentUpon>CartItem.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\GoodItem\CartItem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartItem.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\GoodsSort\Sort.en.Designer.cs">
+      <DependentUpon>Sort.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\GoodsSort\Sort.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sort.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Good\List.en.Designer.cs">
+      <DependentUpon>List.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Good\List.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Home\About.en.Designer.cs">
+      <DependentUpon>About.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Home\About.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>About.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Home\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Home\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\ChangePassword.en.Designer.cs">
+      <DependentUpon>ChangePassword.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\ChangePassword.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangePassword.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\Index.en.Designer.cs">
+      <DependentUpon>Index.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\SetPassword.en.Designer.cs">
+      <DependentUpon>SetPassword.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Manage\SetPassword.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SetPassword.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Mark\Create.en.Designer.cs">
+      <DependentUpon>Create.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Mark\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\Create.en.Designer.cs">
+      <DependentUpon>Create.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\FinishOrder.en.Designer.cs">
+      <DependentUpon>FinishOrder.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\FinishOrder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinishOrder.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\List.en.Designer.cs">
+      <DependentUpon>List.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Purchase\List.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\GoodSummary.en.Designer.cs">
+      <DependentUpon>GoodSummary.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\GoodSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GoodSummary.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\Layout.en.Designer.cs">
+      <DependentUpon>Layout.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\Shared\Layout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Layout.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\UserInfo\UserInfo.en.Designer.cs">
+      <DependentUpon>UserInfo.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\UserInfo\UserInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserInfo.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\UserMessage\Create.en.Designer.cs">
+      <DependentUpon>Create.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views\UserMessage\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AdminStatisticsGetter.cs" />
+    <Compile Include="Services\CategoriesWorker.cs" />
+    <Compile Include="Services\EmailProcessor.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\Comment.cs" />
+    <Compile Include="Models\Entities\Discount.cs" />
+    <Compile Include="Models\Entities\Good.cs" />
+    <Compile Include="Models\Entities\GoodsTables.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\AdditionalComplectation.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\AlutechBarrier.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\ComunelloAccessory.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\ComunelloDriveUnit.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\GarageGateOperatorAnMotors.cs" />
+    <Compile Include="Models\Entities\Goods\Category 1\RecoilingGateOperatorAnMotors.cs" />
+    <Compile Include="Models\Entities\Goods\Category 2\BusProfile.cs" />
+    <Compile Include="Models\Entities\Goods\Category 2\RollerAndSteelComplect.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Bracket.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Clutch.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\DeadboltAndLockingDevice.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\InsertAndSeal.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\Loop.cs" />
+    <Compile Include="Models\Entities\Goods\Category 3\RollerAndRing.cs" />
+    <Compile Include="Models\Entities\ImageContainer.cs" />
+    <Compile Include="Models\Entities\UserMessage.cs" />
+    <Compile Include="Models\Entities\Warehouse.cs" />
+    <Compile Include="Models\Enums\SortState.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\GoodViewModel.cs" />
+    <Compile Include="Models\ViewModels\PagingInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Views\Account\Register.Designer.cs">
+      <DependentUpon>Register.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -261,6 +743,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Services\GoodCharacteristicsGetter.cs" />
+    <Compile Include="Services\GoodWorker.cs" />
+    <Compile Include="Services\MarksWorker.cs" />
+    <Compile Include="Services\OrderDetailsGetter.cs" />
+    <Compile Include="Services\OrderItemsWorker.cs" />
+    <Compile Include="Services\OrderWorker.cs" />
+    <Compile Include="Services\UsersWorker.cs" />
+    <Compile Include="Services\WarehouseWorker.cs" />
+    <Compile Include="SQL\SqlWorker.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,12 +759,77 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\authorization_form.css" />
+    <Content Include="Content\css\characteristics_table.css" />
+    <Content Include="Content\css\comment_field.css" />
+    <Content Include="Content\css\commnets_block.css" />
+    <Content Include="Content\css\comparison_table.css" />
+    <Content Include="Content\css\contactForm.css" />
+    <Content Include="Content\css\goodAmmount.css" />
+    <Content Include="Content\css\discount.css" />
+    <Content Include="Content\css\goodsummary.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\gallery.css" />
+    <Content Include="Content\css\orderForm.css" />
+    <Content Include="Content\css\table_info.css" />
+    <Content Include="Content\css\tabstyles.css" />
+    <Content Include="Content\css\vertical_tabs.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\preview\avatar.png" />
+    <Content Include="Content\preview\shop_preview.jpg" />
+    <Content Include="Content\rating.jpg" />
+    <Content Include="Content\Товары Alutech\1.jpg" />
+    <Content Include="Content\Товары Alutech\468404-pic4_zoom-1000x1000-25061.jpg" />
+    <Content Include="Content\Товары Alutech\553f2696115ac.jpg" />
+    <Content Include="Content\Товары Alutech\ae19881ba1fce417051483345c810ae6.jpg" />
+    <Content Include="Content\Товары Alutech\Alutech.jpg" />
+    <Content Include="Content\Товары Alutech\b2b912089704c22b5743b69753d93323.png" />
+    <Content Include="Content\Товары Alutech\russia_640.png" />
+    <Content Include="Content\Товары Alutech\shop_preview.jpg" />
+    <Content Include="Content\Товары Alutech\united_kingdom_640.png" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\DART SLIM Фотоэлементы.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Аксесуары\Светодиодная лампа SWIFT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Приводы ГВ\Rampart 600 - высота 2.7м2 площадь до 8.4м2.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Comunello Приводы ГВ\Rampart 600 - высота 3.4м2 площадь до 8.4м2.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Аксессуары Marantec\Соединительное звено цепи 98020.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Аксессуары Marantec\Удлинительная тяга 150082.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для гаражных ворот AN-MOTORS\Комплект для автоматизации гаражных ворот ASG1000_3KITL.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для гаражных ворот AN-MOTORS\Комплект для автоматизации гаражных ворот ASG1000_4KIT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Nicepage-3.12.1-full.exe" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Nicepage-3.12.1.exe" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Приводы для откатных ворот AN-MOTORS\Комплект для автоматизации откатных ворот ASL500KIT.jpg" />
+    <Content Include="Content\Товары Alutech\Автоматика для ворот\Шлагбаумы Alutech\Шлагбаум BV-5.jpg" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\30-защелка_118WE.jpg" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\замок_ригкльныйFLGU.400.1006.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\ADS - дополнительная комплектация\Цилиндр замковый FLGU.400.1007.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SG.01 - профили шины стальные\Шина направляющая_SG.01.001.PNG" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SG.01 - профили шины стальные\Шина направляющая_SGN.01.002.PNG" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Опоры роликовые\Кронщтейн-sgn_02_717.png" />
+    <Content Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Опоры роликовые\Подставка-sgn_02_200.png" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Вставки и уплотнения\Вставка уплотнительная RSB20.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Вставки и уплотнения\Вставка уплотнительная RST01.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Засов SB0100.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Ригель WL0202.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Втулки, ригеля, запирающие устройства\Устройство запирающее RLT-403.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Кронштейны\Кронштейн RBG900.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Кронштейны\Кронштейн RBG900R.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Муфты\AC-1.png" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Петли\Петля промежуточная ih113.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Петли\Петля промежуточная wh013.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Ролики, дистанционные кольца\Ролик ходовой R-130-11_R-130-12_I9eD4Io.jpg" />
+    <Content Include="Content\Товары Alutech\Секционные ворота %28комплектация%29\Ролики, дистанционные кольца\Ролик ходовой R-205-12-G.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -297,7 +853,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -309,8 +864,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -320,12 +873,48 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Views\Account\TestEmail.cshtml" />
-    <Content Include="Views\Computer\Index.cshtml" />
-    <Content Include="Views\Computer\Details.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Good\List.cshtml" />
+    <Content Include="Views\Shared\_GoodSummary.cshtml" />
+    <Content Include="Views\GoodsSort\Sort.cshtml" />
+    <Content Include="Views\Shared\GoodsGallery.cshtml" />
+    <Content Include="Views\UserMessage\Create.cshtml" />
+    <Content Include="Views\GoodItem\CartItem.cshtml" />
+    <Content Include="Views\Comment\List.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Mark\Create.cshtml" />
+    <Content Include="Views\Purchase\Create.cshtml" />
+    <Content Include="Views\Purchase\List.cshtml" />
+    <Content Include="Views\Purchase\FinishOrder.cshtml" />
+    <Content Include="Views\Purchase\ConfirmPurchase.cshtml" />
+    <Content Include="Views\UserInfo\Statistics.cshtml" />
+    <Content Include="Views\UserInfo\MessagesList.cshtml" />
+    <Content Include="Views\UserInfo\MarksList.cshtml" />
+    <Content Include="Views\UserInfo\CommentsList.cshtml" />
+    <Content Include="Views\UserInfo\OrdersList.cshtml" />
+    <Content Include="Views\UserInfo\BonusBalance.cshtml" />
+    <Content Include="Views\UserInfo\Graphics.cshtml" />
+    <Content Include="Views\Administation\Index.cshtml" />
+    <Content Include="Views\Administation\UsersList.cshtml" />
+    <Content Include="Views\Administation\CommentsList.cshtml" />
+    <Content Include="Views\Administation\MessagesList.cshtml" />
+    <Content Include="Views\Administation\CategoriesList.cshtml" />
+    <Content Include="Views\Administation\CreateСategory.cshtml" />
+    <Content Include="Views\Administation\EditСategory.cshtml" />
+    <Content Include="Views\Administation\DiscountsList.cshtml" />
+    <Content Include="Views\Administation\CreateDiscount.cshtml" />
+    <Content Include="Views\Administation\ImagesList.cshtml" />
+    <Content Include="Views\Administation\CreateImage.cshtml" />
+    <Content Include="Views\Administation\CreateWarehouse.cshtml" />
+    <Content Include="Views\Administation\WarehousesList.cshtml" />
+    <Content Include="Views\Administation\GoodsList.cshtml" />
+    <Content Include="Views\Administation\EditGood.cshtml" />
+    <Content Include="Views\Administation\Statistics.cshtml" />
+    <Content Include="Views\Administation\UnbanUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Товары Alutech\Въездные ворота %28комплектация%29\SGN.02 - Комплектующие стальные\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -368,6 +957,155 @@
     <EmbeddedResource Include="Migrations\202104080930343_New_Good_Marks.resx">
       <DependentUpon>202104080930343_New_Good_Marks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104091159122_Changes FK.resx">
+      <DependentUpon>202104091159122_Changes FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120823344_New_migration.resx">
+      <DependentUpon>202104120823344_New_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120826113_New_migration_1.resx">
+      <DependentUpon>202104120826113_New_migration_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120838260_New_migration_2.resx">
+      <DependentUpon>202104120838260_New_migration_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120843107_New_migration_3.resx">
+      <DependentUpon>202104120843107_New_migration_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120854374_New_migration_4.resx">
+      <DependentUpon>202104120854374_New_migration_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120916009_New_migration_5.resx">
+      <DependentUpon>202104120916009_New_migration_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120918372_New_migration_6.resx">
+      <DependentUpon>202104120918372_New_migration_6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104120924421_New_migration_7.resx">
+      <DependentUpon>202104120924421_New_migration_7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121030485_New_migration_Good_Tables.resx">
+      <DependentUpon>202104121030485_New_migration_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121107415_New_migration_New4_Good_Tables.resx">
+      <DependentUpon>202104121107415_New_migration_New4_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121143580_New_migration_New2_Good_Tables.resx">
+      <DependentUpon>202104121143580_New_migration_New2_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104121259584_New_migration_A_lot_of_New_Good_Tables.resx">
+      <DependentUpon>202104121259584_New_migration_A_lot_of_New_Good_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131349378_Material_for_brackets.resx">
+      <DependentUpon>202104131349378_Material_for_brackets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131356556_Weight_for_rollers.resx">
+      <DependentUpon>202104131356556_Weight_for_rollers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104131854227_Discount_table.resx">
+      <DependentUpon>202104131854227_Discount_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104261101533_New_fields_of_user_message.resx">
+      <DependentUpon>202104261101533_New_fields_of_user_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104261358410_New_fields_of_user_message_datefield.resx">
+      <DependentUpon>202104261358410_New_fields_of_user_message_datefield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105030941351_New_fields_marks.resx">
+      <DependentUpon>202105030941351_New_fields_marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031205325_New_name_marks.resx">
+      <DependentUpon>202105031205325_New_name_marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031222109_New_name_marks1.resx">
+      <DependentUpon>202105031222109_New_name_marks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031310570_Marks.resx">
+      <DependentUpon>202105031310570_Marks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061504077_Orders.resx">
+      <DependentUpon>202105061504077_Orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061506306_Orders2.resx">
+      <DependentUpon>202105061506306_Orders2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105061616350_New_orders.resx">
+      <DependentUpon>202105061616350_New_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105071041102_SessionID.resx">
+      <DependentUpon>202105071041102_SessionID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105152030048_UserBalance.resx">
+      <DependentUpon>202105152030048_UserBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105171028577_Shipping_details.resx">
+      <DependentUpon>202105171028577_Shipping_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105212038275_Properties_delete.resx">
+      <DependentUpon>202105212038275_Properties_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105231910181_Check.resx">
+      <DependentUpon>202105231910181_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105280803199_Final version.resx">
+      <DependentUpon>202105280803199_Final version.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ConfirmEmail.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmail.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ConfirmEmail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfirmEmail.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\DisplayEmail.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayEmail.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\DisplayEmail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayEmail.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ExternalLoginConfirmation.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExternalLoginConfirmation.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ExternalLoginConfirmation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExternalLoginConfirmation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ExternalLoginFailure.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExternalLoginFailure.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ExternalLoginFailure.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExternalLoginFailure.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ForgotPassword.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ForgotPassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ForgotPassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ForgotPassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ForgotPasswordConfirmation.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ForgotPasswordConfirmation.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ForgotPasswordConfirmation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ForgotPasswordConfirmation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\Login.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\Register.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.en.Designer.cs</LastGenOutput>
@@ -376,9 +1114,173 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ResetPassword.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ResetPassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ResetPasswordConfirmation.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordConfirmation.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\ResetPasswordConfirmation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResetPasswordConfirmation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Account\_ExternalLoginsListPartial.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_ExternalLoginsListPartial.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Account\_ExternalLoginsListPartial.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_ExternalLoginsListPartial.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Comment\Create.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Comment\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Comment\List.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Comment\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\GoodItem\CartItem.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CartItem.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\GoodItem\CartItem.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CartItem.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\GoodsSort\Sort.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sort.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\GoodsSort\Sort.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sort.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Good\List.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Good\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\About.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\About.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>About.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\Index.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Home\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\ChangePassword.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangePassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\ChangePassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChangePassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\Index.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\SetPassword.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SetPassword.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Manage\SetPassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SetPassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Mark\Create.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Mark\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\Create.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\FinishOrder.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FinishOrder.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\FinishOrder.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FinishOrder.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\List.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Purchase\List.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\GoodSummary.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GoodSummary.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\GoodSummary.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GoodSummary.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\Layout.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Shared\Layout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\UserInfo\UserInfo.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserInfo.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\UserInfo\UserInfo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\UserMessage\Create.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\UserMessage\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -414,7 +1316,9 @@
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

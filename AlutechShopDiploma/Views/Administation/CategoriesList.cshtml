@@ -1,0 +1,85 @@
+﻿@model IEnumerable<AlutechShopDiploma.Models.Entities.Category>
+@using AlutechShopDiploma.Services
+@using AlutechShopDiploma.Models.Entities
+
+<head>
+    <link href="~/Content/css/table_info.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>
+    </h1>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["message"]
+        </div>
+    }
+    @if (TempData["mistake"] != null)
+    {
+        <div class="alert alert-danger" style="margin-left: 45px;">
+            @TempData["mistake"]
+        </div>
+    }
+    @if (TempData["succsess"] != null)
+    {
+        <div class="alert alert-success" style="margin-left: 45px;">
+            @TempData["succsess"]
+        </div>
+    }
+
+    <h1><center>Управление категориями</center></h1>
+    <center>
+        <form action="/Administation/CreateСategory">
+            <div style="display:inline-block">
+                <input type="submit" class="btn btn-info" value="Создать категорию" style="margin-left: 6%;" />
+
+            </div>
+        </form>
+    </center>
+    <h1></h1>
+    <table class="table_info">
+
+        <caption>Категории товаров</caption>
+        <tr>
+            <th><center>ID</center></th>
+            <th><center>Название</center></th>
+            <th><center>Кол-во подкатегорий</center></th>
+            <th><center>Ко-во товаров</center></th>
+            <th><center>Дейставия</center></th>
+        </tr>
+        @{
+            foreach (var category in Model)
+            {
+                CategoriesWorker worker = new CategoriesWorker(category.CategoryID);
+                <tr>
+                    <td><center>@category.CategoryID</center></td>
+                    <td><center>@category.Name</center></td>
+                    <td><center>@worker.GetCountOfSubcategories() шт.</center></td>
+                    <td><center>@worker.GetCountOfGoods() шт.</center></td>
+                    <td>
+                        <center>
+                            @using (Html.BeginForm("EditСategory", "Administation", FormMethod.Get))
+                            {
+                                @Html.Hidden("categoryId", category.CategoryID)
+                                <input class="btn btn-success" type="submit" value="Редактировать категорию" />
+                            }
+
+
+
+                            <h1>
+                            </h1>
+
+                            @using (Html.BeginForm("DeleteСategory", "Administation", FormMethod.Post))
+                            {
+                                @Html.Hidden("categoryId", category.CategoryID)
+                                <input class="btn btn-danger" type="submit" value="Удалить категорию" />
+                            }
+                        </center>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</body>
+

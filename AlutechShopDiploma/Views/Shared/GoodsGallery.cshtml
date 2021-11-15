@@ -1,0 +1,113 @@
+﻿@using AlutechShopDiploma.Models.Entities
+@using AlutechShopDiploma.SQL
+@model IEnumerable<Good>
+
+@{
+    SqlWorker sqlWorker = new SqlWorker("Data Source=(LocalDb)\\MSSQLLocalDB;Database=aspnet-AlutechShopDiploma-20210330115616;Integrated Security=True");
+}
+
+<head>
+    <link href="~/Content/css/gallery.css" rel="stylesheet"/>
+    <link href="~/Content/css/goodsummary.css" rel="stylesheet" />
+    <link href="~/Content/css/discount.css"/ rel="stylesheet">
+</head>
+
+<style>
+</style>
+
+<body>
+    <div class="container">
+
+        <!-- Full-width images with number text -->
+
+        @{
+            int count = 1;
+            int max = 6;
+            foreach (var element in Model)
+            {
+                string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts Where GoodID = " + element.GoodID);
+                if(discountLabel != "")
+                { 
+                <div class="mySlides">
+                    @Html.Partial("_GoodSummary", element);
+                </div>
+                }
+            if (count == max)
+            {
+                break;
+            }
+            count++;
+        }
+    }
+
+    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <!-- Image text -->
+                    <div class="caption-container" style="width: 1162px;">
+                        <p id="caption"></p>
+                    </div>
+
+                    <!-- Thumbnail images -->
+                    <div class="row" style="margin-left: 0px">
+                        @{
+                            count = 1;
+                            max = 6;
+                            foreach (var element in Model)
+                            {
+                                string discountLabel = sqlWorker.SelectDataFromDB("SELECT DiscountAmmount from Discounts Where GoodID = " + element.GoodID);
+                                if (discountLabel != "")
+                                {
+                                    string imageUrl = sqlWorker.SelectDataFromDB("SELECT Url from ImageContainers Where GoodID = " + element.GoodID);
+                                <div class="column">
+                                    <img style="width:200px;height:200px; " class="demo cursor" src="@Url.Content(imageUrl)" onclick="currentSlide(@count)" alt="@element.Name @element.Price r." />
+
+                                </div>
+                                }
+
+                                if (count == max)
+                                {
+                                    break;
+                                }
+                                count++;
+                            }
+                        }
+                    </div>
+                </div>
+</body>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+
+</script>

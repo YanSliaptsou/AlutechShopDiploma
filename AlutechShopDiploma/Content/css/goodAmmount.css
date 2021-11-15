@@ -1,0 +1,25 @@
+﻿input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.quantity-block {
+    margin: auto;
+    font-size: 20px;
+}
+
+.quantity-arrow-minus,
+.quantity-arrow-plus {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px 12px;
+    width: 40px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+}
+
+.quantity-num {
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    outline: none;

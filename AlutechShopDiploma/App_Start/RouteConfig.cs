@@ -16,8 +16,16 @@ namespace AlutechShopDiploma
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: null,
+                url: "Page{page}",
+                defaults: new { controller = "Good", action = "List", category = (string)null, subcategory = (string)null },
+                constraints: new { page = @"\d+" }
+
+           );
         }
     }
 }
